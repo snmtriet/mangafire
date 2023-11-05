@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { Poster as PosterType } from '@/@types/common'
 
 type PosterProps = {
@@ -8,7 +10,7 @@ type PosterProps = {
 const Poster = (props: PosterProps) => {
   const { item, index } = props
   return (
-    <a href="/manga/one-punch-man.oo4">
+    <Link to="/manga/one-punch-man.oo4">
       {index ? <b>{index}</b> : null}
       <div className="poster">
         <div>
@@ -21,7 +23,7 @@ const Poster = (props: PosterProps) => {
         </div>
       </div>
       <span>{item.title}</span>
-    </a>
+    </Link>
   )
 }
 

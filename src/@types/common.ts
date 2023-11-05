@@ -57,3 +57,19 @@ export type FilterCommonProps = {
   open: EnumFilter | null
   handleOpen: (type: EnumFilter | null) => void
 }
+
+export type FilterDropdown = {
+  id: string | undefined
+  value: string
+  label: string
+  checked?: boolean
+}
+
+export type CommonFilterProps = {
+  data: FilterDropdown[]
+  value: EnumFilter
+  handleOpen: (type: EnumFilter | null) => void
+  open: EnumFilter | null
+  dropdownClassName?: string
+  type?: 'checkbox' | 'radio'
+}

@@ -126,6 +126,7 @@ ol,
 ul {
   margin-top: 0;
   margin-bottom: 1rem;
+  padding: 0;
 }
 
 ol ol,
@@ -2402,6 +2403,11 @@ pre code {
 
   .table-responsive-sm > .table-bordered {
     border: 0;
+  }
+
+  .wrapper .nav-mobile {
+    width: 100%;
+    transform: translateX(-100%);
   }
 }
 
@@ -13075,7 +13081,14 @@ header {
   padding: 0;
   border-bottom: 1px solid #1e2c43;
   z-index: 88;
-  position: relative;
+  position: sticky;
+  top: 0;
+  /* background: #1e2c43; */
+  backdrop-filter: blur(20px);
+}
+
+header.transparent {
+  background: transparent;
 }
 
 header .component {
@@ -17216,6 +17229,145 @@ main.index .welcome-bottom .bg-secondary {
   animation: spin 1s linear infinite;
 }
 
+.pagination-pager {
+  position: relative;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  display: inline-flex;
+  width: 2.6rem;
+  height: 2.6rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.pagination-pager .page-link {
+  padding: 0;
+  width: 2.6rem;
+  height: 2.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.pagination-pager.pagination-pager-active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #3c8bc6;
+  border-color: #3c8bc6;
+}
+
+.mask {
+  background: rgba(0, 0, 0, 0.8);
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  z-index: 40;
+  position: fixed;
+  display: none;
+}
+.mask.show {
+  display: block;
+}
+
+.nav-mobile {
+  width: 440px;
+  height: 100%;
+  transform: translateX(-440px);
+  transition: transform 0.4s;
+  z-index: 50;
+  left: 0;
+  top: 0px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-mobile.open {
+  transform: translate(0px);
+}
+
+.nav-mobile .top {
+  height: 56px;
+  background: transparent;
+}
+
+.nav-mobile .bottom {
+  flex: 1;
+  background: #182335;
+  border: 1px solid #1e2c43;
+}
+
+.nav-mobile .bottom > ul > li > ul {
+  margin: 0 0 0;
+  list-style: none;
+  display: block;
+  overflow: hidden;
+  padding: 0.8rem;
+  background: #141d2c;
+  border-bottom: 1px solid #235479;
+  border-top: 1px solid #235479;
+}
+
+.nav-mobile .bottom > ul > li > ul > li {
+  float: left;
+  width: 33.33%;
+}
+
+.nav-mobile .bottom > ul > li > ul > li > a {
+  width: 100%;
+  display: block;
+  padding: 0.3rem 0.8rem;
+  color: #8f96a0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.nav-mobile .bottom > ul > li > a,
+.nav-mobile .bottom > ul > li > span {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 1.25rem;
+  color: #8f96a0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.nav-mobile .bottom > ul > li > a.active,
+.nav-mobile .bottom > ul > li > a:hover,
+.nav-mobile .bottom > ul > li > span.active,
+.nav-mobile .bottom > ul > li > span:hover {
+  color: #8bbadd;
+  background: #141d2c;
+}
+
+.nav-mobile .bottom > ul > li > ul > li > a .active,
+.nav-mobile .bottom > ul > li > ul > li > a:hover {
+  color: #8bbadd;
+  background: #1e2c43;
+  border-radius: 0.5rem;
+  border: 1px solid #23334e;
+}
+
+.nav-mobile .bottom > ul > li > a:before,
+.nav-mobile .bottom > ul > li > span:before {
+  content: '\f054';
+  font-family: 'Font Awesome 6 Pro';
+  margin-right: 0.6rem;
+  font-size: 0.8rem;
+  transition: margin 0.3s;
+}
+
 @keyframes spin {
   100% {
     transform: rotate(360deg);
@@ -17484,7 +17636,7 @@ main.index .welcome-bottom .bg-secondary {
 }
 
 @media (max-width: 767.98px) {
-  .dropdown.responsive.show:before {
+  .dropdown.responsive.show .overlay {
     top: 0;
     left: 0;
     width: 100%;
@@ -17779,7 +17931,7 @@ main.index .welcome-bottom .bg-secondary {
     transition: margin 0.3s, opacity 0.3s;
   }
 
-  #nav-search:after {
+  #nav-search .overlay {
     position: absolute;
     content: '';
     background: rgba(14, 23, 38, 0.9);
@@ -17797,7 +17949,7 @@ main.index .welcome-bottom .bg-secondary {
     opacity: 1;
   }
 
-  #nav-search.active:after {
+  #nav-search.active .overlay {
     opacity: 1;
   }
 

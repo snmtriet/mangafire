@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { GenreTrending } from '@/@types/common'
 
 type TrendingCardProps = {
@@ -23,27 +25,27 @@ function TrendingCard(props: TrendingCardProps) {
       <div className="info">
         <div className="above">
           <span>{item.releasing}</span>
-          <a className="unit" href="/manga/detective-conan.1rx">
+          <Link className="unit" to="/manga/detective-conan.1rx">
             {item.title}
-          </a>
+          </Link>
         </div>
         <div className="below">
           <span>{item.desc}</span>
           <p>{item.chapterAndVolume}</p>
           <div>
             {item.genres.map((genre) => (
-              <a key={genre} href="/genre/comedy">
+              <Link key={genre} to="/genre/comedy">
                 {genre}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
       </div>
-      <a href="/manga/detective-conan.1rx" className="poster">
+      <Link to="/manga/detective-conan.1rx" className="poster">
         <div>
           <img src={item.image} alt={item.title} />
         </div>
-      </a>
+      </Link>
     </div>
   )
 }

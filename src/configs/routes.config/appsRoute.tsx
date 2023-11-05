@@ -3,8 +3,14 @@ import type { Routes } from '@/@types/routes'
 
 const appsRoute: Routes = [
   {
-    key: 'app.home',
+    key: 'app.welcome',
     path: '/',
+    component: lazy(() => import('@/views/welcome')),
+    authority: [],
+  },
+  {
+    key: 'app.home',
+    path: '/home',
     component: lazy(() => import('@/views/home')),
     authority: [],
   },

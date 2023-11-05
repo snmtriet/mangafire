@@ -1,6 +1,8 @@
-import classNames from 'classnames'
+import {  useRef,  memo } from 'react'
 
 import { EnumFilter, FilterCommonProps } from '@/@types/common'
+import useClickOutside from '@/utils/hooks/useClickOutside'
+import ButtonFilter from './ButtonFilter'
 
 const data = [
   {
@@ -37,44 +39,19 @@ const data = [
 
 const Type = (props: FilterCommonProps) => {
   const { open, handleOpen } = props
+  const dropdownRef = useRef<HTMLDivElement | null>(null)
+
+  useClickOutside({ dropdownRef, handleOpen, open, type: EnumFilter.type })
   return (
-    <div>
-      <div
-        className={classNames('dropdown', open === EnumFilter.type && 'show')}
-      >
-        <button
-          type="button"
-          name={EnumFilter.type}
-          data-toggle="dropdown"
-          onClick={() => handleOpen(EnumFilter.type)}
-        >
-          <span
-            className="value"
-            data-placeholder="Type"
-            data-label-placement="true"
-          >
-            Type
-          </span>
-        </button>
-        <ul
-          className="dropdown-menu noclose c1"
-          style={{ display: open === EnumFilter.type ? 'block' : 'none' }}
-        >
-          {data.map((item) => (
-            <li key={item.id}>
-              <input
-                type="checkbox"
-                id={item.id}
-                name="type[]"
-                value={item.value}
-              />
-              <label htmlFor={item.id}>{item.label}</label>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    <ButtonFilter
+      data={data}
+      open={open}
+      ref={dropdownRef}
+      dropdownClassName="c1"
+      handleOpen={handleOpen}
+      value={EnumFilter.type}
+    />
   )
 }
 
-export default Type
+export default memo(Type)

@@ -1,23 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 
-import { Genre, Type } from './components'
 import { EnumFilter } from '@/@types/common'
 
-const Filter = () => {
+import { Genre, Language, Length, Sort, Status, Type, Year } from './components'
+
+type FilterProps = {
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+}
+
+const Filter = (props: FilterProps) => {
+  const { handleSubmit } = props
   const [open, setOpen] = useState<EnumFilter | null>(null)
-  console.log({ open })
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const formData = new FormData(e.target as HTMLFormElement)
-    const keyword = formData.get('keyword')
-    const type = formData.getAll('type[]')
-    console.log({ keyword, type })
-  }
-
-  const handleOpen = (type: EnumFilter | null) => {
-    setOpen((prev) => (prev === type ? null : type))
-  }
+  const handleOpen = useCallback((type: EnumFilter | null) => {
+    setOpen((prev) => (type === null || type === prev ? null : type))
+  }, [])
 
   return (
     <form id="filters" autoComplete="off" onSubmit={handleSubmit}>
@@ -32,6 +29,17 @@ const Filter = () => {
         </div>
         <Type open={open} handleOpen={handleOpen} />
         <Genre open={open} handleOpen={handleOpen} />
+        <Status open={open} handleOpen={handleOpen} />
+        <Language open={open} handleOpen={handleOpen} />
+        <Year open={open} handleOpen={handleOpen} />
+        <Length open={open} handleOpen={handleOpen} />
+        <Sort open={open} handleOpen={handleOpen} />
+        <div>
+          <button type="submit" className="btn btn-primary">
+            <i className="fa-regular fa-circles-overlap fa-xs"></i>
+            <span>Filter</span> <i className="ml-2 bi bi-intersect"></i>
+          </button>
+        </div>
       </div>
     </form>
   )

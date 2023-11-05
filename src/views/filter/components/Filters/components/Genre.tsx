@@ -1,6 +1,8 @@
-import classNames from 'classnames'
+import { useRef } from 'react'
 
 import { EnumFilter, FilterCommonProps } from '@/@types/common'
+import useClickOutside from '@/utils/hooks/useClickOutside'
+import ButtonFilter from './ButtonFilter'
 
 const data = [
   {
@@ -212,62 +214,17 @@ const data = [
 
 const Genre = (props: FilterCommonProps) => {
   const { open, handleOpen } = props
+  const dropdownRef = useRef<HTMLDivElement | null>(null)
+  useClickOutside({ dropdownRef, handleOpen, open, type: EnumFilter.genre })
   return (
-    <div>
-      <div
-        className={classNames(
-          'dropdown responsive',
-          open === 'genre' && 'show'
-        )}
-      >
-        <button
-          type="button"
-          name={EnumFilter.genre}
-          data-toggle="dropdown"
-          onClick={() => handleOpen(EnumFilter.genre)}
-        >
-          <span
-            className="value"
-            data-placeholder="Genre"
-            data-label-placement="true"
-          >
-            Genre
-          </span>
-        </button>
-        <div
-          className="dropdown-menu noclose lg c4 dropdown-menu-right dropdown-menu-md-left"
-          style={{ display: open === 'genre' ? 'block' : 'none' }}
-        >
-          <ul className="genres">
-            {data.map((genre) => (
-              <li key={genre.id}>
-                <input
-                  type="checkbox"
-                  id={genre.id}
-                  name="genre[]"
-                  value={genre.value}
-                />
-                <label htmlFor={genre.id}>{genre.label}</label>
-              </li>
-            ))}
-          </ul>
-          <div className="clearfix"></div>
-          <ul>
-            <li className="w-100">
-              <input
-                type="checkbox"
-                id="genre-mode"
-                name="genre_mode"
-                value="and"
-              />
-              <label htmlFor="genre-mode" className="text-success">
-                Must have all the selected genres
-              </label>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <ButtonFilter
+      data={data}
+      open={open}
+      ref={dropdownRef}
+      dropdownClassName="lg c4 dropdown-menu-right dropdown-menu-md-left"
+      handleOpen={handleOpen}
+      value={EnumFilter.genre}
+    />
   )
 }
 

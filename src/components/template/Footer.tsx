@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const Footer = () => {
   return (
     <footer>
@@ -17,23 +19,23 @@ const Footer = () => {
               <p>© 2023 MangaFire.to</p>
             </div>
             <nav>
-              <a href="https://discord.com/invite/KRQQKzQ6CS" target="_blank">
+              <Link to="https://discord.com/invite/KRQQKzQ6CS" target="_blank">
                 <i className="fa-brands fa-discord"></i>
-              </a>
-              <a href="https://www.reddit.com/r/Mangafire/" target="_blank">
+              </Link>
+              <Link to="https://www.reddit.com/r/Mangafire/" target="_blank">
                 <i className="fa-brands fa-reddit-alien"></i>
-              </a>
+              </Link>
               <ul>
                 <li>
-                  <a href="contact">Contact Us</a>
+                  <Link to="contact">Contact Us</Link>
                 </li>
                 <li>
-                  <a href="terms">Terms of service</a>
+                  <Link to="terms">Terms of service</Link>
                 </li>
                 <li>
-                  <a data-toggle="modal" data-target="#request" href="#">
+                  <Link data-toggle="modal" data-target="#request" to="#">
                     Request
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </nav>

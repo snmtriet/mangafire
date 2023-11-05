@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { Genre } from '@/@types/common'
 
 type CardProps = {
@@ -9,7 +11,11 @@ const Card = (props: CardProps) => {
   return (
     <div className="unit item-47969">
       <div className="inner">
-        <a href="#" className="poster tooltipstered" data-tip="47969?/cache950">
+        <Link
+          to="#"
+          className="poster tooltipstered"
+          data-tip="47969?/cache950"
+        >
           <div>
             <img
               src={item.image}
@@ -18,23 +24,23 @@ const Card = (props: CardProps) => {
               referrerPolicy="no-referrer"
             />
           </div>
-        </a>
+        </Link>
         <div className="info">
           <div>
             <span className="type">{item.type}</span>
           </div>
-          <a href="/manga/isekai-hotel-e-youkoso-mazoku-de-yuusha-na-saikyou-ane-tachi-kara-dekiaisarete-komattemasu.72ox7">
+          <Link to="/manga/isekai-hotel-e-youkoso-mazoku-de-yuusha-na-saikyou-ane-tachi-kara-dekiaisarete-komattemasu.72ox7">
             {item.title}
-          </a>
+          </Link>
           <ul className="content" data-name="chap">
             {item.chapters.map((chap, index) => (
               <li key={index}>
-                <a href="/read/isekai-hotel-e-youkoso-mazoku-de-yuusha-na-saikyou-ane-tachi-kara-dekiaisarete-komattemasu.72ox7/en/chapter-1">
+                <Link to="/read/isekai-hotel-e-youkoso-mazoku-de-yuusha-na-saikyou-ane-tachi-kara-dekiaisarete-komattemasu.72ox7/en/chapter-1">
                   <span>
                     {chap.info} <b>{chap.lang}</b>
                   </span>
                   <span>{chap.date}</span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

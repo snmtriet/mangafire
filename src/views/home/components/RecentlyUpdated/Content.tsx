@@ -47,21 +47,6 @@ const fakeData = [
         date: 'Nov 01, 2023',
         lang: null,
       },
-      {
-        info: 'Vol 45 EN',
-        date: 'Nov 01, 2023',
-        lang: null,
-      },
-      {
-        info: 'Vol 29 EN',
-        date: 'Nov 01, 2023',
-        lang: null,
-      },
-      {
-        info: 'Vol 28 EN',
-        date: 'Feb 19, 2023',
-        lang: null,
-      },
     ],
   },
   {

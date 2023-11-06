@@ -1,4 +1,4 @@
-import {  useRef,  memo } from 'react'
+import { useRef, memo } from 'react'
 
 import { EnumFilter, FilterCommonProps } from '@/@types/common'
 import useClickOutside from '@/utils/hooks/useClickOutside'

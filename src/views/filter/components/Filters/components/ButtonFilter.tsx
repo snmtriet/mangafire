@@ -1,6 +1,6 @@
 import { forwardRef, memo } from 'react'
 import classNames from 'classnames'
-import { motion, Variants } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 import { CommonFilterProps, EnumFilter } from '@/@types/common'
 
@@ -49,7 +49,7 @@ const ButtonFilter = forwardRef<HTMLDivElement, CommonFilterProps>(
             style={{
               display: isResponsive ? 'block' : 'none',
             }}
-            onClick={() => handleOpen(null)}
+            onClick={() => handleOpen(EnumFilter.null)}
           ></div>
           <button type="button" name={value} onClick={() => handleOpen(value)}>
             <span className="value" style={{ textTransform: 'capitalize' }}>

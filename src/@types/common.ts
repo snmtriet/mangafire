@@ -51,11 +51,12 @@ export enum EnumFilter {
   'year' = 'year',
   'length' = 'length',
   'sort' = 'sort',
+  'null' = 'null',
 }
 
 export type FilterCommonProps = {
-  open: EnumFilter | null
-  handleOpen: (type: EnumFilter | null) => void
+  open: EnumFilter
+  handleOpen: (type: EnumFilter) => void
 }
 
 export type FilterDropdown = {
@@ -68,8 +69,8 @@ export type FilterDropdown = {
 export type CommonFilterProps = {
   data: FilterDropdown[]
   value: EnumFilter
-  handleOpen: (type: EnumFilter | null) => void
-  open: EnumFilter | null
+  handleOpen: (type: EnumFilter) => void
+  open: EnumFilter
   dropdownClassName?: string
   type?: 'checkbox' | 'radio'
 }

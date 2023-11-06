@@ -10,10 +10,12 @@ type FilterProps = {
 
 const Filter = (props: FilterProps) => {
   const { handleSubmit } = props
-  const [open, setOpen] = useState<EnumFilter | null>(null)
+  const [open, setOpen] = useState<EnumFilter>(EnumFilter.null)
 
-  const handleOpen = useCallback((type: EnumFilter | null) => {
-    setOpen((prev) => (type === null || type === prev ? null : type))
+  const handleOpen = useCallback((type: EnumFilter) => {
+    setOpen((prev) =>
+      type === EnumFilter.null || type === prev ? EnumFilter.null : type
+    )
   }, [])
 
   return (

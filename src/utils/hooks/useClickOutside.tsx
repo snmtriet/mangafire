@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 
 type useClickOutsideProps = {
   dropdownRef: React.MutableRefObject<HTMLDivElement | null>
-  handleOpen: (type: EnumFilter | null) => void
+  handleOpen: (type: EnumFilter) => void
   type: EnumFilter
   open: EnumFilter | null
 }
@@ -15,7 +15,7 @@ const useClickOutside = (props: useClickOutsideProps) => {
       dropdownRef.current &&
       !dropdownRef.current.contains(e.target as HTMLDivElement)
     ) {
-      open === type && handleOpen(null)
+      open === type && handleOpen(EnumFilter.null)
     }
   }
 

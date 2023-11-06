@@ -60,7 +60,7 @@ const ButtonFilter = forwardRef<HTMLDivElement, CommonFilterProps>(
             className={classNames(
               'dropdown-menu noclose d-none',
               dropdownClassName,
-              open && value && 'd-block'
+              open !== EnumFilter.null && value && 'd-block'
             )}
             animate={open === value ? 'open' : 'closed'}
             variants={menu}

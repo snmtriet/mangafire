@@ -1,7 +1,26 @@
 import { forwardRef, memo } from 'react'
 import classNames from 'classnames'
+import { motion, Variants } from 'framer-motion'
 
 import { CommonFilterProps, EnumFilter } from '@/@types/common'
+
+const menu = {
+  closed: {
+    scale: 0,
+    transition: {
+      delay: 0.15,
+    },
+  },
+  open: {
+    scale: 1,
+    transition: {
+      type: 'spring',
+      duration: 0.4,
+      delayChildren: 0.2,
+      staggerChildren: 0.05,
+    },
+  },
+}
 
 const ButtonFilter = forwardRef<HTMLDivElement, CommonFilterProps>(
   (props, dropdownRef) => {
@@ -37,9 +56,14 @@ const ButtonFilter = forwardRef<HTMLDivElement, CommonFilterProps>(
               {value}
             </span>
           </button>
-          <div
-            className={classNames('dropdown-menu noclose', dropdownClassName)}
-            style={{ display: open === value ? 'block' : 'none' }}
+          <motion.div
+            className={classNames(
+              'dropdown-menu noclose d-none',
+              dropdownClassName,
+              open && value && 'd-block'
+            )}
+            animate={open === value ? 'open' : 'closed'}
+            variants={menu}
           >
             <ul className={classNames(value === EnumFilter.genre && 'genres')}>
               {data.map((item) => (
@@ -73,7 +97,7 @@ const ButtonFilter = forwardRef<HTMLDivElement, CommonFilterProps>(
                 </ul>
               </>
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
     )

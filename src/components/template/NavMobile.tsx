@@ -27,36 +27,36 @@ const NavMobile = (props: NavMobileProps) => {
                 open={toggleMenu === 'type'}
                 className={classNames('c1')}
               >
-                <LiMotion>
+                <li>
                   <Link title="Manga mangas" to="/type/manga">
                     Manga
                   </Link>
-                </LiMotion>
-                <LiMotion>
+                </li>
+                <li>
                   <Link title="One-Shot mangas" to="/type/one-shot">
                     One-Shot
                   </Link>
-                </LiMotion>
-                <LiMotion>
+                </li>
+                <li>
                   <Link title="Doujinshi mangas" to="/type/doujinshi">
                     Doujinshi
                   </Link>
-                </LiMotion>
-                <LiMotion>
+                </li>
+                <li>
                   <Link title="Novel mangas" to="/type/novel">
                     Novel
                   </Link>
-                </LiMotion>
-                <LiMotion>
+                </li>
+                <li>
                   <Link title="Manhwa mangas" to="/type/manhwa">
                     Manhwa
                   </Link>
-                </LiMotion>
-                <LiMotion>
+                </li>
+                <li>
                   <Link title="Manhua mangas" to="/type/manhua">
                     Manhua
                   </Link>
-                </LiMotion>
+                </li>
               </UlMotion>
             </li>
             <li>
@@ -66,11 +66,11 @@ const NavMobile = (props: NavMobileProps) => {
                 className={classNames('lg')}
               >
                 {genres.map((genre, index) => (
-                  <LiMotion key={index}>
+                  <li key={index}>
                     <Link title={genre.title} to={genre.link}>
                       {genre.title}
                     </Link>
-                  </LiMotion>
+                  </li>
                 ))}
               </UlMotion>
             </li>
@@ -107,15 +107,11 @@ const NavMobile = (props: NavMobileProps) => {
 
 export default NavMobile
 
-const li: Variants = {
-  closed: { x: -16, opacity: 0 },
-  open: { x: 0, opacity: 1, transition: { type: 'tween', duration: 0.3 } },
-}
-
 const dropdownVariants: Variants = {
   closed: {
     height: 0,
     padding: 0,
+    border: 0,
     transition: {
       delay: 0.15,
     },
@@ -131,10 +127,6 @@ const dropdownVariants: Variants = {
       staggerChildren: 0.08,
     },
   },
-}
-
-const LiMotion = ({ children }: { children: React.ReactNode }) => {
-  return <motion.li variants={li}>{children}</motion.li>
 }
 
 const UlMotion = ({

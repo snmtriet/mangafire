@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 
 import { EnumFilter } from '@/@types/common'
-
+import { useMounted } from '@/utils/hooks'
 import { Genre, Language, Length, Sort, Status, Type, Year } from './components'
 
 type FilterProps = {
@@ -10,13 +10,8 @@ type FilterProps = {
 
 const Filter = (props: FilterProps) => {
   const { handleSubmit } = props
-  const [open, setOpen] = useState<EnumFilter>(EnumFilter.null)
 
-  const handleOpen = useCallback((type: EnumFilter) => {
-    setOpen((prev) =>
-      type === EnumFilter.null || type === prev ? EnumFilter.null : type
-    )
-  }, [])
+  const mounted = useMounted()
 
   return (
     <form id="filters" autoComplete="off" onSubmit={handleSubmit}>
@@ -29,13 +24,13 @@ const Filter = (props: FilterProps) => {
             name="keyword"
           />
         </div>
-        <Type open={open} handleOpen={handleOpen} />
-        <Genre open={open} handleOpen={handleOpen} />
-        <Status open={open} handleOpen={handleOpen} />
-        <Language open={open} handleOpen={handleOpen} />
-        <Year open={open} handleOpen={handleOpen} />
-        <Length open={open} handleOpen={handleOpen} />
-        <Sort open={open} handleOpen={handleOpen} />
+        <Type mounted={mounted} />
+        <Genre mounted={mounted} />
+        <Status mounted={mounted} />
+        <Language mounted={mounted} />
+        <Year mounted={mounted} />
+        <Length mounted={mounted} />
+        <Sort mounted={mounted} />
         <div>
           <button type="submit" className="btn btn-primary">
             <i className="fa-regular fa-circles-overlap fa-xs"></i>

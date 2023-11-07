@@ -702,7 +702,7 @@ const FilterPage = () => {
   const year = searchParams.get('year')
   const language = searchParams.get('language')
   const length = searchParams.get('length')
-  console.log({ keyword, type, genre, status, year, language, length })
+  // console.log({ keyword, type, genre, status, year, language, length })
 
   useEffect(() => {
     document.title = 'Filter - MangaFire'

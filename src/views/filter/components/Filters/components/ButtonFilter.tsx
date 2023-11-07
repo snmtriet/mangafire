@@ -1,26 +1,10 @@
-import { forwardRef, memo } from 'react'
+import { forwardRef, memo, useEffect, useState } from 'react'
 import classNames from 'classnames'
-import { motion } from 'framer-motion'
+import { Variants, motion } from 'framer-motion'
 
+import { HeightMotion, ScaleMotion } from '@/utils/motions'
+import { useWindowDimensions } from '@/utils/hooks'
 import { CommonFilterProps, EnumFilter } from '@/@types/common'
-
-const menu = {
-  closed: {
-    scale: 0,
-    transition: {
-      delay: 0.15,
-    },
-  },
-  open: {
-    scale: 1,
-    transition: {
-      type: 'spring',
-      duration: 0.4,
-      delayChildren: 0.2,
-      staggerChildren: 0.05,
-    },
-  },
-}
 
 const ButtonFilter = forwardRef<HTMLDivElement, CommonFilterProps>(
   (props, dropdownRef) => {
@@ -28,30 +12,33 @@ const ButtonFilter = forwardRef<HTMLDivElement, CommonFilterProps>(
       open,
       data,
       value,
-      handleOpen,
       dropdownClassName,
       type = 'checkbox',
+      mounted,
+      onToggle,
     } = props
-
+    const { width } = useWindowDimensions()
     const isResponsive = [EnumFilter.genre, EnumFilter.year].includes(value)
+    const screenMedium = width < 768
+
+    const [animation, setAnimation] = useState<Variants>(HeightMotion)
+
+    useEffect(() => {
+      if (screenMedium && isResponsive) setAnimation(ScaleMotion)
+      else setAnimation(HeightMotion)
+    }, [width])
+
     return (
-      <div>
+      <div ref={dropdownRef}>
         <div
           className={classNames(
             'dropdown',
-            isResponsive && 'responsive',
-            open === value && 'show'
+            open && 'show',
+            isResponsive && 'responsive'
           )}
-          ref={dropdownRef}
         >
-          <div
-            className="overlay"
-            style={{
-              display: isResponsive ? 'block' : 'none',
-            }}
-            onClick={() => handleOpen(EnumFilter.null)}
-          ></div>
-          <button type="button" name={value} onClick={() => handleOpen(value)}>
+          {isResponsive && <div className="overlay" onClick={onToggle}></div>}
+          <button type="button" name={value} onClick={onToggle}>
             <span className="value" style={{ textTransform: 'capitalize' }}>
               {value}
             </span>
@@ -60,10 +47,14 @@ const ButtonFilter = forwardRef<HTMLDivElement, CommonFilterProps>(
             className={classNames(
               'dropdown-menu noclose d-none',
               dropdownClassName,
-              open !== EnumFilter.null && value && 'd-block'
+              mounted && value && 'd-block'
             )}
-            animate={open === value ? 'open' : 'closed'}
-            variants={menu}
+            animate={open ? 'open' : 'closed'}
+            variants={animation}
+            style={{
+              transformOrigin:
+                screenMedium || !isResponsive ? 'top center' : 'top left',
+            }}
           >
             <ul className={classNames(value === EnumFilter.genre && 'genres')}>
               {data.map((item) => (
@@ -79,7 +70,7 @@ const ButtonFilter = forwardRef<HTMLDivElement, CommonFilterProps>(
                 </li>
               ))}
             </ul>
-            {open === EnumFilter.genre && value === EnumFilter.genre && (
+            {open && value === EnumFilter.genre && (
               <>
                 <div className="clearfix"></div>
                 <ul>

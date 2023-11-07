@@ -1,8 +1,7 @@
-import { useRef } from 'react'
-
 import { EnumFilter, FilterCommonProps } from '@/@types/common'
-import useClickOutside from '@/utils/hooks/useClickOutside'
+import { useClickOutside } from '@/utils/hooks'
 import ButtonFilter from './ButtonFilter'
+import { useState } from 'react'
 
 const data = [
   {
@@ -153,17 +152,20 @@ const data = [
 ]
 
 const Year = (props: FilterCommonProps) => {
-  const { open, handleOpen } = props
-  const dropdownRef = useRef<HTMLDivElement | null>(null)
-  useClickOutside({ dropdownRef, handleOpen, open, type: EnumFilter.year })
+  const { mounted } = props
+  const [open, setOpen] = useState(false)
+  const dropdownRef = useClickOutside(() => setOpen(false))
+  const onToggle = () => setOpen((prev) => !prev)
+
   return (
     <ButtonFilter
       data={data}
       open={open}
+      mounted={mounted}
       ref={dropdownRef}
-      dropdownClassName="md c3 dropdown-menu-right dropdown-menu-md-left"
-      handleOpen={handleOpen}
+      onToggle={onToggle}
       value={EnumFilter.year}
+      dropdownClassName="md c3 dropdown-menu-right dropdown-menu-md-left"
     />
   )
 }

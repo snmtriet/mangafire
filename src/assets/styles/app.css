@@ -14413,7 +14413,7 @@ article .sub-heading {
 }
 
 i.flag.EN {
-  background: url(../images/flags2/en.svg?v1) no-repeat center;
+  background: url(/en.svg?v1) no-repeat center;
   background-size: contain;
   width: 1.3rem;
   height: 1.3rem;
@@ -14422,7 +14422,7 @@ i.flag.EN {
 }
 
 i.flag.FR {
-  background: url(../images/flags2/fr.svg?v1) no-repeat center;
+  background: url(/fr.svg?v1) no-repeat center;
   background-size: contain;
   width: 1.3rem;
   height: 1.3rem;
@@ -14431,7 +14431,7 @@ i.flag.FR {
 }
 
 i.flag.ES {
-  background: url(../images/flags2/es.svg?v1) no-repeat center;
+  background: url(/es.svg?v1) no-repeat center;
   background-size: contain;
   width: 1.3rem;
   height: 1.3rem;
@@ -14440,7 +14440,7 @@ i.flag.ES {
 }
 
 i.flag.ES-LA {
-  background: url(../images/flags2/es-la.svg?v1) no-repeat center;
+  background: url(/es-la.svg?v1) no-repeat center;
   background-size: contain;
   width: 1.3rem;
   height: 1.3rem;
@@ -14449,7 +14449,7 @@ i.flag.ES-LA {
 }
 
 i.flag.PT {
-  background: url(../images/flags2/pt.svg?v1) no-repeat center;
+  background: url(/pt.svg?v1) no-repeat center;
   background-size: contain;
   width: 1.3rem;
   height: 1.3rem;
@@ -14458,7 +14458,7 @@ i.flag.PT {
 }
 
 i.flag.PT-BR {
-  background: url(../images/flags2/pt-br.svg?v1) no-repeat center;
+  background: url(/pt-br.svg?v1) no-repeat center;
   background-size: contain;
   width: 1.3rem;
   height: 1.3rem;
@@ -14467,7 +14467,7 @@ i.flag.PT-BR {
 }
 
 i.flag.JA {
-  background: url(../images/flags2/ja.svg?v1) no-repeat center;
+  background: url(/ja.svg?v1) no-repeat center;
   background-size: contain;
   width: 1.3rem;
   height: 1.3rem;
@@ -14737,8 +14737,11 @@ i.flag + i {
 .manga-detail .main-inner .content .info .readmore {
   color: #747c88;
   padding: 0;
+  border: none;
   border-bottom: 1px solid #8bbadd;
   border-radius: 0;
+  outline: none;
+  background: transparent;
 }
 
 .manga-detail .main-inner .content .info .readmore:hover {
@@ -14907,7 +14910,7 @@ i.flag + i {
     rgba(35, 84, 121, 0.06) 0 1px 2px 0;
 }
 
-.manga-bottom .content .m-list .chapvol-tab > a {
+.manga-bottom .content .m-list .chapvol-tab > button {
   cursor: pointer;
   padding: 0.6rem 0;
   display: inline-flex;
@@ -14918,13 +14921,16 @@ i.flag + i {
   padding-bottom: 3.5rem;
   width: 9rem;
   justify-content: center;
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 
-.manga-bottom .content .m-list .chapvol-tab > a:hover {
+.manga-bottom .content .m-list .chapvol-tab > button:hover {
   background: #263855;
 }
 
-.manga-bottom .content .m-list .chapvol-tab > a.active {
+.manga-bottom .content .m-list .chapvol-tab > button.active {
   color: #fff;
   background: #3c8bc6;
 }
@@ -17649,7 +17655,7 @@ main.index .welcome-bottom .bg-secondary {
 
   .dropdown.responsive .dropdown-menu {
     position: fixed;
-    height: auto !important;
+    /* height: auto !important; */
     top: 20vh;
     left: 10vw;
     width: 80vw !important;

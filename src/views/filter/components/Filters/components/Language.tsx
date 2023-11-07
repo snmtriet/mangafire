@@ -1,7 +1,7 @@
-import { useRef, memo } from 'react'
+import { useRef, memo, useState } from 'react'
 
 import { EnumFilter, FilterCommonProps } from '@/@types/common'
-import useClickOutside from '@/utils/hooks/useClickOutside'
+import { useClickOutside } from '@/utils/hooks'
 import ButtonFilter from './ButtonFilter'
 
 const data = [
@@ -43,17 +43,19 @@ const data = [
 ]
 
 const Language = (props: FilterCommonProps) => {
-  const { open, handleOpen } = props
-  const dropdownRef = useRef<HTMLDivElement | null>(null)
-  useClickOutside({ dropdownRef, handleOpen, open, type: EnumFilter.language })
+  const { mounted } = props
+  const [open, setOpen] = useState(false)
+  const dropdownRef = useClickOutside(() => setOpen(false))
+  const onToggle = () => setOpen((prev) => !prev)
   return (
     <ButtonFilter
       data={data}
       open={open}
+      mounted={mounted}
       ref={dropdownRef}
-      dropdownClassName="c1"
-      handleOpen={handleOpen}
+      onToggle={onToggle}
       value={EnumFilter.language}
+      dropdownClassName="c1"
     />
   )
 }

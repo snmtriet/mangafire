@@ -7,9 +7,9 @@ export const themeConfig = {
   layout: {
     type: THEME_ENUM.LAYOUT_TYPE_DEFAULT,
   },
-  isShowHeader: false,
+  isShowHeader: true,
   isShowMenu: true,
-  pageType: PAGE_ENUM.PAGE_SINGLE,
+  pageType: PAGE_ENUM.PAGE_LONG_STRIP,
   progressOffset: PROGRESS_OFFSET_ENUM.PROGRESS_OFFSET_LEFT,
   readDirection: READ_DIRECTION_ENUM.READ_DIRECTION_LTR,
 }

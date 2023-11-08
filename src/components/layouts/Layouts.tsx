@@ -1,7 +1,10 @@
 import { useMemo, lazy, Suspense, useEffect } from 'react'
 import { Loading } from '../shared'
 import { setLayout, useAppDispatch, useAppSelector } from '@/store'
-import { LAYOUT_TYPE_READ } from '@/constants/theme.constant'
+import {
+  LAYOUT_TYPE_DEFAULT,
+  LAYOUT_TYPE_READ,
+} from '@/constants/theme.constant'
 import { useLocation } from 'react-router-dom'
 
 const layouts = {
@@ -39,10 +42,11 @@ const Layout = () => {
   const AppLayout = useMemo(() => {
     if (pathname.includes(LAYOUT_TYPE_READ)) {
       dispatch(setLayout('read'))
+      return layouts[LAYOUT_TYPE_READ]
     } else {
       dispatch(setLayout('default'))
+      return layouts[LAYOUT_TYPE_DEFAULT]
     }
-    return layouts[layoutType]
   }, [pathname])
 
   return (

@@ -111,20 +111,18 @@ const dropdownVariants: Variants = {
   closed: {
     height: 0,
     padding: 0,
-    border: 0,
+    border: 'none',
     transition: {
-      delay: 0.15,
+      duration: 0.3,
     },
   },
   open: {
     height: 'auto',
     padding: '0.8rem',
-    border: '1px solid #235479',
+    borderTop: '1px solid #235479',
+    borderBottom: '1px solid #235479',
     transition: {
-      type: 'anticipate',
-      duration: 0.4,
-      delayChildren: 0.2,
-      staggerChildren: 0.08,
+      duration: 0.3,
     },
   },
 }

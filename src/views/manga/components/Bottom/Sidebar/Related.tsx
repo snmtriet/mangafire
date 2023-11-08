@@ -52,7 +52,7 @@ const Related = () => {
         </div>
         <ul className="tab-content scroll-sm d-block" data-name="Other">
           {data.map((item) => (
-            <li>
+            <li key={item.title}>
               <a href="/manga/one-piece-vivi-no-bouken.dqv">{item.title}</a>
             </li>
           ))}

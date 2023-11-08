@@ -1,6 +1,6 @@
 import Views from '@/views'
-import Header from '../template/Header'
-import Footer from '../template/Footer'
+import Header from '../template/Default/Header'
+import Footer from '../template/Default/Footer'
 import { useLocation } from 'react-router-dom'
 import classNames from 'classnames'
 

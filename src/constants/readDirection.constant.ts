@@ -1,0 +1,7 @@
+export const READ_DIRECTION_LTR = 'ltr'
+export const READ_DIRECTION_RTL = 'rtl'
+
+export const READ_DIRECTION_ENUM = {
+  READ_DIRECTION_LTR: READ_DIRECTION_LTR,
+  READ_DIRECTION_RTL: READ_DIRECTION_RTL,
+} as const

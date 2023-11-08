@@ -15375,6 +15375,10 @@ body.read header {
   border: none;
 }
 
+body.read.header-hidden header {
+  height: 0px;
+}
+
 body.read header .inner {
   background: #141d2c;
   border-bottom: 1px solid #1e2c43;
@@ -15542,7 +15546,7 @@ body.read main .m-content #page-wrapper .page .img {
 
 body.read main .m-content #page-wrapper .page .img:not(.loaded):after {
   content: '';
-  background: url(../images/loading.gif) no-repeat center;
+  background: url(/loading.gif) no-repeat center;
   width: 50px;
   height: 50px;
   animation: unset;
@@ -15631,25 +15635,29 @@ body.read main .m-content .number-nav.rtl .ltr-icon {
   display: none;
 }
 
-body.read main .m-content .number-nav a {
+body.read main .m-content .number-nav button {
   padding: 0.6rem 1rem;
   text-align: center;
   border-radius: 0.3rem;
   color: #fff;
   display: block;
   text-transform: capitalize;
+  border: none;
+  outline: none;
 }
 
-body.read main .m-content .number-nav a.prev:hover {
+body.read main .m-content .number-nav button.prev:hover {
   color: #3c8bc6;
 }
 
-body.read main .m-content .number-nav a.next {
+body.read main .m-content .number-nav button.next {
   background: #3c8bc6;
   margin-top: 0.5rem;
+  border: none;
+  outline: none;
 }
 
-body.read main .m-content .number-nav a.next:hover {
+body.read main .m-content .number-nav button.next:hover {
   background: #235479;
 }
 
@@ -17132,6 +17140,12 @@ main.index .welcome-bottom .bg-secondary {
 #st-1.st-has-labels .st-btn {
   min-width: 120px;
 }
+#st-1.st-has-labels .st-btn.st-remove-label {
+  min-width: 50px;
+}
+#st-1.st-has-labels .st-btn.st-hide-label > span {
+  display: none;
+}
 
 #st-1 .st-btn {
   -moz-box-sizing: border-box;
@@ -17151,6 +17165,7 @@ main.index .welcome-bottom .bg-secondary {
   font-size: 12px;
   height: 32px;
   line-height: 32px;
+  margin-right: 8px;
   padding: 0 10px;
   position: relative;
   text-align: center;

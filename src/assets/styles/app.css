@@ -14413,7 +14413,7 @@ article .sub-heading {
 }
 
 i.flag.EN {
-  background: url(/en.svg?v1) no-repeat center;
+  background: url(/en.svg) no-repeat center;
   background-size: contain;
   width: 1.3rem;
   height: 1.3rem;
@@ -14422,7 +14422,7 @@ i.flag.EN {
 }
 
 i.flag.FR {
-  background: url(/fr.svg?v1) no-repeat center;
+  background: url(/fr.svg) no-repeat center;
   background-size: contain;
   width: 1.3rem;
   height: 1.3rem;
@@ -14431,7 +14431,7 @@ i.flag.FR {
 }
 
 i.flag.ES {
-  background: url(/es.svg?v1) no-repeat center;
+  background: url(/es.svg) no-repeat center;
   background-size: contain;
   width: 1.3rem;
   height: 1.3rem;
@@ -14440,7 +14440,7 @@ i.flag.ES {
 }
 
 i.flag.ES-LA {
-  background: url(/es-la.svg?v1) no-repeat center;
+  background: url(/es-la.svg) no-repeat center;
   background-size: contain;
   width: 1.3rem;
   height: 1.3rem;
@@ -14449,7 +14449,7 @@ i.flag.ES-LA {
 }
 
 i.flag.PT {
-  background: url(/pt.svg?v1) no-repeat center;
+  background: url(/pt.svg) no-repeat center;
   background-size: contain;
   width: 1.3rem;
   height: 1.3rem;
@@ -14458,7 +14458,7 @@ i.flag.PT {
 }
 
 i.flag.PT-BR {
-  background: url(/pt-br.svg?v1) no-repeat center;
+  background: url(/pt-br.svg) no-repeat center;
   background-size: contain;
   width: 1.3rem;
   height: 1.3rem;
@@ -14467,7 +14467,7 @@ i.flag.PT-BR {
 }
 
 i.flag.JA {
-  background: url(/ja.svg?v1) no-repeat center;
+  background: url(/ja.svg) no-repeat center;
   background-size: contain;
   width: 1.3rem;
   height: 1.3rem;
@@ -15428,7 +15428,7 @@ body.read main .m-content .message .inner {
 
 body.read main .m-content .loading:before {
   content: '';
-  background: url(../images/loading.gif) no-repeat center;
+  background: url(/loading.gif) no-repeat center;
   width: 50px;
   height: 50px;
   animation: unset;

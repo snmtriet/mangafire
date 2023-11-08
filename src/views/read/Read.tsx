@@ -142,10 +142,11 @@ const Read = () => {
         <>
           {data.map((item, index) => (
             <div
+              key={index}
               className={classNames('page', fitType[pageType])}
               style={{ marginBottom: '5px' }}
             >
-              <div key={index} className="img loaded">
+              <div className="img loaded">
                 <img
                   data-number={index + 1}
                   className={fitType[pageType]}

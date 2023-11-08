@@ -17657,6 +17657,10 @@ main.index .welcome-bottom .bg-secondary {
 }
 
 @media (max-width: 767.98px) {
+  header {
+    backdrop-filter: none;
+  }
+
   .dropdown.responsive.show .overlay {
     top: 0;
     left: 0;
@@ -17845,7 +17849,7 @@ main.index .welcome-bottom .bg-secondary {
     transition: margin 0.3s, opacity 0.3s;
   }
 
-  body.read #nav-search:after {
+  body.read #nav-search .overlay {
     position: absolute;
     content: '';
     background: rgba(14, 23, 38, 0.9);
@@ -17863,7 +17867,7 @@ main.index .welcome-bottom .bg-secondary {
     opacity: 1;
   }
 
-  body.read #nav-search.active:after {
+  body.read #nav-search.active .overlay {
     opacity: 1;
   }
 

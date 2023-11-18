@@ -1,8 +1,10 @@
-import { useState } from 'react'
 import classNames from 'classnames'
-import { useAppSelector } from '@/store'
+import { setPageIndex, useAppDispatch, useAppSelector } from '@/store'
 import { PAGE_ENUM } from '@/constants/page.constant'
 import { useParams } from 'react-router-dom'
+import Image from './components/Image'
+import { FIT_ENUM } from '@/constants/fit.constant'
+import LongStripImage from './components/LongStripImage'
 
 const data = [
   {
@@ -125,57 +127,119 @@ const data = [
   },
 ]
 
+export const fitClassName = {
+  [FIT_ENUM.FIT_WIDTH]: 'fit-w',
+  [FIT_ENUM.FIT_HEIGHT]: 'fit-h',
+  [FIT_ENUM.FIT_BOTH]: 'fit-w fit-h',
+  [FIT_ENUM.FIT_NO_LIMIT]: '',
+}
+
 const Read = () => {
+  const { pageType, pageIndex, fitType } = useAppSelector(
+    (state) => state.theme
+  )
   const { slug, lang, chapter } = useParams()
+  const dispatch = useAppDispatch()
+
   console.log({ slug, lang, chapter })
-  const { pageType } = useAppSelector((state) => state.theme)
-  const [pageIndex, setPageIndex] = useState(1)
-  const fitType = {
-    [PAGE_ENUM.PAGE_SINGLE]: 'fit-w',
-    [PAGE_ENUM.PAGE_DOUBLE]: 'fit-w',
-    [PAGE_ENUM.PAGE_LONG_STRIP]: 'fit-w',
+
+  const handleChangePage = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    if (!['singlepage', 'doublepage'].includes(pageType)) return
+    const clickX =
+      e.clientX - (e.target as HTMLDivElement).getBoundingClientRect().left
+    const divWidth = (e.target as HTMLDivElement).offsetWidth
+    const leftPercentage = (clickX / divWidth) * 100
+    const rightPercentage = 100 - leftPercentage
+    const isLeft = data[pageIndex]?.left
+    if (leftPercentage <= 30) {
+      if (pageIndex > 1) {
+        if (pageType === 'doublepage') {
+          dispatch(setPageIndex(pageIndex - (!isLeft ? 1 : 2)))
+        } else {
+          dispatch(setPageIndex(pageIndex - 1))
+        }
+      }
+    }
+    if (rightPercentage <= 30) {
+      if (pageIndex < 56 && pageIndex >= 1) {
+        if (pageType === 'doublepage') {
+          dispatch(setPageIndex(pageIndex + (!isLeft ? 1 : 2)))
+        } else {
+          dispatch(setPageIndex(pageIndex + 1))
+        }
+      }
+    }
   }
 
   return (
-    <div className={classNames('pages', pageType)} dir="ltr">
-      {pageType === PAGE_ENUM.PAGE_LONG_STRIP ? (
+    <div
+      className={classNames('pages', pageType)}
+      dir="ltr"
+      onClick={handleChangePage}
+    >
+      {pageType === PAGE_ENUM.PAGE_LONG_STRIP && (
         <>
-          {data.map((item, index) => (
-            <div
+          {new Array(56).fill(undefined).map((item, index) => (
+            <LongStripImage
               key={index}
-              className={classNames('page', fitType[pageType])}
-              style={{ marginBottom: '5px' }}
-            >
-              <div className="img loaded">
-                <img
-                  data-number={index + 1}
-                  className={fitType[pageType]}
-                  src={item.image}
-                  alt={`Page ${index + 1}`}
-                />
-              </div>
-            </div>
+              src={`/temp/0${
+                index + 1 >= 10 ? index + 1 : `0${index + 1}`
+              }.jpg`}
+              index={index}
+            />
           ))}
         </>
-      ) : (
-        <div
-          className={classNames('page', fitType[pageType])}
-          style={{ marginBottom: '5px' }}
-        >
-          {data.map((item, index) => (
-            <div key={index} className="img loaded">
-              <img
-                data-number={index + 1}
-                className="fit-h"
-                src={item.image}
-                alt={`Page ${index + 1}`}
-              />
-            </div>
+      )}
+
+      {pageType === PAGE_ENUM.PAGE_SINGLE && (
+        <div className={classNames('page', fitClassName[fitType])}>
+          {new Array(56).fill(undefined).map((item, index) => (
+            <Image
+              key={index}
+              src={`/temp/0${
+                index + 1 >= 10 ? index + 1 : `0${index + 1}`
+              }.jpg`}
+              number={index + 1}
+              wrapperClassName={classNames(
+                pageIndex + 4 > index + 1 && 'loaded',
+                pageIndex === index + 1 ? 'd-block' : 'd-none'
+              )}
+              imageClassName={fitClassName[fitType]}
+            />
           ))}
         </div>
       )}
 
-      <div className="number-nav ltr">
+      {pageType === PAGE_ENUM.PAGE_DOUBLE && (
+        <div className={classNames('page', fitClassName[fitType])}>
+          {new Array(56).fill(undefined).map((item, index) => (
+            <Image
+              key={index}
+              src={`/temp/0${
+                index + 1 >= 10 ? index + 1 : `0${index + 1}`
+              }.jpg`}
+              number={index + 1}
+              wrapperClassName={classNames(
+                pageIndex + 4 > index + 1 && 'loaded',
+                item?.left && 'left',
+                item?.right && 'right',
+                item?.left || item?.right
+                  ? index + 1 === pageIndex || index + 2 === pageIndex
+                    ? 'd-block'
+                    : 'd-none'
+                  : index + 1 === pageIndex
+                  ? 'd-block'
+                  : 'd-none'
+              )}
+              imageClassName={fitClassName[fitType]}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* <div className="number-nav ltr">
         <a className="prev">
           <i className="ltr-icon fa-light fa-arrow-left mr-1"></i>
           <i className="rtl-icon fa-light fa-arrow-right ml-1"></i>
@@ -186,7 +250,7 @@ const Read = () => {
           <i className="ltr-icon fa-light fa-arrow-right ml-1"></i>
           <i className="rtl-icon fa-light fa-arrow-left mr-1"></i>
         </button>
-      </div>
+      </div> */}
     </div>
   )
 }

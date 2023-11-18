@@ -1,17 +1,48 @@
-import { setShowMenu, useAppDispatch, useAppSelector } from '@/store'
+import { Link } from 'react-router-dom'
+import {
+  setPageIndex,
+  setShowMenu,
+  setShowSubPanel,
+  useAppDispatch,
+  useAppSelector,
+} from '@/store'
+import { SubPanelType } from '@/@types/theme'
+import { SUB_PANEL_ENUM } from '@/constants/panel.constant'
 
 const Top = () => {
   const dispatch = useAppDispatch()
-  const { isShowMenu } = useAppSelector((state) => state.theme)
+  const { isShowMenu, pageIndex, isShowSubPanel } = useAppSelector(
+    (state) => state.theme
+  )
 
   const onToggleMenu = () => {
     dispatch(setShowMenu(!isShowMenu))
   }
 
+  const handlePrevPage = () => {
+    if (pageIndex > 1) {
+      dispatch(setPageIndex(pageIndex - 1))
+    }
+  }
+
+  const handleNextPage = () => {
+    if (pageIndex < 56) {
+      dispatch(setPageIndex(pageIndex + 1))
+    }
+  }
+
+  const handleTogglePanel = (type: SubPanelType) => {
+    if (type === isShowSubPanel) {
+      dispatch(setShowSubPanel(null))
+    } else {
+      dispatch(setShowSubPanel(type))
+    }
+  }
+
   return (
     <>
       <div className="head">
-        <a href="/manga/jujutsu-kaisen.rl2vm">Jujutsu Kaisen</a>
+        <Link to="/manga/jujutsu-kaisen.rl2vm">Jujutsu Kaisen</Link>
         <div
           onClick={onToggleMenu}
           className="close-primary btn btn-secondary1 tooltipz"
@@ -42,67 +73,70 @@ const Top = () => {
           <b className="lang-view">English</b>
         </button>
         <div className="lang-options dropdown-menu w-100 dropdown-menu-right">
-          <a
+          <Link
             className="dropdown-item active"
-            href="#"
+            to="#"
             data-code="en"
             data-title="English"
           >
             <i className="flag EN"></i> English
-          </a>
-          <a
+          </Link>
+          <Link
             className="dropdown-item"
-            href="#"
+            to="#"
             data-code="fr"
             data-title="French"
           >
             <i className="flag FR"></i> French
-          </a>
-          <a
+          </Link>
+          <Link
             className="dropdown-item"
-            href="#"
+            to="#"
             data-code="es"
             data-title="Spanish"
           >
             <i className="flag ES"></i> Spanish
-          </a>
-          <a
+          </Link>
+          <Link
             className="dropdown-item"
-            href="#"
+            to="#"
             data-code="es-la"
             data-title="Spanish (LATAM)"
           >
             <i className="flag ES-LA"></i> Spanish (LATAM)
-          </a>
-          <a
+          </Link>
+          <Link
             className="dropdown-item"
-            href="#"
+            to="#"
             data-code="pt-br"
             data-title="Portuguese (Br)"
           >
             <i className="flag PT-BR"></i> Portuguese (Br)
-          </a>
-          <a
+          </Link>
+          <Link
             className="dropdown-item"
-            href="#"
+            to="#"
             data-code="ja"
             data-title="Japanese"
           >
             <i className="flag JA"></i> Japanese
-          </a>
+          </Link>
         </div>
       </div>
       <nav>
-        <button id="page-go-left">
+        <button id="page-go-left" onClick={handlePrevPage}>
           <i className="fa-regular fa-chevron-left"></i>
         </button>
-        <button className="page-toggler">
+        <button
+          className="page-toggler"
+          onClick={() => handleTogglePanel(SUB_PANEL_ENUM.PANEL_PAGE)}
+        >
           <b>
-            Page <span className="current-page">22</span>
+            Page <span className="current-page">{pageIndex}</span>
           </b>
           <i className="fa-solid fa-sort fa-sm"></i>
         </button>
-        <button id="page-go-right">
+        <button id="page-go-right" onClick={handleNextPage}>
           <i className="fa-regular fa-chevron-right"></i>
         </button>
       </nav>
@@ -110,7 +144,10 @@ const Top = () => {
         <button id="number-go-left">
           <i className="fa-regular fa-chevron-left"></i>
         </button>
-        <button className="number-toggler">
+        <button
+          className="number-toggler"
+          onClick={() => handleTogglePanel(SUB_PANEL_ENUM.PANEL_CHAPTER)}
+        >
           <b className="current-type-number text-title">chapter 240</b>
           <i className="fa-solid fa-sort fa-sm"></i>
         </button>
@@ -118,10 +155,14 @@ const Top = () => {
           <i className="fa-regular fa-chevron-right"></i>
         </button>
       </nav>
-      <button id="comment-toggler" className="jb-btn">
+      <button
+        id="comment-toggler"
+        className="jb-btn"
+        onClick={() => handleTogglePanel(SUB_PANEL_ENUM.PANEL_COMMENT)}
+      >
         <i className="fa-light fa-message-dots fa-flip-horizontal fa-lg"></i>
         <span>
-          <span className="current-type-number text-title">chapter 240</span>
+          <span className="current-type-number text-title">chapter 240 </span>
           Comment
         </span>
       </button>
@@ -138,10 +179,10 @@ const Top = () => {
         </button>
         <div className="dropdown-menu dropdown-menu-right w-100 folders"></div>
       </div>
-      <a href="/manga/jujutsu-kaisen.rl2vm" className="jb-btn">
+      <Link to="/manga/jujutsu-kaisen.rl2vm" className="jb-btn">
         <i className="fa-light fa-lg fa-circle-info"></i>
         <span>Manga Detail</span>
-      </a>
+      </Link>
       <button className="jb-btn" data-toggle="modal" data-target="#report">
         <i className="fa-light fa-lg fa-triangle-exclamation"></i>
         <span>Report Error</span>

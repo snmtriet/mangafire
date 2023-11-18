@@ -1,4 +1,6 @@
+import { FIT_ENUM } from '@/constants/fit.constant'
 import { PAGE_ENUM } from '@/constants/page.constant'
+import { SUB_PANEL_ENUM } from '@/constants/panel.constant'
 import { PROGRESS_OFFSET_ENUM } from '@/constants/progress.constant'
 import { READ_DIRECTION_ENUM } from '@/constants/readDirection.constant'
 import { THEME_ENUM } from '@/constants/theme.constant'
@@ -12,4 +14,6 @@ export const themeConfig = {
   pageType: PAGE_ENUM.PAGE_LONG_STRIP,
   progressOffset: PROGRESS_OFFSET_ENUM.PROGRESS_OFFSET_LEFT,
   readDirection: READ_DIRECTION_ENUM.READ_DIRECTION_LTR,
+  fitType: FIT_ENUM.FIT_WIDTH,
+  isShowPanel: null,
 }

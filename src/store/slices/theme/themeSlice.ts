@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { themeConfig } from '@/configs/theme.config'
 import {
+  FitType,
   LayoutType,
   PageType,
   ProgressOffsetType,
   ReadDirectionType,
+  SubPanelType,
 } from '@/@types/theme'
 
 export type ThemeState = {
@@ -17,6 +19,9 @@ export type ThemeState = {
   pageType: PageType
   progressOffset: ProgressOffsetType
   readDirection: ReadDirectionType
+  pageIndex: number
+  fitType: FitType
+  isShowSubPanel: SubPanelType
 }
 
 export type HeaderType = {}
@@ -28,6 +33,9 @@ const initialState: ThemeState = {
   pageType: themeConfig.pageType,
   progressOffset: themeConfig.progressOffset,
   readDirection: themeConfig.readDirection,
+  pageIndex: 1,
+  fitType: themeConfig.fitType,
+  isShowSubPanel: themeConfig.isShowPanel,
 }
 
 export const themeSlice = createSlice({
@@ -58,6 +66,15 @@ export const themeSlice = createSlice({
     setPreviousLayout: (state, action) => {
       state.layout.previousType = action.payload
     },
+    setPageIndex: (state, action: PayloadAction<number>) => {
+      state.pageIndex = action.payload
+    },
+    setFitType: (state, action: PayloadAction<FitType>) => {
+      state.fitType = action.payload
+    },
+    setShowSubPanel: (state, action: PayloadAction<SubPanelType>) => {
+      state.isShowSubPanel = action.payload
+    },
   },
 })
 
@@ -69,6 +86,9 @@ export const {
   setPageType,
   setProgressOffset,
   setReadDirection,
+  setPageIndex,
+  setFitType,
+  setShowSubPanel,
 } = themeSlice.actions
 
 export default themeSlice.reducer

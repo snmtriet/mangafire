@@ -186,7 +186,7 @@ const Header = () => {
               <span>Page</span>
               <span>
                 <b className="current-page">15</b>/
-                <b className="total-page">20</b>
+                <b className="total-page">56</b>
               </span>
             </div>
             <button

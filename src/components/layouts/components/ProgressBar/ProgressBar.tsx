@@ -1,14 +1,32 @@
 import classNames from 'classnames'
-import { useAppSelector } from '@/store'
+import { setPageIndex, useAppDispatch, useAppSelector } from '@/store'
 
 const ProgressBar = () => {
-  const { progressOffset } = useAppSelector((state) => state.theme)
+  const { progressOffset, pageIndex, pageType } = useAppSelector(
+    (state) => state.theme
+  )
+
+  const dispatch = useAppDispatch()
+
   return (
     <div id="progress-bar" className={classNames('d-flex', progressOffset)}>
       <div>
         <p>1</p>
         <ul>
-          <li data-page="1" data-name="1">
+          {new Array(56).fill(undefined).map((item, index) => {
+            return (
+              <li
+                key={index}
+                data-page={index + 1}
+                data-name={index + 1}
+                className={classNames(pageIndex === index + 1 && 'active')}
+                onClick={() => dispatch(setPageIndex(index + 1))}
+              >
+                <div>{index + 1}</div>
+              </li>
+            )
+          })}
+          {/* <li data-page="1" data-name="1">
             <div>1</div>
           </li>
           <li data-page="2" data-name="2">
@@ -37,12 +55,12 @@ const ProgressBar = () => {
           </li>
           <li data-page="17" data-name="17-18">
             <div>17-18</div>
-          </li>
-          <li data-page="19" data-name="19-20">
+          </li> */}
+          {/* <li data-page="19" data-name="19-20">
             <div>19-20</div>
-          </li>
+          </li> */}
         </ul>
-        <p className="total-page">20</p>
+        <p className="total-page">56</p>
       </div>
     </div>
   )

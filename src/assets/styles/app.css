@@ -17315,7 +17315,7 @@ main.index .welcome-bottom .bg-secondary {
 }
 
 .nav-mobile .top {
-  height: 56px;
+  margin-top: 56px;
   background: transparent;
 }
 

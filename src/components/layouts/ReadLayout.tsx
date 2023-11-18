@@ -12,6 +12,11 @@ import Header from '../template/Read/Header'
 import ControlMenu from './components/ControlMenu'
 import ProgressBar from './components/ProgressBar'
 import { useWindowDimensions } from '@/utils/hooks'
+import {
+  SubPanelChapter,
+  SubPanelComment,
+  SubPanelPage,
+} from './components/SubPanel'
 
 const ReadLayout = () => {
   const { pageType, isShowMenu, isShowHeader } = useAppSelector(
@@ -63,6 +68,7 @@ const ReadLayout = () => {
   }
 
   function handleDoubleClick() {
+    if (width > 768) return
     dispatch(setShowHeader(!isShowHeader))
   }
 
@@ -77,6 +83,9 @@ const ReadLayout = () => {
               <Views />
             </div>
             <ProgressBar />
+            <SubPanelChapter />
+            <SubPanelPage />
+            <SubPanelComment />
           </div>
           <ControlMenu />
         </main>

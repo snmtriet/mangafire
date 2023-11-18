@@ -8,6 +8,7 @@ const Alert = () => {
         Thank you!
       </p>
       <ShareSocial />
+      <div className="sharethis-inline-share-buttons"></div>
     </div>
   )
 }

@@ -55,7 +55,13 @@ const AllRoutes = () => {
 
 const Views = () => {
   return (
-    <Suspense fallback={<Loading loading={true} />}>
+    <Suspense
+      fallback={
+        <div className="loading-center">
+          <Loading loading={true} type="gif" />
+        </div>
+      }
+    >
       <AllRoutes />
     </Suspense>
   )

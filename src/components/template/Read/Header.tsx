@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
-import { setShowMenu, useAppDispatch, useAppSelector } from '@/store'
+import {
+  setShowMenu,
+  setShowSubPanel,
+  useAppDispatch,
+  useAppSelector,
+} from '@/store'
 import NavMobile from '../Default/NavMobile'
+import { SUB_PANEL_ENUM } from '@/constants/panel.constant'
 
 export const genres = [
   { title: 'Action', link: '/genre/action' },
@@ -68,8 +74,16 @@ const Header = () => {
     dispatch(setShowMenu(!isShowMenu))
   }
 
-  const handleToggle = (value: 'type' | 'genre' | null) =>
+  const handleToggle = (value: 'type' | 'genre' | null) => {
     setToggleMenu((prev) => (value === null || value === prev ? null : value))
+  }
+
+  const handleOpenChapter = () => {
+    dispatch(setShowSubPanel(SUB_PANEL_ENUM.PANEL_CHAPTER))
+  }
+  const handleOpenPage = () => {
+    dispatch(setShowSubPanel(SUB_PANEL_ENUM.PANEL_PAGE))
+  }
 
   return (
     <>
@@ -175,15 +189,23 @@ const Header = () => {
                 <div className="suggestion"></div>
               </div>
             </div>
-            <div className="viewing number-toggler">
-              <span className="current-viewtype text-title">chapter </span>
+            <div
+              className="viewing number-toggler"
+              style={{ whiteSpace: 'nowrap' }}
+              onClick={handleOpenChapter}
+            >
+              <span className="current-viewtype text-title">chapter</span>{' '}
               <span>
                 <b className="current-number">241</b>/
                 <b className="latest-number">241</b>
               </span>
             </div>
-            <div className="viewing mr-3 page-toggler">
-              <span>Page</span>
+            <div
+              className="viewing mr-3 page-toggler"
+              style={{ whiteSpace: 'nowrap' }}
+              onClick={handleOpenPage}
+            >
+              <span>Page</span>{' '}
               <span>
                 <b className="current-page">15</b>/
                 <b className="total-page">56</b>

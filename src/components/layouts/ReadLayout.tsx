@@ -68,8 +68,13 @@ const ReadLayout = () => {
   }
 
   function handleDoubleClick() {
-    if (width > 1024) return
+    if (isBrowser) return
     dispatch(setShowHeader(!isShowHeader))
+  }
+
+  function handleCloseControl() {
+    if (isBrowser) return
+    dispatch(setShowMenu(false))
   }
 
   return (
@@ -79,7 +84,7 @@ const ReadLayout = () => {
         <Header />
         <main className={pageType}>
           <div className="m-content">
-            <div id="page-wrapper">
+            <div id="page-wrapper" onClick={handleCloseControl}>
               <Views />
             </div>
             <ProgressBar />

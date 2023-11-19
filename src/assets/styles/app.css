@@ -15544,6 +15544,10 @@ body.read main .m-content #page-wrapper .page .img {
   pointer-events: none;
 }
 
+body.read main .m-content #page-wrapper .swiper-wrapper.page .img {
+  pointer-events: unset;
+}
+
 body.read main .m-content #page-wrapper .page .img:not(.loaded):after {
   content: '';
   background: url(/loading.gif) no-repeat center;

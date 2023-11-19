@@ -46,7 +46,7 @@ const Layout = () => {
     <Suspense
       fallback={
         <div className="loading-center">
-          <Loading loading={true} />
+          <Loading loading={true} type="gif" />
         </div>
       }
     >

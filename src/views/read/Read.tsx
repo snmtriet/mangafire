@@ -1,131 +1,13 @@
 import classNames from 'classnames'
-import { setPageIndex, useAppDispatch, useAppSelector } from '@/store'
-import { PAGE_ENUM } from '@/constants/page.constant'
 import { useParams } from 'react-router-dom'
-import Image from './components/Image'
+import { isBrowser, isMobile, isTablet } from 'react-device-detect'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { EffectFade } from 'swiper/modules'
 import { FIT_ENUM } from '@/constants/fit.constant'
-import LongStripImage from './components/LongStripImage'
-
-const data = [
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac25fba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-  },
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac25cba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-  },
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac25aba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-    left: true,
-  },
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac25aba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-    right: true,
-  },
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac25aba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-    left: true,
-  },
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac25aba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-    right: true,
-  },
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac259ba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-    left: true,
-  },
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac256ba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-    right: true,
-  },
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac25aba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-    left: true,
-  },
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac25aba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-    right: true,
-  },
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac35fba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-    left: true,
-  },
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac25aba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-    right: true,
-  },
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac35dba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-    left: true,
-  },
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac35aba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-    right: true,
-  },
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac25aba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-    left: true,
-  },
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac358ba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-    right: true,
-  },
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac359ba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-    left: true,
-  },
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac357ba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-    right: true,
-  },
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac357ba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-    left: true,
-  },
-  {
-    perPage: 1,
-    image:
-      'https://c2.mangacdn.net/12a3db61f9105800ed8c394685aeeb0bca6cf91409fba1bb554d72afa43cce802b4ad41f4a6524e9f62ac357ba11aadce18ec61e8a75d1ecd3eef06906/r/p.jpg',
-    right: true,
-  },
-]
+import { PAGE_ENUM } from '@/constants/page.constant'
+import { setPageIndex, useAppDispatch, useAppSelector } from '@/store'
+import { DoubleImage, LongStripImage, SingleImage } from './components'
+import { useRef } from 'react'
 
 export const fitClassName = {
   [FIT_ENUM.FIT_WIDTH]: 'fit-w',
@@ -140,42 +22,44 @@ const Read = () => {
   )
   const { slug, lang, chapter } = useParams()
   const dispatch = useAppDispatch()
+  const swiperRef = useRef(null)
 
-  console.log({ slug, lang, chapter })
+  // console.log({ slug, lang, chapter })
 
   const handleChangePage = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
-    if (!['singlepage', 'doublepage'].includes(pageType)) return
-    const clickX =
-      e.clientX - (e.target as HTMLDivElement).getBoundingClientRect().left
-    const divWidth = (e.target as HTMLDivElement).offsetWidth
-    const leftPercentage = (clickX / divWidth) * 100
-    const rightPercentage = 100 - leftPercentage
-    const isLeft = data[pageIndex]?.left
-    if (leftPercentage <= 30) {
-      if (pageIndex > 1) {
-        if (pageType === 'doublepage') {
-          dispatch(setPageIndex(pageIndex - (!isLeft ? 1 : 2)))
-        } else {
+    if (isBrowser) {
+      if (!['singlepage', 'doublepage'].includes(pageType)) return
+      const clickX =
+        e.clientX - (e.target as HTMLDivElement).getBoundingClientRect().left
+      const divWidth = (e.target as HTMLDivElement).offsetWidth
+      const leftPercentage = (clickX / divWidth) * 100
+      const rightPercentage = 100 - leftPercentage
+      if (leftPercentage <= 30) {
+        if (pageIndex > 1) {
           dispatch(setPageIndex(pageIndex - 1))
         }
       }
-    }
-    if (rightPercentage <= 30) {
-      if (pageIndex < 56 && pageIndex >= 1) {
-        if (pageType === 'doublepage') {
-          dispatch(setPageIndex(pageIndex + (!isLeft ? 1 : 2)))
-        } else {
+      if (rightPercentage <= 30) {
+        if (pageIndex < 56 && pageIndex >= 1) {
           dispatch(setPageIndex(pageIndex + 1))
         }
       }
+    }
+    if (isMobile || isTablet) {
+      // ? TODO swiper slideTo
     }
   }
 
   return (
     <div
-      className={classNames('pages', pageType)}
+      className={classNames(
+        'pages',
+        'swiper',
+        pageType,
+        pageType === PAGE_ENUM.PAGE_SINGLE && (isMobile || isTablet) && 'swiper'
+      )}
       dir="ltr"
       onClick={handleChangePage}
     >
@@ -194,46 +78,55 @@ const Read = () => {
       )}
 
       {pageType === PAGE_ENUM.PAGE_SINGLE && (
-        <div className={classNames('page', fitClassName[fitType])}>
-          {new Array(56).fill(undefined).map((item, index) => (
-            <Image
-              key={index}
-              src={`/temp/0${
-                index + 1 >= 10 ? index + 1 : `0${index + 1}`
-              }.jpg`}
-              number={index + 1}
-              wrapperClassName={classNames(
-                pageIndex + 4 > index + 1 && 'loaded',
-                pageIndex === index + 1 ? 'd-block' : 'd-none'
-              )}
-              imageClassName={fitClassName[fitType]}
-            />
-          ))}
-        </div>
+        <>
+          {false ? (
+            <div className={classNames('page', fitClassName[fitType])}>
+              {new Array(56).fill(undefined).map((item, index) => (
+                <SingleImage
+                  key={index}
+                  index={index}
+                  src={`/temp/0${
+                    index + 1 >= 10 ? index + 1 : `0${index + 1}`
+                  }.jpg`}
+                />
+              ))}
+            </div>
+          ) : (
+            <Swiper
+              ref={swiperRef}
+              modules={[EffectFade]}
+              speed={300}
+              slidesPerView="auto"
+              className="pages singlepage"
+              wrapperClass="page fit-w"
+              onSlideChange={(swiper) =>
+                dispatch(setPageIndex(swiper.activeIndex))
+              }
+            >
+              {new Array(56).fill(undefined).map((item, index) => (
+                <SwiperSlide key={index} className="img loaded">
+                  <img
+                    src={`/temp/0${
+                      index + 1 >= 10 ? index + 1 : `0${index + 1}`
+                    }.jpg`}
+                    className="fit-w"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          )}
+        </>
       )}
 
       {pageType === PAGE_ENUM.PAGE_DOUBLE && (
         <div className={classNames('page', fitClassName[fitType])}>
           {new Array(56).fill(undefined).map((item, index) => (
-            <Image
+            <DoubleImage
               key={index}
               src={`/temp/0${
                 index + 1 >= 10 ? index + 1 : `0${index + 1}`
               }.jpg`}
-              number={index + 1}
-              wrapperClassName={classNames(
-                pageIndex + 4 > index + 1 && 'loaded',
-                item?.left && 'left',
-                item?.right && 'right',
-                item?.left || item?.right
-                  ? index + 1 === pageIndex || index + 2 === pageIndex
-                    ? 'd-block'
-                    : 'd-none'
-                  : index + 1 === pageIndex
-                  ? 'd-block'
-                  : 'd-none'
-              )}
-              imageClassName={fitClassName[fitType]}
+              index={index + 1}
             />
           ))}
         </div>

@@ -68,7 +68,7 @@ const ReadLayout = () => {
   }
 
   function handleDoubleClick() {
-    if (width > 768) return
+    if (width > 1024) return
     dispatch(setShowHeader(!isShowHeader))
   }
 

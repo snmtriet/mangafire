@@ -1,10 +1,13 @@
 import classNames from 'classnames'
-import { setPageIndex, useAppDispatch, useAppSelector } from '@/store'
+import {
+  setActiveSwiper,
+  setPageIndex,
+  useAppDispatch,
+  useAppSelector,
+} from '@/store'
 
 const ProgressBar = () => {
-  const { progressOffset, pageIndex, pageType } = useAppSelector(
-    (state) => state.theme
-  )
+  const { progressOffset, pageIndex } = useAppSelector((state) => state.theme)
 
   const dispatch = useAppDispatch()
 
@@ -20,7 +23,10 @@ const ProgressBar = () => {
                 data-page={index + 1}
                 data-name={index + 1}
                 className={classNames(pageIndex === index + 1 && 'active')}
-                onClick={() => dispatch(setPageIndex(index + 1))}
+                onClick={() => {
+                  dispatch(setPageIndex(index + 1))
+                  dispatch(setActiveSwiper(index + 1))
+                }}
               >
                 <div>{index + 1}</div>
               </li>

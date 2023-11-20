@@ -1,5 +1,5 @@
-import SingleImage from './SingleImage'
 import DoubleImage from './DoubleImage'
 import LongStripImage from './LongStripImage'
+import Single from './Single'
 
-export { SingleImage, DoubleImage, LongStripImage }
+export { DoubleImage, LongStripImage, Single }

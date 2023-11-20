@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { toast } from 'sonner'
 import { isMobile, isTablet, isBrowser } from 'react-device-detect'
 import Views from '@/views'
@@ -17,13 +17,15 @@ import {
   SubPanelComment,
   SubPanelPage,
 } from './components/SubPanel'
+import { PAGE_ENUM } from '@/constants/page.constant'
+import classNames from 'classnames'
 
 const ReadLayout = () => {
-  const { pageType, isShowMenu, isShowHeader } = useAppSelector(
+  const { pageType, isShowMenu, isShowHeader, pageIndex } = useAppSelector(
     (state) => state.theme
   )
   const dispatch = useAppDispatch()
-  const { width } = useWindowDimensions()
+  const { width, height } = useWindowDimensions()
 
   useEffect(() => {
     if (!isShowHeader && !isShowMenu) {
@@ -77,14 +79,27 @@ const ReadLayout = () => {
     dispatch(setShowMenu(false))
   }
 
+  const styleMaxHeight =
+    pageType === PAGE_ENUM.PAGE_SINGLE && !isBrowser && (isTablet || isMobile)
+      ? {
+          maxHeight: height,
+        }
+      : {}
+
   return (
     <>
       <span className="bg" />
       <div className="wrapper" onDoubleClick={handleDoubleClick}>
         <Header />
-        <main className={pageType}>
+        <main className={pageType} style={styleMaxHeight}>
           <div className="m-content">
-            <div id="page-wrapper" onClick={handleCloseControl}>
+            <div
+              id="page-wrapper"
+              className={classNames(
+                isBrowser && pageIndex === 56 && 'on-last-page'
+              )}
+              onClick={handleCloseControl}
+            >
               <Views />
             </div>
             <ProgressBar />

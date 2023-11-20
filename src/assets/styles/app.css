@@ -15684,7 +15684,7 @@ body.read main .m-content .number-nav.abs.show {
   height: var(--number-nav-height);
 }
 
-body.read main .m-content .number-nav.abs a {
+body.read main .m-content .number-nav.abs button {
   height: 100%;
   flex-grow: 1;
   background: #235479;
@@ -15698,12 +15698,12 @@ body.read main .m-content .number-nav.abs a {
   padding: 0;
 }
 
-body.read main .m-content .number-nav.abs a:hover {
+body.read main .m-content .number-nav.abs button:hover {
   background: #3c8bc6;
   color: #fff;
 }
 
-body.read main .m-content .number-nav.abs a + a {
+body.read main .m-content .number-nav.abs button + button {
   border-left: 2px solid #182335;
 }
 

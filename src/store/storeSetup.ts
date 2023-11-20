@@ -5,16 +5,7 @@ import {
   AnyAction,
   Store,
 } from '@reduxjs/toolkit'
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist'
+import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { PERSIST_STORE_NAME } from '@/constants/app.constant'
 import rootReducer, { RootState, AsyncReducers } from './rootReducer'

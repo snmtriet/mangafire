@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import {
+  setActiveSwiper,
   setPageIndex,
   setShowMenu,
   setShowSubPanel,
@@ -11,9 +12,8 @@ import { SUB_PANEL_ENUM } from '@/constants/panel.constant'
 
 const Top = () => {
   const dispatch = useAppDispatch()
-  const { isShowMenu, pageIndex, isShowSubPanel } = useAppSelector(
-    (state) => state.theme
-  )
+  const { isShowMenu, pageIndex, isShowSubPanel, activeSwiper } =
+    useAppSelector((state) => state.theme)
 
   const onToggleMenu = () => {
     dispatch(setShowMenu(!isShowMenu))
@@ -22,12 +22,14 @@ const Top = () => {
   const handlePrevPage = () => {
     if (pageIndex > 1) {
       dispatch(setPageIndex(pageIndex - 1))
+      dispatch(setActiveSwiper(activeSwiper - 1))
     }
   }
 
   const handleNextPage = () => {
     if (pageIndex < 56) {
       dispatch(setPageIndex(pageIndex + 1))
+      dispatch(setActiveSwiper(activeSwiper + 1))
     }
   }
 

@@ -1,16 +1,18 @@
 import classNames from 'classnames'
-import { useDispatch } from 'react-redux'
-import ShareThis from './ShareThis'
-import { useAppSelector } from '@/store'
 import Top from './Top'
 import Bottom from './Bottom'
+import ShareThis from './ShareThis'
+import { useAppSelector } from '@/store'
 
 const ControlMenu = () => {
   const { isShowMenu } = useAppSelector((state) => state.theme)
-  const dispatch = useDispatch()
 
   return (
-    <div id="ctrl-menu" className={classNames(isShowMenu && 'active')}>
+    <div
+      id="ctrl-menu"
+      className={classNames(isShowMenu && 'active')}
+      onDoubleClick={(e) => e.stopPropagation()}
+    >
       <Top />
       <hr />
       <Bottom />

@@ -59,7 +59,9 @@ const Header = () => {
   const [openNav, setOpenNav] = useState(false)
   const [toggleMenu, setToggleMenu] = useState<'type' | 'genre' | null>(null)
 
-  const { isShowHeader, isShowMenu } = useAppSelector((state) => state.theme)
+  const { isShowHeader, isShowMenu, pageIndex } = useAppSelector(
+    (state) => state.theme
+  )
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -207,7 +209,7 @@ const Header = () => {
             >
               <span>Page</span>{' '}
               <span>
-                <b className="current-page">15</b>/
+                <b className="current-page">{pageIndex}</b>/
                 <b className="total-page">56</b>
               </span>
             </div>

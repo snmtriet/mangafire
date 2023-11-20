@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import { SUB_PANEL_ENUM } from '@/constants/panel.constant'
 import {
+  setActiveSwiper,
   setPageIndex,
   setShowSubPanel,
   useAppDispatch,
@@ -15,6 +16,7 @@ const SubPanelPage = () => {
 
   const handleChangePage = (page: number) => {
     dispatch(setPageIndex(page))
+    dispatch(setActiveSwiper(page))
   }
 
   return (

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 import NavMobile from './NavMobile'
+import { isBrowser } from 'react-device-detect'
 
 export const genres = [
   { title: 'Action', link: '/genre/action' },
@@ -65,7 +66,10 @@ const Header = () => {
 
   return (
     <>
-      <header id="header">
+      <header
+        id="header"
+        style={!isBrowser && openNav ? { background: '#1e2c43' } : {}}
+      >
         <div className="container">
           <div className="component">
             <button

@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import classNames from 'classnames'
 import { SwiperRef } from 'swiper/react'
 import { useParams } from 'react-router-dom'
@@ -21,6 +21,7 @@ const imagePath = (index: number) => {
 
 const Read = () => {
   const swiperRef = useRef<SwiperRef>(null)
+  const [isClickable, setIsClickable] = useState(true)
   const { slug, lang, chapter } = useParams()
   const dispatch = useAppDispatch()
   const { pageType, pageIndex, fitType } = useAppSelector(
@@ -30,6 +31,7 @@ const Read = () => {
   const handleChangePage = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
+    if (!isClickable) return
     const isMobileDevice =
       (isMobile || isTablet) && swiperRef.current && swiperRef.current.swiper
     if (!['singlepage', 'doublepage'].includes(pageType)) return
@@ -38,6 +40,7 @@ const Read = () => {
     const divWidth = (e.target as HTMLDivElement).offsetWidth
     const leftPercentage = (clickX / divWidth) * 100
     const rightPercentage = 100 - leftPercentage
+    setIsClickable(false)
     if (leftPercentage <= 30 && pageIndex > 1) {
       dispatch(setPageIndex(pageIndex - 1))
       if (isMobileDevice) {
@@ -50,6 +53,7 @@ const Read = () => {
         swiperRef.current?.swiper.slideNext()
       }
     }
+    setTimeout(() => setIsClickable(true), 300)
   }
 
   return (
@@ -69,7 +73,9 @@ const Read = () => {
           ))}
         </>
       )}
-      <Single swiperRef={swiperRef} />
+      <Single
+        ref={swiperRef as React.ForwardedRef<React.RefObject<SwiperRef>>}
+      />
       {pageType === PAGE_ENUM.PAGE_DOUBLE && (
         <div className={classNames('page', fitClassName[fitType])}>
           {new Array(56).fill(undefined).map((item, index) => (

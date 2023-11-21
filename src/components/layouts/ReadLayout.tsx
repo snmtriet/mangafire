@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { toast } from 'sonner'
 import { isMobile, isTablet, isBrowser } from 'react-device-detect'
 import Views from '@/views'
@@ -24,6 +24,7 @@ const ReadLayout = () => {
   const { pageType, isShowMenu, isShowHeader, pageIndex } = useAppSelector(
     (state) => state.theme
   )
+  const [isClickable, setIsClickable] = useState(true)
   const dispatch = useAppDispatch()
   const { width, height } = useWindowDimensions()
 
@@ -71,7 +72,10 @@ const ReadLayout = () => {
 
   function handleDoubleClick() {
     if (isBrowser) return
+    if (!isClickable) return
+    setIsClickable(false)
     dispatch(setShowHeader(!isShowHeader))
+    setTimeout(() => setIsClickable(true), 1500)
   }
 
   function handleCloseControl() {

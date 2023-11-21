@@ -1,15 +1,14 @@
 import classNames from 'classnames'
 import { ProgressOffsetType } from '@/@types/theme'
 import { PROGRESS_OFFSET_ENUM } from '@/constants/progress.constant'
-import { setProgressOffset, useAppDispatch, useAppSelector } from '@/store'
+import { setProgressPosition, useAppDispatch, useAppSelector } from '@/store'
 
 const Progress = () => {
   const dispatch = useAppDispatch()
-  const { progressOffset } = useAppSelector((state) => state.theme)
+  const { progressPosition } = useAppSelector((state) => state.theme)
 
   const handleChangeProgressOffset = (type: ProgressOffsetType) => {
-    console.log(type)
-    dispatch(setProgressOffset(type))
+    dispatch(setProgressPosition(type))
   }
 
   return (
@@ -18,14 +17,9 @@ const Progress = () => {
         data-value="top"
         className={classNames(
           'd-none',
-          progressOffset === PROGRESS_OFFSET_ENUM.PROGRESS_OFFSET_TOP &&
-            'd-block'
+          progressPosition === PROGRESS_OFFSET_ENUM.TOP && 'd-block'
         )}
-        onClick={() =>
-          handleChangeProgressOffset(
-            PROGRESS_OFFSET_ENUM.PROGRESS_OFFSET_BOTTOM
-          )
-        }
+        onClick={() => handleChangeProgressOffset(PROGRESS_OFFSET_ENUM.BOTTOM)}
       >
         <button className="justify-content-between">
           <span>Top Progress</span>
@@ -36,12 +30,9 @@ const Progress = () => {
         data-value="bottom"
         className={classNames(
           'd-none',
-          progressOffset === PROGRESS_OFFSET_ENUM.PROGRESS_OFFSET_BOTTOM &&
-            'd-block'
+          progressPosition === PROGRESS_OFFSET_ENUM.BOTTOM && 'd-block'
         )}
-        onClick={() =>
-          handleChangeProgressOffset(PROGRESS_OFFSET_ENUM.PROGRESS_OFFSET_LEFT)
-        }
+        onClick={() => handleChangeProgressOffset(PROGRESS_OFFSET_ENUM.LEFT)}
       >
         <button className="justify-content-between">
           <span>Bottom Progress</span>
@@ -52,12 +43,9 @@ const Progress = () => {
         data-value="left"
         className={classNames(
           'd-none',
-          progressOffset === PROGRESS_OFFSET_ENUM.PROGRESS_OFFSET_LEFT &&
-            'd-block'
+          progressPosition === PROGRESS_OFFSET_ENUM.LEFT && 'd-block'
         )}
-        onClick={() =>
-          handleChangeProgressOffset(PROGRESS_OFFSET_ENUM.PROGRESS_OFFSET_RIGHT)
-        }
+        onClick={() => handleChangeProgressOffset(PROGRESS_OFFSET_ENUM.RIGHT)}
       >
         <button className="justify-content-between">
           <span>Left Progress</span>
@@ -68,12 +56,9 @@ const Progress = () => {
         data-value="right"
         className={classNames(
           'd-none',
-          progressOffset === PROGRESS_OFFSET_ENUM.PROGRESS_OFFSET_RIGHT &&
-            'd-block'
+          progressPosition === PROGRESS_OFFSET_ENUM.RIGHT && 'd-block'
         )}
-        onClick={() =>
-          handleChangeProgressOffset(PROGRESS_OFFSET_ENUM.PROGRESS_OFFSET_NONE)
-        }
+        onClick={() => handleChangeProgressOffset(PROGRESS_OFFSET_ENUM.NONE)}
       >
         <button className="justify-content-between">
           <span>Right Progress</span>
@@ -84,12 +69,9 @@ const Progress = () => {
         data-value="none"
         className={classNames(
           'd-none',
-          progressOffset === PROGRESS_OFFSET_ENUM.PROGRESS_OFFSET_NONE &&
-            'd-block'
+          progressPosition === PROGRESS_OFFSET_ENUM.NONE && 'd-block'
         )}
-        onClick={() =>
-          handleChangeProgressOffset(PROGRESS_OFFSET_ENUM.PROGRESS_OFFSET_TOP)
-        }
+        onClick={() => handleChangeProgressOffset(PROGRESS_OFFSET_ENUM.TOP)}
       >
         <button className="justify-content-between">
           <span>No Progress</span>

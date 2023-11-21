@@ -3,6 +3,8 @@ import { toast } from 'sonner'
 import { isMobile, isTablet, isBrowser } from 'react-device-detect'
 import Views from '@/views'
 import {
+  setActiveSwiper,
+  setPageIndex,
   setShowHeader,
   setShowMenu,
   useAppDispatch,
@@ -19,11 +21,11 @@ import {
 } from './components/SubPanel'
 import { PAGE_ENUM } from '@/constants/page.constant'
 import classNames from 'classnames'
+import { AdvancedModal } from '@/views/read/components'
 
 const ReadLayout = () => {
-  const { pageType, isShowMenu, isShowHeader, pageIndex } = useAppSelector(
-    (state) => state.theme
-  )
+  const { pageType, isShowMenu, isShowHeader, pageIndex, activeSwiper } =
+    useAppSelector((state) => state.theme)
   const [isClickable, setIsClickable] = useState(true)
   const dispatch = useAppDispatch()
   const { width, height } = useWindowDimensions()
@@ -46,10 +48,9 @@ const ReadLayout = () => {
     return () => {
       window.removeEventListener('keydown', handleKeyPress)
     }
-  }, [isShowMenu, isShowHeader, width])
+  }, [isShowMenu, isShowHeader, width, pageIndex])
 
   function handleKeyPress(event: KeyboardEvent) {
-    console.log('Phím vừa được nhấn:', event.key)
     switch (event.key) {
       case 'm':
         dispatch(setShowMenu(!isShowMenu))
@@ -62,8 +63,16 @@ const ReadLayout = () => {
       case 'b':
         return
       case 'ArrowLeft':
+        if (pageIndex > 1) {
+          dispatch(setPageIndex(pageIndex - 1))
+          dispatch(setActiveSwiper(activeSwiper - 1))
+        }
         return
       case 'ArrowRight':
+        if (pageIndex < 56 && pageIndex >= 1) {
+          dispatch(setPageIndex(pageIndex + 1))
+          dispatch(setActiveSwiper(activeSwiper + 1))
+        }
         return
       default:
         return
@@ -84,7 +93,7 @@ const ReadLayout = () => {
   }
 
   const styleMaxHeight =
-    pageType === PAGE_ENUM.PAGE_SINGLE && !isBrowser && (isTablet || isMobile)
+    pageType === PAGE_ENUM.SINGLE && !isBrowser && (isTablet || isMobile)
       ? {
           maxHeight: height,
         }
@@ -114,6 +123,7 @@ const ReadLayout = () => {
           <ControlMenu />
         </main>
       </div>
+      <AdvancedModal />
     </>
   )
 }

@@ -17,7 +17,6 @@ const Image = (props: ImageProps) => {
         className={imageClassName}
         src={src}
         alt={`Page ${number}`}
-        loading="lazy"
       />
     </div>
   )

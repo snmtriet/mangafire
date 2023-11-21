@@ -2,10 +2,14 @@ import { useRef, useState } from 'react'
 import classNames from 'classnames'
 import { SwiperRef } from 'swiper/react'
 import { useParams } from 'react-router-dom'
-import { isMobile, isTablet } from 'react-device-detect'
 import { FIT_ENUM } from '@/constants/fit.constant'
 import { PAGE_ENUM } from '@/constants/page.constant'
-import { setPageIndex, useAppDispatch, useAppSelector } from '@/store'
+import {
+  setActiveSwiper,
+  setPageIndex,
+  useAppDispatch,
+  useAppSelector,
+} from '@/store'
 import { DoubleImage, LongStripImage, Single } from './components'
 
 export const fitClassName = {
@@ -24,16 +28,13 @@ const Read = () => {
   const [isClickable, setIsClickable] = useState(true)
   const { slug, lang, chapter } = useParams()
   const dispatch = useAppDispatch()
-  const { pageType, pageIndex, fitType } = useAppSelector(
-    (state) => state.theme
-  )
+  const { pageType, pageIndex, fitType, activeSwiper, isSwiping } =
+    useAppSelector((state) => state.theme)
 
   const handleChangePage = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
     if (!isClickable) return
-    const isMobileDevice =
-      (isMobile || isTablet) && swiperRef.current && swiperRef.current.swiper
     if (!['singlepage', 'doublepage'].includes(pageType)) return
     const clickX =
       e.clientX - (e.target as HTMLDivElement).getBoundingClientRect().left
@@ -43,17 +44,15 @@ const Read = () => {
     setIsClickable(false)
     if (leftPercentage <= 30 && pageIndex > 1) {
       dispatch(setPageIndex(pageIndex - 1))
-      if (isMobileDevice) {
-        swiperRef.current?.swiper.slidePrev()
-      }
+      dispatch(setActiveSwiper(activeSwiper - 1))
+      isSwiping && swiperRef.current?.swiper.slidePrev()
     }
     if (rightPercentage <= 30 && pageIndex < 56 && pageIndex >= 1) {
       dispatch(setPageIndex(pageIndex + 1))
-      if (isMobileDevice) {
-        swiperRef.current?.swiper.slideNext()
-      }
+      dispatch(setActiveSwiper(activeSwiper + 1))
+      isSwiping && swiperRef.current?.swiper.slideNext()
     }
-    setTimeout(() => setIsClickable(true), 300)
+    setTimeout(() => setIsClickable(true), isSwiping ? 300 : 0)
   }
 
   return (
@@ -61,12 +60,12 @@ const Read = () => {
       className={classNames(
         'pages',
         pageType,
-        pageType === PAGE_ENUM.PAGE_SINGLE && (isMobile || isTablet) && 'swiper'
+        pageType === PAGE_ENUM.SINGLE && isSwiping && 'swiper'
       )}
       dir="ltr"
       onClick={handleChangePage}
     >
-      {pageType === PAGE_ENUM.PAGE_LONG_STRIP && (
+      {pageType === PAGE_ENUM.LONG_STRIP && (
         <>
           {new Array(56).fill(undefined).map((item, index) => (
             <LongStripImage key={index} src={imagePath(index)} index={index} />
@@ -76,7 +75,7 @@ const Read = () => {
       <Single
         ref={swiperRef as React.ForwardedRef<React.RefObject<SwiperRef>>}
       />
-      {pageType === PAGE_ENUM.PAGE_DOUBLE && (
+      {pageType === PAGE_ENUM.DOUBLE && (
         <div className={classNames('page', fitClassName[fitType])}>
           {new Array(56).fill(undefined).map((item, index) => (
             <DoubleImage key={index} src={imagePath(index)} index={index + 1} />

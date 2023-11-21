@@ -18,12 +18,13 @@ export type ThemeState = {
   isShowHeader: boolean
   isShowMenu: boolean
   pageType: PageType
-  progressOffset: ProgressOffsetType
+  progressPosition: ProgressOffsetType
   readDirection: ReadDirectionType
   pageIndex: number
   activeSwiper: number
   fitType: FitType
   isShowSubPanel: SubPanelType
+  isSwiping: boolean
 }
 
 export type HeaderType = {}
@@ -33,12 +34,13 @@ const initialState: ThemeState = {
   isShowHeader: themeConfig.isShowHeader,
   isShowMenu: themeConfig.isShowMenu,
   pageType: themeConfig.pageType,
-  progressOffset: themeConfig.progressOffset,
+  progressPosition: themeConfig.progressPosition,
   readDirection: themeConfig.readDirection,
   pageIndex: 1,
   activeSwiper: 1,
   fitType: themeConfig.fitType,
   isShowSubPanel: themeConfig.isShowPanel,
+  isSwiping: false,
 }
 
 export const themeSlice = createSlice({
@@ -60,8 +62,8 @@ export const themeSlice = createSlice({
     setShowMenu: (state, action: PayloadAction<boolean>) => {
       state.isShowMenu = action.payload
     },
-    setProgressOffset: (state, action: PayloadAction<ProgressOffsetType>) => {
-      state.progressOffset = action.payload
+    setProgressPosition: (state, action: PayloadAction<ProgressOffsetType>) => {
+      state.progressPosition = action.payload
     },
     setReadDirection: (state, action: PayloadAction<ReadDirectionType>) => {
       state.readDirection = action.payload
@@ -81,6 +83,9 @@ export const themeSlice = createSlice({
     setShowSubPanel: (state, action: PayloadAction<SubPanelType>) => {
       state.isShowSubPanel = action.payload
     },
+    setIsSwiping: (state, action: PayloadAction<boolean>) => {
+      state.isSwiping = action.payload
+    },
   },
 })
 
@@ -90,12 +95,13 @@ export const {
   setShowHeader,
   setShowMenu,
   setPageType,
-  setProgressOffset,
+  setProgressPosition,
   setReadDirection,
   setPageIndex,
   setFitType,
   setShowSubPanel,
   setActiveSwiper,
+  setIsSwiping,
 } = themeSlice.actions
 
 export default themeSlice.reducer

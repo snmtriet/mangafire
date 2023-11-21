@@ -7,12 +7,12 @@ import {
 } from '@/store'
 
 const ProgressBar = () => {
-  const { progressOffset, pageIndex } = useAppSelector((state) => state.theme)
+  const { progressPosition, pageIndex } = useAppSelector((state) => state.theme)
 
   const dispatch = useAppDispatch()
 
   return (
-    <div id="progress-bar" className={classNames('d-flex', progressOffset)}>
+    <div id="progress-bar" className={classNames('d-flex', progressPosition)}>
       <div>
         <p>1</p>
         <ul>

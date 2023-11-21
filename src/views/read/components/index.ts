@@ -1,5 +1,6 @@
+import Single from './Single'
 import DoubleImage from './DoubleImage'
 import LongStripImage from './LongStripImage'
-import Single from './Single'
+import AdvancedModal from './Modal/AdvancedModal'
 
-export { DoubleImage, LongStripImage, Single }
+export { DoubleImage, LongStripImage, Single, AdvancedModal }

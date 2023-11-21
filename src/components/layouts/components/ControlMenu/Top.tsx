@@ -27,7 +27,7 @@ const Top = () => {
   }
 
   const handleNextPage = () => {
-    if (pageIndex < 56) {
+    if (pageIndex < 56 && pageIndex >= 1) {
       dispatch(setPageIndex(pageIndex + 1))
       dispatch(setActiveSwiper(activeSwiper + 1))
     }

@@ -1,13 +1,13 @@
-export const PROGRESS_OFFSET_LEFT = 'left'
-export const PROGRESS_OFFSET_RIGHT = 'right'
-export const PROGRESS_OFFSET_TOP = 'top'
-export const PROGRESS_OFFSET_BOTTOM = 'bottom'
-export const PROGRESS_OFFSET_NONE = ''
+export const LEFT = 'left'
+export const RIGHT = 'right'
+export const TOP = 'top'
+export const BOTTOM = 'bottom'
+export const NONE = ''
 
 export const PROGRESS_OFFSET_ENUM = {
-  PROGRESS_OFFSET_LEFT: PROGRESS_OFFSET_LEFT,
-  PROGRESS_OFFSET_RIGHT: PROGRESS_OFFSET_RIGHT,
-  PROGRESS_OFFSET_TOP: PROGRESS_OFFSET_TOP,
-  PROGRESS_OFFSET_BOTTOM: PROGRESS_OFFSET_BOTTOM,
-  PROGRESS_OFFSET_NONE: PROGRESS_OFFSET_NONE,
+  LEFT: LEFT,
+  RIGHT: RIGHT,
+  TOP: TOP,
+  BOTTOM: BOTTOM,
+  NONE: NONE,
 } as const

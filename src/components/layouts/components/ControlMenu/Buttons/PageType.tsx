@@ -11,7 +11,7 @@ const PageType = () => {
           <ButtonContent />
         </div>
       </div>
-      {pageType === PAGE_ENUM.PAGE_DOUBLE && (
+      {pageType === PAGE_ENUM.DOUBLE && (
         <div className="doublepage-offset-spreads mb-2">
           <button className="justify-content-between">
             <span>Double Page Offset Spreads</span>
@@ -44,22 +44,22 @@ function ButtonContent() {
     dispatch(setPageType(type))
   }
 
-  if (pageType === PAGE_ENUM.PAGE_DOUBLE) {
+  if (pageType === PAGE_ENUM.DOUBLE) {
     return (
       <button
         className="justify-content-between"
-        onClick={() => handleChangePageType(PAGE_ENUM.PAGE_LONG_STRIP)}
+        onClick={() => handleChangePageType(PAGE_ENUM.LONG_STRIP)}
       >
         <span>Double Page</span>
         <i className="fa-light fa-book-open fa-lg"></i>
       </button>
     )
   }
-  if (pageType === PAGE_ENUM.PAGE_LONG_STRIP) {
+  if (pageType === PAGE_ENUM.LONG_STRIP) {
     return (
       <button
         className="justify-content-between"
-        onClick={() => handleChangePageType(PAGE_ENUM.PAGE_SINGLE)}
+        onClick={() => handleChangePageType(PAGE_ENUM.SINGLE)}
       >
         <span>Long Strip</span>
         <svg>
@@ -71,7 +71,7 @@ function ButtonContent() {
   return (
     <button
       className="justify-content-between"
-      onClick={() => handleChangePageType(PAGE_ENUM.PAGE_DOUBLE)}
+      onClick={() => handleChangePageType(PAGE_ENUM.DOUBLE)}
     >
       <span>Single Page</span>
       <i className="fa-light fa-page fa-lg"></i>

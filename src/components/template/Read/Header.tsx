@@ -9,6 +9,7 @@ import {
 } from '@/store'
 import NavMobile from '../Default/NavMobile'
 import { SUB_PANEL_ENUM } from '@/constants/panel.constant'
+import Modal, { Login } from '@/components/ui/Modal'
 
 export const genres = [
   { title: 'Action', link: '/genre/action' },
@@ -223,7 +224,7 @@ const Header = () => {
             <div className="nav-user" id="user">
               <button
                 data-toggle="modal"
-                data-target="#sign"
+                data-target=".signin-modal"
                 className="btn btn-primary rounded-pill"
               >
                 <span className="d-none d-sm-inline pl-1 mr-1">Login</span>
@@ -249,6 +250,9 @@ const Header = () => {
         setOpenNav={setOpenNav}
         handleToggle={handleToggle}
       />
+      <Modal className="signin-modal">
+        <Login />
+      </Modal>
     </>
   )
 }

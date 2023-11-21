@@ -22,7 +22,6 @@ import {
   SubPanelPage,
 } from './components/SubPanel'
 import { PAGE_ENUM } from '@/constants/page.constant'
-import { AdvancedModal } from '@/views/read/components'
 
 const ReadLayout = () => {
   const { pageType, isShowMenu, isShowHeader, pageIndex, activeSwiper } =
@@ -124,7 +123,6 @@ const ReadLayout = () => {
           <ControlMenu />
         </main>
       </div>
-      <AdvancedModal />
     </>
   )
 }

@@ -1,3 +1,27 @@
+.modal-content-enter {
+  opacity: 0;
+  display: flex;
+}
+.modal-content-enter-active {
+  opacity: 1;
+  display: flex;
+  transition: opacity 0.5s, display 0.5s;
+}
+.modal-content-exit {
+  opacity: 1;
+}
+.modal-content-exit-active {
+  opacity: 0;
+  display: none;
+  transition: opacity 0.5s, display 0.5s;
+}
+
+.modal-content-exit-done {
+  display: none !important;
+  opacity: 0;
+  transition: opacity 0.5s, display 0.5s;
+}
+
 .modal-open {
   overflow: hidden;
 }

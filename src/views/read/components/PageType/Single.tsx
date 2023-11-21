@@ -2,8 +2,8 @@ import React, { useEffect, forwardRef } from 'react'
 import classNames from 'classnames'
 import { EffectFade } from 'swiper/modules'
 import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react'
-import Image from './Image'
-import { fitClassName } from '../Read'
+import Image from '../Image'
+import { fitClassName } from '../../Read'
 import { PAGE_ENUM } from '@/constants/page.constant'
 import {
   setActiveSwiper,

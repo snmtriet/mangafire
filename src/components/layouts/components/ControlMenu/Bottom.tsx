@@ -1,5 +1,6 @@
 import { setShowHeader, useAppDispatch, useAppSelector } from '@/store'
 import { Direction, ImageFit, PageType, Progress } from './Buttons'
+import Modal, { AdvancedModal } from '@/components/ui/Modal'
 
 const Bottom = () => {
   const dispatch = useAppDispatch()
@@ -35,6 +36,9 @@ const Bottom = () => {
         <span>Advanced Settings</span>
         <i className="fa-light fa-sliders fa-lg"></i>
       </button>
+      <Modal className="advanced-settings">
+        <AdvancedModal />
+      </Modal>
     </>
   )
 }

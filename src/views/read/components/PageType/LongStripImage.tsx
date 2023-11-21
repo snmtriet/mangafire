@@ -1,8 +1,8 @@
 import { useRef, useEffect, memo } from 'react'
 import classNames from 'classnames'
-import { fitClassName } from '../Read'
+import { fitClassName } from '../../Read'
 import { setPageIndex, useAppDispatch, useAppSelector } from '@/store'
-import Image from './Image'
+import Image from '../Image'
 import { useOnScreen } from '@/utils/hooks'
 
 type LongStripImageProps = {

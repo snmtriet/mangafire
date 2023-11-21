@@ -12,7 +12,7 @@ const Card = (props: CardProps) => {
     <div className="unit item-47969">
       <div className="inner">
         <Link
-          to="#"
+          to="/manga/one-punch-man"
           className="poster tooltipstered"
           data-tip="47969?/cache950"
         >

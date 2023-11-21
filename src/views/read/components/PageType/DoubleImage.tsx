@@ -1,6 +1,6 @@
 import { useAppSelector } from '@/store'
-import { fitClassName } from '../Read'
-import Image from './Image'
+import { fitClassName } from '../../Read'
+import Image from '../Image'
 import classNames from 'classnames'
 
 type DoubleImageProps = {

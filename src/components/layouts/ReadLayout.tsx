@@ -41,14 +41,16 @@ const ReadLayout = () => {
       }
       toast.custom((t) => <Toast t={t} title={content} />)
     }
+  }, [width, isShowMenu, isShowHeader])
 
+  useEffect(() => {
     if (typeof window !== 'undefined') {
       window.addEventListener('keydown', handleKeyPress)
     }
     return () => {
       window.removeEventListener('keydown', handleKeyPress)
     }
-  }, [isShowMenu, isShowHeader, width, pageIndex])
+  }, [pageIndex])
 
   function handleKeyPress(event: KeyboardEvent) {
     switch (event.key) {

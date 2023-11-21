@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
-import { toast } from 'sonner'
+import { useEffect, useState } from 'react'
+import classNames from 'classnames'
+import { toast } from 'react-hot-toast'
 import { isMobile, isTablet, isBrowser } from 'react-device-detect'
 import Views from '@/views'
 import {
@@ -10,6 +11,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '@/store'
+import Toast from '../ui/Toast'
 import Header from '../template/Read/Header'
 import ControlMenu from './components/ControlMenu'
 import ProgressBar from './components/ProgressBar'
@@ -20,7 +22,6 @@ import {
   SubPanelPage,
 } from './components/SubPanel'
 import { PAGE_ENUM } from '@/constants/page.constant'
-import classNames from 'classnames'
 import { AdvancedModal } from '@/views/read/components'
 
 const ReadLayout = () => {
@@ -39,7 +40,7 @@ const ReadLayout = () => {
       if (isMobile || isTablet) {
         content = 'Double tap to show header'
       }
-      toast.info(content)
+      toast.custom((t) => <Toast t={t} title={content} />)
     }
 
     if (typeof window !== 'undefined') {

@@ -14548,6 +14548,52 @@ main.index .welcome-bottom .bg-secondary {
   margin-right: 0;
 }
 
+@keyframes slide-in {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 1.2s cubic-bezier(0.41, 0.73, 0.51, 1.02);
+}
+
+@keyframes enter {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-enter {
+  animation: enter 0.2s ease-out;
+}
+
+@keyframes leave {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+}
+
+.animate-leave {
+  animation: leave 0.15s ease-in forwards;
+}
+
 .loading-center {
   display: flex;
   justify-content: center;

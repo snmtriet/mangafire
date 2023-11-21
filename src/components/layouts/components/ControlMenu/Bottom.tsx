@@ -11,7 +11,7 @@ const Bottom = () => {
 
   return (
     <>
-      <div className="btn-options mb-2 tooltipz">
+      <div className="btn-options mb-2 tooltipz" title="Use H button to toggle">
         <div data-value="sticky" className="d-block">
           <button className="justify-content-between" onClick={onToggleHeader}>
             <span>{isShowHeader ? 'Header Sticky' : 'Header Hidden'}</span>

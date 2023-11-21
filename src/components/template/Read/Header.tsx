@@ -234,7 +234,7 @@ const Header = () => {
             <button
               id="show-ctrl-menu"
               className="btn btn-primary tooltipz"
-              data-original-title="Use M button to toggle"
+              title="Use M button to toggle"
               onClick={handleOpenMenu}
             >
               <i className="fa-solid fa-grid-2"></i>

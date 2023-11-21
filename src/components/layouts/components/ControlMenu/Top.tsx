@@ -49,8 +49,7 @@ const Top = () => {
           onClick={onToggleMenu}
           className="close-primary btn btn-secondary1 tooltipz"
           id="ctrl-menu-close"
-          title=""
-          data-original-title="Use M button to toggle"
+          title="Use M button to toggle"
         >
           <i className="fa-solid fa-chevron-right"></i>
         </div>

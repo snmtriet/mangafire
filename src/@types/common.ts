@@ -1,4 +1,4 @@
-import React, { ReactNode, CSSProperties } from 'react'
+import { ReactNode, CSSProperties } from 'react'
 
 export interface CommonProps {
   className?: string

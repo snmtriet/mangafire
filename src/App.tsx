@@ -1,4 +1,4 @@
-import { Toaster } from 'sonner'
+import { Toaster } from 'react-hot-toast'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -17,7 +17,7 @@ function App() {
           <Layouts />
         </BrowserRouter>
       </PersistGate>
-      <Toaster richColors closeButton />
+      <Toaster position="bottom-right" />
     </Provider>
   )
 }

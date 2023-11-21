@@ -16,7 +16,7 @@ const Footer = () => {
               <div className="logo">
                 <img src="/logo.png" alt="MangaFire" />
               </div>
-              <p>© 2023 MangaFire.to</p>
+              <p>© 2023 MangaFire.vercel.app</p>
             </div>
             <nav>
               <Link to="https://discord.com/invite/KRQQKzQ6CS" target="_blank">

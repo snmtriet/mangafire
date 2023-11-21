@@ -1,0 +1,527 @@
+.original.card-xs {
+  margin: 0 -0.2rem;
+}
+
+.original.card-xs .unit {
+  width: 33.3333333333%;
+  float: left;
+  padding: 0.5rem;
+}
+
+.original.card-xs .unit .inner {
+  border-radius: 0.5rem;
+  border: 1px solid #1e2c43;
+  background: #182335;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 1rem;
+  width: 100%;
+}
+
+.original.card-xs .unit .inner .poster {
+  width: 4rem;
+  margin-right: 0.8rem;
+}
+
+.original.card-xs .unit .inner .info {
+  width: 1px;
+  flex-grow: 1;
+}
+
+.original.card-xs .unit .inner .info > a {
+  color: #fff;
+  font-size: 1.05rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.original.card-xs .unit .inner .info > a:hover {
+  color: #8bbadd;
+}
+
+.original.card-xs .unit .inner .info .dropdown {
+  margin-bottom: 0.3rem;
+}
+
+.original.card-xs .unit .inner .info .dropdown button {
+  font-size: 0.95rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  color: #3c8bc6;
+}
+
+.original.card-xs .unit .inner .info .dropdown button:hover {
+  color: #8bbadd;
+}
+
+.original.card-xs .unit .inner .info .dropdown button:after {
+  content: '\f0dd';
+  font-family: 'Font Awesome 6 Pro';
+  font-weight: 900;
+  margin-left: 0.2rem;
+  margin-top: -0.3rem;
+  font-size: 0.8rem;
+}
+
+.original.card-xs .unit .inner .info .richdata {
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.original.card-xs .unit .inner .info .richdata > :not(:last-child) {
+  margin-right: 1rem;
+  color: #747c88;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.original.card-xs .unit .inner .info .richdata span:after {
+  background: 0 0;
+}
+
+.original.card-xs .unit .inner .info .richdata .read-status {
+  border: 0;
+  padding: 0;
+  background: 0 0;
+  color: #747c88;
+}
+
+.original.card-xs .unit .inner .info .richdata .read-status:hover {
+  color: #8bbadd;
+}
+
+.original.card-xs .unit .inner .info .richdata .read-status:before {
+  content: '\f06e';
+  font-family: 'Font Awesome 6 Pro';
+  font-weight: 900;
+  font-size: 0.9rem;
+}
+
+.original.card-xs .unit .inner .info .richdata .read-status.unread:before {
+  content: '\f06e';
+  color: #8bbadd;
+}
+
+.original.card-xs .unit .inner:hover {
+  background: #1a2539 !important;
+}
+
+.original.card-sm .unit {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 1rem;
+  width: 100%;
+}
+
+.original.card-sm .unit:nth-child(odd) {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.original.card-sm .unit .info {
+  flex-grow: 1;
+  width: 100%;
+}
+
+.original.card-sm .unit .info > h6 {
+  transition: color 0.3s;
+  width: 100%;
+  font-weight: 500;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  line-height: 1.5rem;
+  max-height: 1.5rem;
+  overflow: hidden;
+  color: #c6cacf;
+  margin-bottom: 0;
+}
+
+.original.card-sm .unit .info > span {
+  color: #3c8bc6;
+}
+
+.original.card-sm .unit .info > div span {
+  font-size: 0.95rem;
+  color: #747c88;
+  display: inline-flex;
+  align-items: center;
+}
+
+.original.card-sm .unit .info > div span i {
+  margin-right: 0.12rem;
+}
+
+.original.card-sm .unit .info > div span:not(:last-child):after {
+  content: '';
+  display: block;
+  width: 2px;
+  height: 2px;
+  margin: 0 0.4rem;
+  background: #747c88;
+}
+
+.original.card-sm .unit .info > p {
+  font-size: 0.95rem;
+  margin-bottom: 0;
+  color: #747c88;
+}
+
+.original.card-sm .unit .info .dropdown .dropdown-menu {
+  max-height: 250px;
+  overflow: auto;
+}
+
+.original.card-sm .unit .info .dropdown .dropdown-item {
+  padding: 0.4rem 1.2rem;
+}
+
+.original.card-sm .unit .info .dropdown > a {
+  color: #747c88;
+  font-weight: 500;
+}
+
+.original.card-sm .unit .poster {
+  width: 3.2rem;
+  margin-right: 0.8rem;
+}
+
+.original.card-sm .unit:hover {
+  background: #1e2c43;
+}
+
+.original.card-sm .unit:hover .info > h6 {
+  color: #fff;
+}
+
+.original.card-sm .unit.seen {
+  filter: grayscale(1);
+  opacity: 0.7;
+}
+
+.card-md .unit a {
+  background: #1e2c43;
+  border: 1px solid #1e2c43;
+  display: block;
+  border-radius: 0.5rem;
+}
+
+.card-md .unit a .poster > div > img {
+  transition: transform 0.3s;
+}
+
+.card-md .unit a > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0.7rem 1rem;
+  display: block;
+  text-align: center;
+}
+
+.card-md .unit a:hover {
+  background: #283a58;
+  border-color: #2d4163;
+  color: #fff;
+}
+
+.card-md .unit a:hover p {
+  height: 3.5rem;
+  background: #1e2c43;
+}
+
+.card-md .unit a:hover .poster > div > img {
+  transform: scale(1.05);
+}
+
+.original.card-lg {
+  margin: 0 -0.5rem;
+}
+
+.original.card-lg .unit {
+  padding: 0.5rem;
+  width: 33.3333333333%;
+  float: left;
+}
+
+.original.card-lg .unit .inner {
+  display: flex;
+  background: #182335;
+  border: 1px solid #1e2c43;
+  border-radius: 0.5rem;
+  transition: background 0.3s, border 0.3s;
+  flex-grow: 1;
+  width: 100%;
+  height: 12.6rem;
+}
+
+.original.card-lg .unit .inner .poster {
+  width: 8.8rem;
+}
+
+.original.card-lg .unit .inner .info {
+  padding: 1rem 1rem 1rem 1.2rem;
+  flex-grow: 1;
+  width: 1px;
+  transition: transform 0.3s;
+}
+
+.original.card-lg .unit .inner .info > div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.original.card-lg .unit .inner .info > div img {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.original.card-lg .unit .inner .info > div img:not(:last-child) {
+  margin-right: 0.3rem;
+}
+
+.original.card-lg .unit .inner .info > div .type {
+  color: #3c8bc6;
+}
+
+.original.card-lg .unit .inner .info > div nav {
+  margin-left: auto;
+  font-size: 0.85rem;
+  background: #141d2c;
+  border-radius: 0.5rem;
+  position: relative;
+  border: 1px solid #1e2c43;
+  cursor: pointer;
+  display: flex;
+  overflow: hidden;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.original.card-lg .unit .inner .info > div nav > span {
+  padding: 0.1rem 0.5rem;
+  width: 50%;
+  z-index: 2;
+  position: relative;
+  color: #747c88;
+  transition: color 0.1s;
+  display: inline-block;
+  text-align: center;
+}
+
+.original.card-lg .unit .inner .info > div nav > span.active {
+  color: rgba(255, 255, 255, 0.9);
+  background: #23334e;
+}
+
+.original.card-lg .unit .inner .info > a {
+  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  font-size: 1.05rem;
+}
+
+.original.card-lg .unit .inner .info > ul {
+  list-style: none;
+  margin: 1rem 0 0 0;
+  padding: 0;
+}
+
+.original.card-lg .unit .inner .info > ul li a {
+  background: #141d2c;
+  border-radius: 50rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+  padding: 0.2rem 0.8rem;
+  color: #747c88;
+  font-weight: 300;
+  overflow: hidden;
+}
+
+.original.card-lg .unit .inner .info > ul li a span {
+  white-space: nowrap;
+}
+
+.original.card-lg .unit .inner .info > ul li a b {
+  font-weight: 500;
+}
+
+.original.card-lg .unit .inner .info > ul li a:hover {
+  background: #111925;
+  color: #fff;
+}
+
+.original.card-lg .unit .inner:hover {
+  background: #1a2539;
+  border-color: #263855;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.original.card-lg .unit .inner:hover .info nav {
+  opacity: 1;
+}
+
+.original.card-lg.reading .unit {
+  width: 25%;
+}
+
+.original.card-lg.reading .unit .inner {
+  padding: 1rem;
+  height: 8rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.original.card-lg.reading .unit .inner > button {
+  position: absolute;
+  right: 0.5rem;
+  top: -2.5rem;
+  background: 0 0;
+  border: 0;
+  color: #747c88;
+  z-index: 4;
+  width: 1.7rem;
+  height: 1.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #0e1726;
+  transition: top 0.3s;
+}
+
+.original.card-lg.reading .unit .inner > button:hover {
+  color: #fff;
+  background: #111c2d;
+}
+
+.original.card-lg.reading .unit .inner .poster {
+  width: 4.1rem;
+}
+
+.original.card-lg.reading .unit .inner .info {
+  padding: 0 0 0 1rem;
+}
+
+.original.card-lg.reading .unit .inner .info > div {
+  margin-top: 0.3rem;
+}
+
+.original.card-lg.reading .unit .inner .info > div span {
+  font-size: 0.9rem;
+}
+
+.original.card-lg.reading .unit .inner .info p {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.original.card-lg.reading .unit .inner .info p > span {
+  color: #3c8bc6;
+}
+
+.original.card-lg.reading .unit .inner > p {
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: block;
+  margin: 0;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.original.card-lg.reading .unit .inner > p > span {
+  background: #3c8bc6;
+  display: block;
+  height: 100%;
+}
+
+.original.card-lg.reading .unit .inner:hover > button {
+  top: 0.5rem;
+}
+
+@media (max-width: 1399.98px) {
+  .original.card-lg .unit {
+    width: 50%;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .original.card-lg.reading .unit,
+  .user-panel .original.card-lg.reading .unit {
+    width: 33.3333333333%;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .original.card-lg.reading .unit,
+  .original.card-xs .unit,
+  .user-panel .original.card-lg.reading .unit {
+    width: 50%;
+  }
+
+  .original.card-xs .unit .inner .info .richdata > span:not(.reading) {
+    display: none;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .original.card-lg .unit {
+    width: 100%;
+  }
+
+  .original.card-lg.reading .unit .inner button {
+    top: 0.5rem;
+  }
+
+  .original.card-xs .unit {
+    width: 100%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .original.card-lg .unit .inner .info > div nav {
+    width: 7rem;
+  }
+
+  .original.card-lg .unit .inner .info > div nav > span span {
+    display: none;
+  }
+
+  .original.card-lg.reading .unit,
+  .user-panel .original.card-lg.reading .unit {
+    width: 100%;
+  }
+}
+
+@media (max-width: 410px) {
+  .original.card-lg .unit .inner .info > div img:nth-child(n + 6) {
+    display: none;
+  }
+}
+
+@media (max-width: 370px) {
+  .original.card-lg > div > div .info > ul li a span:last-child {
+    display: none;
+  }
+
+  .original.card-lg > div > div .info div img:nth-child(n + 3) {
+    display: none;
+  }
+}

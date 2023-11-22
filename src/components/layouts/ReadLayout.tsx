@@ -24,8 +24,14 @@ import {
 import { PAGE_ENUM } from '@/constants/page.constant'
 
 const ReadLayout = () => {
-  const { pageType, isShowMenu, isShowHeader, pageIndex, activeSwiper } =
-    useAppSelector((state) => state.theme)
+  const {
+    pageType,
+    isShowMenu,
+    isShowHeader,
+    pageIndex,
+    activeSwiper,
+    isSwiping,
+  } = useAppSelector((state) => state.theme)
   const [isClickable, setIsClickable] = useState(true)
   const dispatch = useAppDispatch()
   const { width, height } = useWindowDimensions()
@@ -111,7 +117,7 @@ const ReadLayout = () => {
             <div
               id="page-wrapper"
               className={classNames(
-                isBrowser && pageIndex === 56 && 'on-last-page'
+                isBrowser && pageIndex === 56 && !isSwiping && 'on-last-page'
               )}
               onClick={handleCloseControl}
             >

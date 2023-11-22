@@ -9,6 +9,7 @@ import {
 } from '@/store'
 import { SubPanelType } from '@/@types/theme'
 import { SUB_PANEL_ENUM } from '@/constants/panel.constant'
+import { ChapVolSwitch, LangSwitch } from './Buttons'
 
 const Top = () => {
   const dispatch = useAppDispatch()
@@ -54,76 +55,10 @@ const Top = () => {
           <i className="fa-solid fa-chevron-right"></i>
         </div>
       </div>
-      <button className="chapvol-switch">
-        <div>
-          <p>you are reading</p>
-          <b>
-            by <span className="current-viewtype">chapter</span>
-          </b>
-        </div>
-        <i className="fa-light fa-arrows-rotate"></i>
-      </button>
-      <div className="dropdown mb-2">
-        <button
-          className="justify-content-center"
-          data-toggle="dropdown"
-          data-placeholder="false"
-        >
-          <i className="fa-regular fa-earth-americas"></i>
-          <span className="mx-1">Language: </span>
-          <b className="lang-view">English</b>
-        </button>
-        <div className="lang-options dropdown-menu w-100 dropdown-menu-right">
-          <Link
-            className="dropdown-item active"
-            to="#"
-            data-code="en"
-            data-title="English"
-          >
-            <i className="flag EN"></i> English
-          </Link>
-          <Link
-            className="dropdown-item"
-            to="#"
-            data-code="fr"
-            data-title="French"
-          >
-            <i className="flag FR"></i> French
-          </Link>
-          <Link
-            className="dropdown-item"
-            to="#"
-            data-code="es"
-            data-title="Spanish"
-          >
-            <i className="flag ES"></i> Spanish
-          </Link>
-          <Link
-            className="dropdown-item"
-            to="#"
-            data-code="es-la"
-            data-title="Spanish (LATAM)"
-          >
-            <i className="flag ES-LA"></i> Spanish (LATAM)
-          </Link>
-          <Link
-            className="dropdown-item"
-            to="#"
-            data-code="pt-br"
-            data-title="Portuguese (Br)"
-          >
-            <i className="flag PT-BR"></i> Portuguese (Br)
-          </Link>
-          <Link
-            className="dropdown-item"
-            to="#"
-            data-code="ja"
-            data-title="Japanese"
-          >
-            <i className="flag JA"></i> Japanese
-          </Link>
-        </div>
-      </div>
+      <ChapVolSwitch />
+      <LangSwitch />
+
+      {/* Page */}
       <nav>
         <button id="page-go-left" onClick={handlePrevPage}>
           <i className="fa-regular fa-chevron-left"></i>
@@ -141,6 +76,7 @@ const Top = () => {
           <i className="fa-regular fa-chevron-right"></i>
         </button>
       </nav>
+      {/* Chapter */}
       <nav>
         <button id="number-go-left">
           <i className="fa-regular fa-chevron-left"></i>
@@ -156,6 +92,7 @@ const Top = () => {
           <i className="fa-regular fa-chevron-right"></i>
         </button>
       </nav>
+      {/* Comment */}
       <button
         id="comment-toggler"
         className="jb-btn"
@@ -167,19 +104,15 @@ const Top = () => {
           Comment
         </span>
       </button>
+      {/* Bookmark */}
       <div className="dropdown favourite" data-id="26256" data-fetch="true">
-        <button
-          className="jb-btn"
-          type="button"
-          data-toggle="dropdown"
-          data-placeholder="false"
-          aria-expanded="false"
-        >
+        <button className="jb-btn">
           <i className="fa-light fa-folder-bookmark fa-lg"></i>
           <span>Bookmark</span>
         </button>
         <div className="dropdown-menu dropdown-menu-right w-100 folders"></div>
       </div>
+
       <Link to="/manga/jujutsu-kaisen.rl2vm" className="jb-btn">
         <i className="fa-light fa-lg fa-circle-info"></i>
         <span>Manga Detail</span>

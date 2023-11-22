@@ -129,13 +129,6 @@ ul {
   padding: 0;
 }
 
-ol ol,
-ol ul,
-ul ol,
-ul ul {
-  margin-bottom: 0;
-}
-
 dt {
   font-weight: 700;
 }
@@ -12681,7 +12674,7 @@ main.index .welcome-bottom .bg-secondary {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
+    background: #000;
     content: '';
     position: fixed;
     z-index: 49;

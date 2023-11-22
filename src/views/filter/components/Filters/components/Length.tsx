@@ -1,6 +1,6 @@
-import { useRef, memo, useState } from 'react'
+import { memo, useState } from 'react'
 
-import { EnumFilter, FilterCommonProps } from '@/@types/common'
+import { EnumFilter } from '@/@types/common'
 import { useClickOutside } from '@/utils/hooks'
 import ButtonFilter from './ButtonFilter'
 
@@ -42,8 +42,7 @@ const data = [
   },
 ]
 
-const Length = (props: FilterCommonProps) => {
-  const { mounted } = props
+const Length = () => {
   const [open, setOpen] = useState(false)
   const dropdownRef = useClickOutside(() => setOpen(false))
   const onToggle = () => setOpen((prev) => !prev)
@@ -52,7 +51,6 @@ const Length = (props: FilterCommonProps) => {
       data={data}
       open={open}
       type="radio"
-      mounted={mounted}
       ref={dropdownRef}
       onToggle={onToggle}
       value={EnumFilter.length}

@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect, useRef, HTMLProps } from 'react'
 import classNames from 'classnames'
-import { Link } from 'react-router-dom'
-import { motion, Variants } from 'framer-motion'
+import { Link, useLocation } from 'react-router-dom'
+import { CSSTransition } from 'react-transition-group'
 
 import { genres } from './Header'
 
@@ -14,6 +14,12 @@ type NavMobileProps = {
 
 const NavMobile = (props: NavMobileProps) => {
   const { openNav, toggleMenu, handleToggle, setOpenNav } = props
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    setOpenNav(false)
+    handleToggle(null)
+  }, [pathname])
 
   return (
     <>
@@ -23,9 +29,10 @@ const NavMobile = (props: NavMobileProps) => {
           <ul>
             <li>
               <span onClick={() => handleToggle('type')}>Types</span>
-              <UlMotion
+              <UlWrapper
                 open={toggleMenu === 'type'}
-                className={classNames('c1')}
+                className="c1"
+                style={{ '--height': '81.34px' } as React.CSSProperties}
               >
                 <li>
                   <Link title="Manga mangas" to="/type/manga">
@@ -57,13 +64,14 @@ const NavMobile = (props: NavMobileProps) => {
                     Manhua
                   </Link>
                 </li>
-              </UlMotion>
+              </UlWrapper>
             </li>
             <li>
               <span onClick={() => handleToggle('genre')}>Genres</span>
-              <UlMotion
+              <UlWrapper
                 open={toggleMenu === 'genre'}
-                className={classNames('lg')}
+                className="lg"
+                style={{ '--height': '432.72px' } as React.CSSProperties}
               >
                 {genres.map((genre, index) => (
                   <li key={index}>
@@ -72,7 +80,7 @@ const NavMobile = (props: NavMobileProps) => {
                     </Link>
                   </li>
                 ))}
-              </UlMotion>
+              </UlWrapper>
             </li>
             <li>
               <Link to="/newest" title="New Release Manga">
@@ -107,44 +115,27 @@ const NavMobile = (props: NavMobileProps) => {
 
 export default NavMobile
 
-const dropdownVariants: Variants = {
-  closed: {
-    height: 0,
-    padding: 0,
-    border: 'none',
-    transition: {
-      duration: 0.3,
-    },
-  },
-  open: {
-    height: 'auto',
-    padding: '0.8rem',
-    borderTop: '1px solid #235479',
-    borderBottom: '1px solid #235479',
-    transition: {
-      duration: 0.3,
-    },
-  },
-}
-
-const UlMotion = ({
-  children,
-  open,
-  className,
-}: {
+type UlWrapperProps = {
   children: React.ReactNode
   open: boolean
   className?: string
-}) => {
+} & HTMLProps<HTMLUListElement>
+
+const UlWrapper = (props: UlWrapperProps) => {
+  const { children, open, className, ...rest } = props
+  const nodeRef = useRef(null)
   return (
-    <motion.ul
-      initial="closed"
-      animate={open ? 'open' : 'closed'}
-      exit="closed"
-      variants={dropdownVariants}
-      className={className}
+    <CSSTransition
+      in={open}
+      timeout={300}
+      unmountOnExit
+      mountOnEnter
+      nodeRef={nodeRef}
+      classNames="menu"
     >
-      {children}
-    </motion.ul>
+      <ul ref={nodeRef} className={className} {...rest}>
+        {children}
+      </ul>
+    </CSSTransition>
   )
 }

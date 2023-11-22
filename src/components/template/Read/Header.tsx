@@ -98,7 +98,10 @@ const Header = () => {
 
   return (
     <>
-      <header className={classNames(!isShowHeader && 'hidden')}>
+      <header
+        className={classNames(!isShowHeader && 'hidden')}
+        style={open ? { backdropFilter: 'none' } : {}}
+      >
         <div className="inner px-3">
           <div className="component">
             <button

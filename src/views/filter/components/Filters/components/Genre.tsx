@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
-import { EnumFilter, FilterCommonProps } from '@/@types/common'
+import { EnumFilter } from '@/@types/common'
 import ButtonFilter from './ButtonFilter'
 import { useClickOutside } from '@/utils/hooks'
 
@@ -212,8 +212,7 @@ const data = [
   },
 ]
 
-const Genre = (props: FilterCommonProps) => {
-  const { mounted } = props
+const Genre = () => {
   const [open, setOpen] = useState(false)
   const dropdownRef = useClickOutside(() => setOpen(false))
   const onToggle = () => setOpen((prev) => !prev)
@@ -221,7 +220,6 @@ const Genre = (props: FilterCommonProps) => {
     <ButtonFilter
       data={data}
       open={open}
-      mounted={mounted}
       ref={dropdownRef}
       onToggle={onToggle}
       value={EnumFilter.genre}

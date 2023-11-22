@@ -11,8 +11,6 @@ type FilterProps = {
 const Filter = (props: FilterProps) => {
   const { handleSubmit } = props
 
-  const mounted = useMounted()
-
   return (
     <form id="filters" autoComplete="off" onSubmit={handleSubmit}>
       <div>
@@ -24,13 +22,13 @@ const Filter = (props: FilterProps) => {
             name="keyword"
           />
         </div>
-        <Type mounted={mounted} />
-        <Genre mounted={mounted} />
-        <Status mounted={mounted} />
-        <Language mounted={mounted} />
-        <Year mounted={mounted} />
-        <Length mounted={mounted} />
-        <Sort mounted={mounted} />
+        <Type />
+        <Genre />
+        <Status />
+        <Language />
+        <Year />
+        <Length />
+        <Sort />
         <div>
           <button type="submit" className="btn btn-primary">
             <i className="fa-regular fa-circles-overlap fa-xs"></i>

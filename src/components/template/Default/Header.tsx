@@ -75,10 +75,7 @@ const Header = () => {
 
   return (
     <>
-      <header
-        id="header"
-        style={!isBrowser && openNav ? { background: '#1e2c43' } : {}}
-      >
+      <header id="header" style={open ? { backdropFilter: 'none' } : {}}>
         <div className="container">
           <div className="component">
             <button

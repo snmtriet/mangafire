@@ -19,21 +19,26 @@
   transition: opacity 0.4s, transform 0.4s;
 }
 
-.modal-backdrop-enter {
+.modal-backdrop-enter,
+.overlay-enter {
   opacity: 0;
 }
-.modal-backdrop-enter-active {
+.modal-backdrop-enter-active,
+.overlay-enter-active {
   opacity: 0.5;
   transition: opacity 0.4s;
 }
-.modal-backdrop-exit {
+.modal-backdrop-exit,
+.overlay-exit {
   opacity: 0.5;
 }
-.modal-backdrop-exit-active {
+.modal-backdrop-exit-active,
+.overlay-exit-active {
   opacity: 0;
   transition: opacity 0.4s;
 }
-.modal-backdrop-enter-done {
+.modal-backdrop-enter-done,
+.overlay-enter-done {
   opacity: 0.5;
   transition: opacity 0.4s;
 }

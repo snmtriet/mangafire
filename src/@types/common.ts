@@ -53,10 +53,6 @@ export enum EnumFilter {
   'sort' = 'sort',
 }
 
-export type FilterCommonProps = {
-  mounted: boolean
-}
-
 export type FilterDropdown = {
   id: string | undefined
   value: string
@@ -71,5 +67,4 @@ export type CommonFilterProps = {
   open: boolean
   dropdownClassName?: string
   type?: 'checkbox' | 'radio'
-  mounted: boolean
 }

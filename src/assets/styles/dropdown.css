@@ -22,3 +22,40 @@
   transform: translateY(30px);
   transition: opacity 0.4s, transform 0.4s;
 }
+
+.menu-enter {
+  opacity: 0;
+  height: 0px;
+  border: inherit;
+  padding: inherit;
+}
+
+.menu-enter-active {
+  height: var(--height);
+  opacity: 1;
+  transition: all 0.3s;
+  border: inherit;
+  padding: inherit;
+}
+
+.menu-enter-done {
+  height: var(--height);
+  opacity: 1;
+  transition: all 0.3s;
+  border: inherit;
+  padding: inherit;
+}
+
+.menu-exit {
+  opacity: 1;
+  height: var(--height);
+  border: inherit;
+  padding: inherit;
+}
+.menu-exit-active {
+  opacity: 0;
+  height: 0px;
+  padding: 0 !important;
+  border: 'none' !important;
+  transition: all 0.3s;
+}

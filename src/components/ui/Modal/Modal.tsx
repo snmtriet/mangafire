@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react'
 import classNames from 'classnames'
 import ReactDOM from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
+import { isMobile, isTablet } from 'react-device-detect'
 import { useClickOutside } from '@/utils/hooks'
 
 type ModalProps = {
@@ -21,6 +22,8 @@ const Modal = (props: ModalProps) => {
   useEffect(() => {
     if (open) {
       document.body.classList.add('modal-open')
+      if (isMobile || isTablet) document.body.removeAttribute('style')
+      else document.body.style.paddingRight = '10px'
     } else {
       document.body.classList.remove('modal-open')
     }

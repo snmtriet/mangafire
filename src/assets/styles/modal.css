@@ -43,10 +43,6 @@
   transition: opacity 0.4s;
 }
 
-body.modal-open {
-  padding-right: 10px;
-}
-
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: auto;
@@ -250,6 +246,12 @@ body.modal-open {
   .modal-lg,
   .modal-xl {
     max-width: 800px;
+  }
+}
+
+@media (min-width: 1024px) {
+  body.modal-open {
+    padding-right: 10px;
   }
 }
 

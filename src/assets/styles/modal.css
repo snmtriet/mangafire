@@ -1,29 +1,45 @@
-.modal-content-enter {
+.modal-enter {
   opacity: 0;
-  display: flex;
+  transform: translateY(100px);
+  display: block;
 }
-.modal-content-enter-active {
+.modal-enter-active {
   opacity: 1;
-  display: flex;
-  transition: opacity 0.5s, display 0.5s;
+  display: block;
+  transform: translateY(0px);
+  transition: opacity 0.4s, transform 0.4s;
 }
-.modal-content-exit {
+.modal-exit {
   opacity: 1;
+  transform: translateY(0px);
 }
-.modal-content-exit-active {
+.modal-exit-active {
   opacity: 0;
-  display: none;
-  transition: opacity 0.5s, display 0.5s;
+  transform: translateY(100px);
+  transition: opacity 0.4s, transform 0.4s;
 }
 
-.modal-content-exit-done {
-  display: none !important;
+.modal-backdrop-enter {
   opacity: 0;
-  transition: opacity 0.5s, display 0.5s;
+}
+.modal-backdrop-enter-active {
+  opacity: 0.5;
+  transition: opacity 0.4s;
+}
+.modal-backdrop-exit {
+  opacity: 0.5;
+}
+.modal-backdrop-exit-active {
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.modal-backdrop-enter-done {
+  opacity: 0.5;
+  transition: opacity 0.4s;
 }
 
-.modal-open {
-  overflow: hidden;
+body.modal-open {
+  padding-right: 10px;
 }
 
 .modal-open .modal {
@@ -36,7 +52,7 @@
   top: 0;
   left: 0;
   z-index: 1050;
-  display: none;
+  display: block;
   width: 100%;
   height: 100%;
   overflow: hidden;

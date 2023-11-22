@@ -3,7 +3,7 @@ const ShareThis = () => {
     <div className="mt-3 text-center">
       <div className="mb-2">Share to your friends</div>
       <div
-        className="d-block text-center sharethis-inline-share-buttons st-left st-has-labels  st-inline-share-buttons st-animated"
+        className="d-flex text-center sharethis-inline-share-buttons st-left st-has-labels  st-inline-share-buttons st-animated"
         id="st-1"
       >
         <div

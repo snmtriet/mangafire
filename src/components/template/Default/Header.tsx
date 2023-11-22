@@ -3,7 +3,8 @@ import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 import NavMobile from './NavMobile'
 import { isBrowser } from 'react-device-detect'
-import Modal, { Login } from '@/components/ui/Modal'
+import Modal, { Forgot, Login, Register } from '@/components/ui/Modal'
+import { MODAL_AUTH_ENUM } from '@/@types/modal'
 
 export const genres = [
   { title: 'Action', link: '/genre/action' },
@@ -53,6 +54,7 @@ const Header = () => {
   const [open, setOpen] = useState(false)
   const [openNav, setOpenNav] = useState(false)
   const [toggleMenu, setToggleMenu] = useState<'type' | 'genre' | null>(null)
+  const [openModal, setOpenModal] = useState(MODAL_AUTH_ENUM.CLOSE)
 
   useEffect(() => {
     if (!openNav) document.body.removeAttribute('style')
@@ -64,6 +66,12 @@ const Header = () => {
 
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+
+  const handleOpenModal = (type: MODAL_AUTH_ENUM) => {
+    setOpenModal(type)
+  }
+
+  const handleCloseModal = () => setOpenModal(MODAL_AUTH_ENUM.CLOSE)
 
   return (
     <>
@@ -181,8 +189,7 @@ const Header = () => {
             </button>
             <div className="nav-user" id="user">
               <button
-                data-toggle="modal"
-                data-target=".signin-modal"
+                onClick={() => handleOpenModal(MODAL_AUTH_ENUM.LOGIN)}
                 className="btn btn-primary rounded-pill"
               >
                 <span className="d-none d-sm-inline pl-1 mr-1">Login</span>
@@ -199,8 +206,23 @@ const Header = () => {
         setOpenNav={setOpenNav}
         handleToggle={handleToggle}
       />
-      <Modal className="signin-modal">
-        <Login />
+      <Modal
+        open={openModal === MODAL_AUTH_ENUM.LOGIN}
+        onClose={handleCloseModal}
+      >
+        <Login onOpen={handleOpenModal} />
+      </Modal>
+      <Modal
+        open={openModal === MODAL_AUTH_ENUM.REGISTER}
+        onClose={handleCloseModal}
+      >
+        <Register onOpen={handleOpenModal} />
+      </Modal>
+      <Modal
+        open={openModal === MODAL_AUTH_ENUM.FORGOT}
+        onClose={handleCloseModal}
+      >
+        <Forgot onOpen={handleOpenModal} />
       </Modal>
     </>
   )

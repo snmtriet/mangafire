@@ -1,14 +1,19 @@
+import { useState } from 'react'
 import { setShowHeader, useAppDispatch, useAppSelector } from '@/store'
 import { Direction, ImageFit, PageType, Progress } from './Buttons'
 import Modal, { AdvancedModal } from '@/components/ui/Modal'
 
 const Bottom = () => {
+  const [openSettings, setOpenSettings] = useState(false)
   const dispatch = useAppDispatch()
   const { isShowHeader } = useAppSelector((state) => state.theme)
 
   const onToggleHeader = () => {
     dispatch(setShowHeader(!isShowHeader))
   }
+
+  const handleOpenSettings = () => setOpenSettings(true)
+  const handleCloseSettings = () => setOpenSettings(false)
 
   return (
     <>
@@ -28,15 +33,15 @@ const Bottom = () => {
       <ImageFit />
       <Direction />
       <Progress />
-      <button
-        className="jb-btn"
-        data-toggle="modal"
-        data-target=".advanced-settings"
-      >
+      <button className="jb-btn" onClick={handleOpenSettings}>
         <span>Advanced Settings</span>
         <i className="fa-light fa-sliders fa-lg"></i>
       </button>
-      <Modal className="advanced-settings">
+      <Modal
+        open={openSettings}
+        onClose={handleCloseSettings}
+        className="advanced-settings"
+      >
         <AdvancedModal />
       </Modal>
     </>

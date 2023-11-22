@@ -26,10 +26,6 @@ body.read #show-ctrl-menu span {
   letter-spacing: 0.1rem;
 }
 
-body.read.ctrl-menu-active header {
-  right: 22rem;
-}
-
 body.read header {
   position: fixed;
   top: 0;
@@ -372,33 +368,39 @@ body.read main .m-content .number-nav.abs button + button {
   border-left: 2px solid #182335;
 }
 
+body.read.ctrl-menu-active header {
+  right: 22rem;
+}
+
 @media (max-width: 1587.9px) {
   body.read #nav-menu > ul > li:nth-child(n + 3) {
     display: none;
   }
 }
 
-body.read .nav-user .u-notify {
-  display: none;
-}
+@media (max-width: 1199.98px) {
+  body.read .nav-user .u-notify {
+    display: none;
+  }
 
-body.read header {
-  right: 0 !important;
-}
+  body.read header {
+    right: 0 !important;
+  }
 
-body.read main .m-content #page-wrapper.on-last-page {
-  --number-nav-height: 5rem;
-}
+  body.read main .m-content #page-wrapper.on-last-page {
+    --number-nav-height: 5rem;
+  }
 
-body.read #ctrl-menu {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-}
+  body.read .sub-panel {
+    top: 0;
+  }
 
-body.read .sub-panel {
-  top: 0;
+  body.read #ctrl-menu {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
 }
 
 @media (max-width: 1024px) {

@@ -28,16 +28,7 @@ const SubPanelPage = () => {
       id="page-panel"
     >
       <div className="head">
-        <form autoComplete="off">
-          <div className="form-group">
-            <i className="fa-regular fa-magnifying-glass" />
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Find number..."
-            />
-          </div>
-        </form>
+        <span></span>
         <button
           className="close-primary btn btn-secondary1"
           id="number-close"

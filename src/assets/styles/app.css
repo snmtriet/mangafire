@@ -12405,20 +12405,19 @@ main.index .welcome-bottom .bg-secondary {
 }
 
 .nav-mobile {
-  width: 440px;
-  height: 100%;
-  transform: translateX(-440px);
-  transition: transform 0.4s;
-  z-index: 50;
-  left: 0;
-  top: 0px;
+  width: (var(--width));
+  max-width: var(--width);
+  transition: all 0.3s;
+  z-index: 9999999;
+  left: 1rem;
+  top: 4rem;
   position: fixed;
   display: flex;
   flex-direction: column;
-}
-
-.nav-mobile.open {
-  transform: translate(0px);
+  background: #182335;
+  border: 1px solid #1e2c43;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
 }
 
 .nav-mobile .top {
@@ -12426,13 +12425,17 @@ main.index .welcome-bottom .bg-secondary {
   background: transparent;
 }
 
-.nav-mobile .bottom {
+.nav-mobile .content {
   flex: 1;
-  background: #182335;
-  border: 1px solid #1e2c43;
 }
 
-.nav-mobile .bottom > ul > li > ul {
+.nav-mobile .content > ul {
+  list-style: none;
+  margin-bottom: 0px;
+  padding: 0.4rem 0;
+}
+
+.nav-mobile .content > ul > li > ul {
   margin: 0 0 0;
   list-style: none;
   display: block;
@@ -12443,13 +12446,12 @@ main.index .welcome-bottom .bg-secondary {
   border-top: 1px solid #235479;
 }
 
-.nav-mobile .bottom > ul > li > ul > li {
+.nav-mobile .content > ul > li > ul > li {
   float: left;
-  width: 33.33%;
+  width: 50%;
 }
 
-.nav-mobile .bottom > ul > li > ul > li > a {
-  width: 100%;
+.nav-mobile .content > ul > li > ul > li > a {
   display: block;
   padding: 0.3rem 0.8rem;
   color: #8f96a0;
@@ -12460,40 +12462,48 @@ main.index .welcome-bottom .bg-secondary {
   border: 1px solid transparent;
 }
 
-.nav-mobile .bottom > ul > li > a,
-.nav-mobile .bottom > ul > li > span {
+.nav-mobile .content > ul > li > a,
+.nav-mobile .content > ul > li > span {
   display: block;
   width: 100%;
   padding: 10px;
-  font-size: 1.25rem;
   color: #8f96a0;
   cursor: pointer;
   user-select: none;
+  padding: 0.8rem 1.4rem;
+  font-size: 1.05rem;
 }
 
-.nav-mobile .bottom > ul > li > a.active,
-.nav-mobile .bottom > ul > li > a:hover,
-.nav-mobile .bottom > ul > li > span.active,
-.nav-mobile .bottom > ul > li > span:hover {
-  color: #8bbadd;
+.nav-mobile .content > ul > li > a.active,
+.nav-mobile .content > ul > li > a:hover,
+.nav-mobile .content > ul > li > span.active,
+.nav-mobile .content > ul > li > span:hover {
+  color: #3c8bc6;
   background: #141d2c;
 }
 
-.nav-mobile .bottom > ul > li > ul > li > a .active,
-.nav-mobile .bottom > ul > li > ul > li > a:hover {
-  color: #8bbadd;
+.nav-mobile .content > ul > li > ul > li > a .active,
+.nav-mobile .content > ul > li > ul > li > a:hover {
+  color: #3c8bc6;
   background: #1e2c43;
   border-radius: 0.5rem;
   border: 1px solid #23334e;
 }
 
-.nav-mobile .bottom > ul > li > a:before,
-.nav-mobile .bottom > ul > li > span:before {
+.nav-mobile .content > ul > li > a:before,
+.nav-mobile .content > ul > li > span:before {
   content: '\f054';
   font-family: 'Font Awesome 6 Pro';
   margin-right: 0.6rem;
   font-size: 0.8rem;
   transition: margin 0.3s;
+}
+
+.nav-mobile .content > ul > li:hover > a:before,
+.nav-mobile .content > ul > li:hover > span:before {
+  margin-left: 0.2rem;
+  margin-right: 0.4rem;
+  color: #3c8bc6;
 }
 
 @keyframes spin {
@@ -12514,8 +12524,6 @@ main.index .welcome-bottom .bg-secondary {
   html {
     font-size: 13px;
   }
-
-  
 
   #nav-menu-btn {
     display: flex;

@@ -2,37 +2,51 @@ import React, { useEffect, useRef, HTMLProps } from 'react'
 import classNames from 'classnames'
 import { Link, useLocation } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
-
 import { genres } from './Header'
 
 type NavMobileProps = {
   openNav: boolean
   toggleMenu: 'genre' | 'type' | null
   handleToggle: (value: 'type' | 'genre' | null) => void
-  setOpenNav: React.Dispatch<React.SetStateAction<boolean>>
+  onCloseNav: () => void
 }
 
 const NavMobile = (props: NavMobileProps) => {
-  const { openNav, toggleMenu, handleToggle, setOpenNav } = props
+  const { openNav, toggleMenu, handleToggle, onCloseNav } = props
   const { pathname } = useLocation()
+  const nodeRef = useRef(null)
 
   useEffect(() => {
-    setOpenNav(false)
+    onCloseNav()
     handleToggle(null)
   }, [pathname])
 
   return (
-    <>
-      <div className={classNames('nav-mobile', openNav && 'open')}>
-        <div className="top" />
-        <div className="bottom">
+    <CSSTransition
+      in={openNav}
+      timeout={300}
+      classNames="nav-menu"
+      mountOnEnter
+      unmountOnExit
+      nodeRef={nodeRef}
+    >
+      <div
+        ref={nodeRef}
+        className={classNames('nav-mobile', openNav && 'open')}
+        style={
+          {
+            '--width': toggleMenu !== null ? '292px' : '140px',
+          } as React.CSSProperties
+        }
+      >
+        <div className="content">
           <ul>
             <li>
               <span onClick={() => handleToggle('type')}>Types</span>
               <UlWrapper
                 open={toggleMenu === 'type'}
                 className="c1"
-                style={{ '--height': '81.34px' } as React.CSSProperties}
+                style={{ '--height': '111px' } as React.CSSProperties}
               >
                 <li>
                   <Link title="Manga mangas" to="/type/manga">
@@ -71,7 +85,7 @@ const NavMobile = (props: NavMobileProps) => {
               <UlWrapper
                 open={toggleMenu === 'genre'}
                 className="lg"
-                style={{ '--height': '432.72px' } as React.CSSProperties}
+                style={{ '--height': '638px' } as React.CSSProperties}
               >
                 {genres.map((genre, index) => (
                   <li key={index}>
@@ -105,11 +119,7 @@ const NavMobile = (props: NavMobileProps) => {
           </ul>
         </div>
       </div>
-      <div
-        onClick={() => setOpenNav(false)}
-        className={classNames('mask', openNav && 'show')}
-      ></div>
-    </>
+    </CSSTransition>
   )
 }
 

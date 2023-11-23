@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 import {
@@ -11,6 +11,7 @@ import NavMobile from '../Default/NavMobile'
 import { SUB_PANEL_ENUM } from '@/constants/panel.constant'
 import Modal, { Forgot, Login, Register } from '@/components/ui/Modal'
 import { MODAL_AUTH_ENUM } from '@/@types/modal'
+import { useClickOutside } from '@/utils/hooks'
 
 export const genres = [
   { title: 'Action', link: '/genre/action' },
@@ -66,14 +67,13 @@ const Header = () => {
     (state) => state.theme
   )
   const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    if (!openNav) document.body.removeAttribute('style')
-    else document.body.style.overflow = 'hidden'
-  }, [openNav])
+  const navRef = useClickOutside(() => handleCloseNav())
 
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+
+  const handleToggleNav = () => setOpenNav((prev) => !prev)
+  const handleCloseNav = () => setOpenNav(false)
 
   const handleOpenMenu = () => {
     dispatch(setShowMenu(!isShowMenu))
@@ -104,13 +104,21 @@ const Header = () => {
       >
         <div className="inner px-3">
           <div className="component">
-            <button
-              id="nav-menu-btn"
-              className="btn nav-btn"
-              onClick={() => setOpenNav((prev) => !prev)}
-            >
-              <i className="fa-regular fa-bars fa-lg"></i>
-            </button>
+            <div ref={navRef}>
+              <button
+                id="nav-menu-btn"
+                className="btn nav-btn"
+                onClick={handleToggleNav}
+              >
+                <i className="fa-regular fa-bars fa-lg"></i>
+              </button>
+              <NavMobile
+                openNav={openNav}
+                toggleMenu={toggleMenu}
+                onCloseNav={handleCloseNav}
+                handleToggle={handleToggle}
+              />
+            </div>
             <Link to="/home" className="logo">
               <img src="/logo-sm.png" alt="MangaFire" />
             </Link>
@@ -254,12 +262,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <NavMobile
-        openNav={openNav}
-        toggleMenu={toggleMenu}
-        setOpenNav={setOpenNav}
-        handleToggle={handleToggle}
-      />
+
       <Modal
         onClose={handleCloseModal}
         open={openModal === MODAL_AUTH_ENUM.LOGIN}

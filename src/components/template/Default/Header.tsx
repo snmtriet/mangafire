@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 import NavMobile from './NavMobile'
-import { isBrowser } from 'react-device-detect'
 import Modal, { Forgot, Login, Register } from '@/components/ui/Modal'
 import { MODAL_AUTH_ENUM } from '@/@types/modal'
+import { useClickOutside } from '@/utils/hooks'
 
 export const genres = [
   { title: 'Action', link: '/genre/action' },
@@ -51,40 +51,47 @@ export const genres = [
 ]
 
 const Header = () => {
-  const [open, setOpen] = useState(false)
+  const [openSearch, setOpenSearch] = useState(false)
   const [openNav, setOpenNav] = useState(false)
   const [toggleMenu, setToggleMenu] = useState<'type' | 'genre' | null>(null)
   const [openModal, setOpenModal] = useState(MODAL_AUTH_ENUM.CLOSE)
 
-  useEffect(() => {
-    if (!openNav) document.body.removeAttribute('style')
-    else document.body.style.overflow = 'hidden'
-  }, [openNav])
+  const navRef = useClickOutside(() => handleCloseNav())
 
-  const handleToggle = (value: 'type' | 'genre' | null) =>
-    setToggleMenu((prev) => (value === null || value === prev ? null : value))
+  const handleOpen = () => setOpenSearch(true)
+  const handleClose = () => setOpenSearch(false)
 
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
+  const handleToggleNav = () => setOpenNav((prev) => !prev)
+  const handleCloseNav = () => setOpenNav(false)
 
   const handleOpenModal = (type: MODAL_AUTH_ENUM) => {
     setOpenModal(type)
   }
-
   const handleCloseModal = () => setOpenModal(MODAL_AUTH_ENUM.CLOSE)
+
+  const handleToggle = (value: 'type' | 'genre' | null) =>
+    setToggleMenu((prev) => (value === null || value === prev ? null : value))
 
   return (
     <>
-      <header id="header" style={open ? { backdropFilter: 'none' } : {}}>
+      <header id="header" style={openSearch ? { backdropFilter: 'none' } : {}}>
         <div className="container">
           <div className="component">
-            <button
-              id="nav-menu-btn"
-              className="btn nav-btn"
-              onClick={() => setOpenNav((prev) => !prev)}
-            >
-              <i className="fa-regular fa-bars fa-lg"></i>
-            </button>
+            <div ref={navRef}>
+              <button
+                id="nav-menu-btn"
+                className="btn nav-btn"
+                onClick={handleToggleNav}
+              >
+                <i className="fa-regular fa-bars fa-lg"></i>
+              </button>
+              <NavMobile
+                openNav={openNav}
+                toggleMenu={toggleMenu}
+                onCloseNav={handleCloseNav}
+                handleToggle={handleToggle}
+              />
+            </div>
             <Link to="/home" className="logo">
               <img src="/logo.png" alt="MangaFire" />
             </Link>
@@ -159,7 +166,7 @@ const Header = () => {
                 </li>
               </ul>
             </div>
-            <div id="nav-search" className={classNames(open && 'active')}>
+            <div id="nav-search" className={classNames(openSearch && 'active')}>
               <div className="overlay" onClick={handleClose}></div>
               <div className="search-inner">
                 <form action="filter" autoComplete="off">
@@ -197,12 +204,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <NavMobile
-        openNav={openNav}
-        toggleMenu={toggleMenu}
-        setOpenNav={setOpenNav}
-        handleToggle={handleToggle}
-      />
+
       <Modal
         open={openModal === MODAL_AUTH_ENUM.LOGIN}
         onClose={handleCloseModal}

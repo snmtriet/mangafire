@@ -59,3 +59,43 @@
   border: 'none' !important;
   transition: all 0.3s;
 }
+
+/* nav menu */
+
+.nav-menu-enter {
+  height: 0px;
+  border: inherit;
+  padding: inherit;
+  overflow: hidden;
+}
+
+.nav-menu-enter-active {
+  height: 256px;
+  transition: all 0.2s;
+  border: inherit;
+  padding: inherit;
+  overflow: hidden;
+}
+
+.nav-menu-enter-done {
+  height: auto;
+  transition: all 0.2s;
+  border: inherit;
+  padding: inherit;
+  overflow: hidden;
+}
+
+.nav-menu-exit {
+  height: 256px;
+  border: inherit;
+  padding: inherit;
+  overflow: hidden;
+  padding: 0 !important;
+}
+.nav-menu-exit-active {
+  height: 0px;
+  padding: 0 !important;
+  border: unset !important;
+  transition: all 0.2s;
+  overflow: hidden;
+}

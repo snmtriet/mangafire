@@ -88,7 +88,7 @@ function TooltipContent(props: TooltipContentProps) {
   return (
     <div className="tippy-box" style={{ margin: 0, width: 320 }}>
       <div className="tippy-content">
-        <Loading loading={loading}>
+        <Loading loading={loading} type="gif">
           <div className="bookmark">
             <div className="dropleft height-limit favourite" data-id={48347}>
               <button className="btn" type="button">

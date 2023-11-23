@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { toast } from 'react-hot-toast'
-import { isMobile, isTablet, isBrowser } from 'react-device-detect'
+import { isMobile } from 'react-device-detect'
 import Views from '@/views'
 import {
   setActiveSwiper,
@@ -39,11 +39,10 @@ const ReadLayout = () => {
   useEffect(() => {
     if (!isShowHeader && !isShowMenu) {
       let content = ''
-      if (isBrowser) {
-        content = 'Press H or move your mouse to the top to show header'
-      }
-      if (isMobile || isTablet) {
+      if (isMobile) {
         content = 'Double tap to show header'
+      } else {
+        content = 'Press H or move your mouse to the top to show header'
       }
       toast.custom((t) => <Toast t={t} title={content} />)
     }
@@ -88,7 +87,7 @@ const ReadLayout = () => {
   }
 
   function handleDoubleClick() {
-    if (isBrowser) return
+    if (!isMobile) return
     if (!isClickable) return
     setIsClickable(false)
     dispatch(setShowHeader(!isShowHeader))
@@ -96,12 +95,12 @@ const ReadLayout = () => {
   }
 
   function handleCloseControl() {
-    if (isBrowser) return
+    if (!isMobile) return
     dispatch(setShowMenu(false))
   }
 
   const styleMaxHeight =
-    pageType === PAGE_ENUM.SINGLE && !isBrowser && (isTablet || isMobile)
+    pageType === PAGE_ENUM.SINGLE && isMobile
       ? {
           maxHeight: height,
         }
@@ -117,7 +116,7 @@ const ReadLayout = () => {
             <div
               id="page-wrapper"
               className={classNames(
-                isBrowser && pageIndex === 56 && !isSwiping && 'on-last-page'
+                !isMobile && pageIndex === 56 && !isSwiping && 'on-last-page'
               )}
               onClick={handleCloseControl}
             >

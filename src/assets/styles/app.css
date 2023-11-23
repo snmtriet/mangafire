@@ -10824,13 +10824,13 @@ main {
   padding-bottom: 7rem;
 }
 
-.tooltipster-sidetip .tooltipster-box {
+.tippy-sidetip .tippy-box {
   width: 23rem;
   border: 0;
   background: 0 0;
 }
 
-.tooltipster-sidetip .tooltipster-box .tooltipster-content {
+.tippy-sidetip .tippy-box .tippy-content {
   border-radius: 0.5rem;
   background: #1e2c43;
   color: #8f96a0;
@@ -10842,7 +10842,7 @@ main {
   border: 1px solid #263855;
 }
 
-.tooltipster-sidetip .tooltipster-box .tooltipster-content:before {
+.tippy-sidetip .tippy-box .tippy-content:before {
   background: radial-gradient(
     closest-side,
     rgba(60, 139, 198, 0.2) 0,
@@ -10858,35 +10858,39 @@ main {
   pointer-events: none;
 }
 
-.tooltipster-sidetip .tooltipster-box .tooltipster-content .bookmark {
+.tippy-sidetip .tippy-box .tippy-content .bookmark {
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;
 }
 
-.tooltipster-sidetip .tooltipster-box .tooltipster-content .bookmark .btn {
+.tippy-sidetip .tippy-box .tippy-content .bookmark .btn {
   color: #8bbadd;
   padding: 0;
 }
 
-.tooltipster-sidetip
-  .tooltipster-box
-  .tooltipster-content
+.tippy-sidetip
+  .tippy-box
+  .tippy-content
   .bookmark
   .btn:hover {
   color: #8bbadd;
 }
 
-.tooltipster-sidetip
-  .tooltipster-box
-  .tooltipster-content
+.tippy-sidetip .tippy-content {
+  padding: 0px;
+}
+
+.tippy-sidetip
+  .tippy-box
+  .tippy-content
   .bookmark
   .dropdown-menu
   .dropdown-item {
   font-size: 0.95rem;
 }
 
-.tooltipster-sidetip .tooltipster-box .tooltipster-content span {
+.tippy-sidetip .tippy-box .tippy-content span {
   color: #8bbadd;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
@@ -10896,27 +10900,27 @@ main {
   margin-bottom: 0.8rem;
 }
 
-.tooltipster-sidetip .tooltipster-box .tooltipster-content > a {
+.tippy-sidetip .tippy-box .tippy-content > a {
   font-size: 1.2rem;
   color: #fff;
   font-weight: 500;
 }
 
-.tooltipster-sidetip .tooltipster-box .tooltipster-content > a:hover {
+.tippy-sidetip .tippy-box .tippy-content > a:hover {
   opacity: 0.8;
 }
 
-.tooltipster-sidetip .tooltipster-box .tooltipster-content > p {
+.tippy-sidetip .tippy-box .tippy-content > p {
   font-size: 0.95rem;
   margin: 1rem 0;
   font-weight: 300;
 }
 
-.tooltipster-sidetip .tooltipster-box .tooltipster-content > p > b {
+.tippy-sidetip .tippy-box .tippy-content > p > b {
   font-weight: 500;
 }
 
-.tooltipster-sidetip .tooltipster-box .tooltipster-content > nav a {
+.tippy-sidetip .tippy-box .tippy-content > nav a {
   display: inline-block;
   background: #182335;
   padding: 0.2rem 0.8rem;
@@ -10926,11 +10930,11 @@ main {
   font-weight: 300;
 }
 
-.tooltipster-sidetip .tooltipster-box .tooltipster-content > nav a + a {
+.tippy-sidetip .tippy-box .tippy-content > nav a + a {
   margin-left: 0.1rem;
 }
 
-.tooltipster-sidetip .tooltipster-box .tooltipster-content > nav a:hover {
+.tippy-sidetip .tippy-box .tippy-content > nav a:hover {
   background: #141d2c;
   color: #fff;
 }

@@ -8,6 +8,8 @@ import Layouts from './components/layouts'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import 'tippy.js/dist/tippy.css'
+import 'tippy.js/dist/svg-arrow.css'
 
 function App() {
   return (

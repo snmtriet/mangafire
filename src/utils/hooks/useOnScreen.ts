@@ -5,8 +5,13 @@ export default function useOnScreen(ref: RefObject<HTMLElement>) {
 
   const observer = useMemo(
     () =>
-      new IntersectionObserver(([entry]) =>
-        setIntersecting(entry.isIntersecting)
+      new IntersectionObserver(
+        ([entry]) => {
+          setIntersecting(entry.isIntersecting)
+        },
+        {
+          threshold: 0.8,
+        }
       ),
     []
   )

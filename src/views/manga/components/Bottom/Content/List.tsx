@@ -1,6 +1,8 @@
+import { ENUM_READ_BY } from '@/@types/common'
+import { Poster } from '@/components/shared'
 import { Link } from 'react-router-dom'
 
-const data = [
+const dataChapters = [
   {
     title: 'Stupid Survivor !! – Il faut gagner',
     time: 'Nov 05, 2023',
@@ -228,19 +230,189 @@ const data = [
   },
 ]
 
-const ChapterList = () => {
+const dataVolumes = [
+  {
+    vol: '24',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-24',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/e/e5/e556dec6c026262789bb5f26c596be34.jpg',
+  },
+  {
+    vol: '22',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-22',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/d/d5/d55c6a254f1452d130cc26b2ddc99a98.jpg',
+  },
+  {
+    vol: '21',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-21',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/3/3c/3c9dd375b1c21e4d2c32cc50ec10eef1.jpg',
+  },
+  {
+    vol: '20',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-20',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/7/75/75becd9670d8da01197e3babdd6887c7.jpg',
+  },
+  {
+    vol: '19',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-19',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/9/9c/9cbd15070dc4072e52be3192d3c6e184.jpg',
+  },
+  {
+    vol: '18',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-18',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/9/9c/9cdb7a65422edff7ae77e3d6cc159500.jpg',
+  },
+  {
+    vol: '17',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-17',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/1/19/19b8113802b805fe199c14c8babd2e82.jpg',
+  },
+  {
+    vol: '16',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-16',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/f/f8/f857d34f7a49c97d085a30121e582187.jpg',
+  },
+  {
+    vol: '15',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-15',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/7/70/70f6016388f1d46994cdec8c5e6eaf4e.jpg',
+  },
+  {
+    vol: '14',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-14',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/2/29/29a671e4de4c1df5ff725715777dfa84.jpg',
+  },
+  {
+    vol: '13',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-13',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/b/b1/b182ff06abea010bb95a48aa658802b0.jpg',
+  },
+  {
+    vol: '12',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-12',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/b/b9/b9b5b781498fec723546be7fa5561f3f.jpg',
+  },
+  {
+    vol: '11',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-11',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/b/b9/b9b78643a3e27435219b65dc700e1998.jpg',
+  },
+  {
+    vol: '10',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-10',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/f/fe/fe8f3cff6ad8e491561bceed33c629d3.jpg',
+  },
+  {
+    vol: '9',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-9',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/d/d2/d2c130cecf3e2623a87bd253f8fc1381.jpg',
+  },
+  {
+    vol: '8',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-8',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/f/fa/faec0106983940094ab9f9e5516ff225.jpg',
+  },
+  {
+    vol: '7',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-7',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/c/c3/c376b55b299e4146601920cfafe0cd52.jpg',
+  },
+  {
+    vol: '6',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-6',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/a/ab/abeb4255a48b6a5c7b4b0ad99698c415.jpg',
+  },
+  {
+    vol: '5',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-5',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/d/d1/d1c99e2e77a03ecc3bc8ef3b44320596.jpg',
+  },
+  {
+    vol: '4',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-4',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/3/3b/3bd17655ec4207dba625092adbbe6c72.jpg',
+  },
+  {
+    vol: '3',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-3',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/c/c6/c6977755c818f7df98dd612b5c76fa25.jpg',
+  },
+  {
+    vol: '2',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-2',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/5/5b/5b72b4bfc2f358f7ee02b927070e9050.jpg',
+  },
+  {
+    vol: '1',
+    link: '/read/jujutsu-kaisen.rl2vm/en/volume-1',
+    image:
+      'http://static.bunnycdn.ru/i/cache/images/6/60/6020bbc400c03bf65baef0efb6ea1391.jpg',
+  },
+]
+
+type ChapterListProps = {
+  tab: ENUM_READ_BY
+}
+
+const ChapterList = (props: ChapterListProps) => {
+  const { tab } = props
   return (
     <div className="list-body">
-      <ul className="scroll-sm">
-        {data.map((item) => (
-          <Item
-            time={item.time}
-            title={item.title}
-            key={item.chapNumber}
-            chapNumber={item.chapNumber}
-          />
-        ))}
-      </ul>
+      {tab === ENUM_READ_BY.CHAPTER && (
+        <ul className="scroll-sm">
+          {dataChapters.map((item) => (
+            <Item
+              time={item.time}
+              title={item.title}
+              key={item.chapNumber}
+              chapNumber={item.chapNumber}
+            />
+          ))}
+        </ul>
+      )}
+
+      {tab === ENUM_READ_BY.VOLUME && (
+        <div className="card-md vol-list scroll-sm">
+          {dataVolumes.map((item, index) => (
+            <div key={index} className="unit item" data-number={item.vol}>
+              <Link to="/manga/one-punch-man.oo4">
+                <div className="poster">
+                  <div>
+                    <img
+                      src={item.image}
+                      alt={item.vol}
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                </div>
+                <span>Vol {item.vol}</span>
+              </Link>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

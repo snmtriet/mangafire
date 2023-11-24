@@ -68,3 +68,8 @@ export type CommonFilterProps = {
   dropdownClassName?: string
   type?: 'checkbox' | 'radio'
 }
+
+export enum ENUM_READ_BY {
+  CHAPTER = 'chapter',
+  VOLUME = 'volume',
+}

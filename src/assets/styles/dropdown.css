@@ -33,15 +33,14 @@
 .menu-enter-active {
   height: var(--height);
   opacity: 1;
-  transition: all 0.3s;
   border: inherit;
   padding: inherit;
+  transition: all 0.3s;
 }
 
 .menu-enter-done {
-  height: var(--height);
+  height: auto;
   opacity: 1;
-  transition: all 0.3s;
   border: inherit;
   padding: inherit;
 }

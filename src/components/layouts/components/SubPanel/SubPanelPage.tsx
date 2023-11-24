@@ -7,10 +7,16 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '@/store'
+import { useWindowDimensions } from '@/utils/hooks'
+import { isMobile } from 'react-device-detect'
+import { Link } from 'react-router-dom'
 
 const SubPanelPage = () => {
-  const { isShowSubPanel, pageIndex } = useAppSelector((state) => state.theme)
+  const { isShowSubPanel, pageIndex, pageType } = useAppSelector(
+    (state) => state.theme
+  )
   const dispatch = useAppDispatch()
+  const { height } = useWindowDimensions()
 
   const handleClosePanel = () => dispatch(setShowSubPanel(null))
 
@@ -26,6 +32,8 @@ const SubPanelPage = () => {
         isShowSubPanel === SUB_PANEL_ENUM.PANEL_PAGE && 'active'
       )}
       id="page-panel"
+      style={isMobile ? { maxHeight: height, position: 'fixed' } : {}}
+      onDoubleClick={(e) => e.stopPropagation()}
     >
       <div className="head">
         <span></span>
@@ -40,14 +48,14 @@ const SubPanelPage = () => {
       <ul>
         {new Array(56).fill(undefined).map((chapter, index) => (
           <li key={index}>
-            <a
-              href="#"
+            <Link
+              to={`#page-${index + 1}`}
               title={chapter?.name}
               className={classNames(pageIndex === index + 1 && 'active')}
               onClick={() => handleChangePage(index + 1)}
             >
               Page {index + 1}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

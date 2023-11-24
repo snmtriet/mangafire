@@ -1,10 +1,13 @@
 import classNames from 'classnames'
+import { isMobile } from 'react-device-detect'
+import { useWindowDimensions } from '@/utils/hooks'
 import { SUB_PANEL_ENUM } from '@/constants/panel.constant'
 import { setShowSubPanel, useAppDispatch, useAppSelector } from '@/store'
 
 const SubPanelChapter = () => {
   const { isShowSubPanel } = useAppSelector((state) => state.theme)
   const dispatch = useAppDispatch()
+  const { height } = useWindowDimensions()
 
   const handleClosePanel = () => dispatch(setShowSubPanel(null))
 
@@ -1259,6 +1262,8 @@ const SubPanelChapter = () => {
         isShowSubPanel === SUB_PANEL_ENUM.PANEL_CHAPTER && 'active'
       )}
       id="number-panel"
+      style={isMobile ? { maxHeight: height, position: 'fixed' } : {}}
+      onDoubleClick={(e) => e.stopPropagation()}
     >
       <div className="head">
         <form autoComplete="off">

@@ -60,9 +60,13 @@ const Top = () => {
 
       {/* Page */}
       <nav>
-        <button id="page-go-left" onClick={handlePrevPage}>
+        <Link
+          to={`#page-${pageIndex - 1}`}
+          id="page-go-left"
+          onClick={handlePrevPage}
+        >
           <i className="fa-regular fa-chevron-left"></i>
-        </button>
+        </Link>
         <button
           className="page-toggler"
           onClick={() => handleTogglePanel(SUB_PANEL_ENUM.PANEL_PAGE)}
@@ -72,9 +76,13 @@ const Top = () => {
           </b>
           <i className="fa-solid fa-sort fa-sm"></i>
         </button>
-        <button id="page-go-right" onClick={handleNextPage}>
+        <Link
+          to={`#page-${pageIndex + 1}`}
+          id="page-go-right"
+          onClick={handleNextPage}
+        >
           <i className="fa-regular fa-chevron-right"></i>
-        </button>
+        </Link>
       </nav>
       {/* Chapter */}
       <nav>

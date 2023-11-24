@@ -62,7 +62,10 @@ const Header = () => {
   const handleClose = () => setOpenSearch(false)
 
   const handleToggleNav = () => setOpenNav((prev) => !prev)
-  const handleCloseNav = () => setOpenNav(false)
+  const handleCloseNav = () => {
+    setOpenNav(false)
+    handleToggle(null)
+  }
 
   const handleOpenModal = (type: MODAL_AUTH_ENUM) => {
     setOpenModal(type)

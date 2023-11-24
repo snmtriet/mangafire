@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import {
   Alert,
   MostViewed,
@@ -7,6 +8,9 @@ import {
 } from './components'
 
 const Home = () => {
+  useEffect(() => {
+    document.title = 'MangaFire - Read Manga Online Free'
+  }, [])
   return (
     <>
       <TopTrending />

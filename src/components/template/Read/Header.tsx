@@ -73,7 +73,10 @@ const Header = () => {
   const handleClose = () => setOpen(false)
 
   const handleToggleNav = () => setOpenNav((prev) => !prev)
-  const handleCloseNav = () => setOpenNav(false)
+  const handleCloseNav = () => {
+    setOpenNav(false)
+    handleToggle(null)
+  }
 
   const handleOpenMenu = () => {
     dispatch(setShowMenu(!isShowMenu))

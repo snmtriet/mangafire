@@ -8,6 +8,7 @@ import {
   setPageIndex,
   setShowHeader,
   setShowMenu,
+  setShowSubPanel,
   useAppDispatch,
   useAppSelector,
 } from '@/store'
@@ -34,7 +35,7 @@ const ReadLayout = () => {
   } = useAppSelector((state) => state.theme)
   const [isClickable, setIsClickable] = useState(true)
   const dispatch = useAppDispatch()
-  const { width, height } = useWindowDimensions()
+  const { height } = useWindowDimensions()
 
   useEffect(() => {
     if (!isShowHeader && !isShowMenu) {
@@ -46,7 +47,7 @@ const ReadLayout = () => {
       }
       toast.custom((t) => <Toast t={t} title={content} />)
     }
-  }, [width, isShowMenu, isShowHeader])
+  }, [isShowMenu, isShowHeader])
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -55,7 +56,7 @@ const ReadLayout = () => {
     return () => {
       window.removeEventListener('keydown', handleKeyPress)
     }
-  }, [pageIndex])
+  }, [pageIndex, isShowMenu, isShowHeader])
 
   function handleKeyPress(event: KeyboardEvent) {
     switch (event.key) {
@@ -97,6 +98,7 @@ const ReadLayout = () => {
   function handleCloseControl() {
     if (!isMobile) return
     dispatch(setShowMenu(false))
+    dispatch(setShowSubPanel(null))
   }
 
   const styleMaxHeight =

@@ -1,10 +1,13 @@
 import classNames from 'classnames'
+import { isMobile } from 'react-device-detect'
 import { SUB_PANEL_ENUM } from '@/constants/panel.constant'
 import { setShowSubPanel, useAppDispatch, useAppSelector } from '@/store'
+import { useWindowDimensions } from '@/utils/hooks'
 
 const SubPanelComment = () => {
   const { isShowSubPanel } = useAppSelector((state) => state.theme)
   const dispatch = useAppDispatch()
+  const { height } = useWindowDimensions()
 
   const handleClosePanel = () => dispatch(setShowSubPanel(null))
 
@@ -15,6 +18,8 @@ const SubPanelComment = () => {
         isShowSubPanel === SUB_PANEL_ENUM.PANEL_COMMENT && 'active'
       )}
       id="comment-panel"
+      style={isMobile ? { maxHeight: height, position: 'fixed' } : {}}
+      onDoubleClick={(e) => e.stopPropagation()}
     >
       <div className="head">
         <b>Comments</b>

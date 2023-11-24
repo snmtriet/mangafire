@@ -1,6 +1,8 @@
+import { useState, CSSProperties } from 'react'
 import ChaptersMenu from './Menu'
 import ChapterList from './List'
-import { CSSProperties } from 'react'
+import { ENUM_READ_BY } from '@/@types/common'
+import classNames from 'classnames'
 
 const commentStyle: CSSProperties = {
   background:
@@ -13,20 +15,38 @@ const commentStyle: CSSProperties = {
 }
 
 const Chapters = () => {
+  const [tab, setTab] = useState<ENUM_READ_BY>(ENUM_READ_BY.CHAPTER)
+
+  const handleChangeTab = (tab: ENUM_READ_BY) => setTab(tab)
+
   return (
     <div className="content">
       <section className="m-list">
         <nav className="chapvol-tab">
-          <button className="tab active" data-name="chapter">
+          <button
+            data-name="chapter"
+            className={classNames(
+              'tab',
+              tab === ENUM_READ_BY.CHAPTER && 'active'
+            )}
+            onClick={() => handleChangeTab(ENUM_READ_BY.CHAPTER)}
+          >
             Chapter
           </button>
-          <button className="tab" data-name="volume">
+          <button
+            data-name="volume"
+            className={classNames(
+              'tab',
+              tab === ENUM_READ_BY.VOLUME && 'active'
+            )}
+            onClick={() => handleChangeTab(ENUM_READ_BY.VOLUME)}
+          >
             Volume
           </button>
         </nav>
         <div className="tab-content" data-name="chapter">
           <ChaptersMenu />
-          <ChapterList />
+          <ChapterList tab={tab} />
         </div>
       </section>
       <section className="default-style">

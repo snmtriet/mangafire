@@ -1,51 +1,5 @@
 @charset "UTF-8";
 
-:root {
-  --blue: #536eec;
-  --indigo: #6610f2;
-  --purple: #6f42c1;
-  --pink: #e83e8c;
-  --red: #dc3545;
-  --orange: #fc4824;
-  --yellow: #ffc107;
-  --green: #28a745;
-  --teal: #20c997;
-  --cyan: #17a2b8;
-  --white: #fff;
-  --gray: #6c6c6c;
-  --gray-dark: #343434;
-  --primary: #3c8bc6;
-  --primary1: #8bbadd;
-  --primary2: #235479;
-  --secondary: #182335;
-  --secondary1: #1e2c43;
-  --secondary2: #141d2c;
-  --major-color: #fff;
-  --success: #28a745;
-  --info: #17a2b8;
-  --warning: #ffc107;
-  --danger: #dc3545;
-  --light: #ececec;
-  --dark: #343434;
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-  --breakpoint-xxl: 1400px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-    'Liberation Mono', 'Courier New', monospace;
-}
-
-*,
-::after,
-::before {
-  box-sizing: border-box;
-}
-
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -10869,11 +10823,7 @@ main {
   padding: 0;
 }
 
-.tippy-sidetip
-  .tippy-box
-  .tippy-content
-  .bookmark
-  .btn:hover {
+.tippy-sidetip .tippy-box .tippy-content .bookmark .btn:hover {
   color: #8bbadd;
 }
 
@@ -11187,6 +11137,7 @@ main {
 
 #ctrl-menu .panel-btn,
 #ctrl-menu button,
+#ctrl-menu a,
 #ctrl-menu > a {
   width: 100%;
   display: flex;
@@ -11203,18 +11154,21 @@ main {
 
 #ctrl-menu .panel-btn.jb-btn,
 #ctrl-menu button.jb-btn,
+#ctrl-menu a.jb-btn,
 #ctrl-menu > a.jb-btn {
   justify-content: space-between;
 }
 
 #ctrl-menu .panel-btn.jb-btn:not(:last-child),
 #ctrl-menu button.jb-btn:not(:last-child),
+#ctrl-menu a.jb-btn:not(:last-child),
 #ctrl-menu > a.jb-btn:not(:last-child) {
   margin-bottom: 0.5rem;
 }
 
 #ctrl-menu .panel-btn b,
 #ctrl-menu button b,
+#ctrl-menu a b,
 #ctrl-menu > a b {
   color: #fff;
   font-weight: 400;
@@ -11223,6 +11177,7 @@ main {
 
 #ctrl-menu .panel-btn svg,
 #ctrl-menu button svg,
+#ctrl-menu a svg,
 #ctrl-menu > a svg {
   width: 1.3rem;
   height: 1.3rem;
@@ -11231,12 +11186,14 @@ main {
 
 #ctrl-menu .panel-btn:focus-visible,
 #ctrl-menu button:focus-visible,
+#ctrl-menu a:focus-visible,
 #ctrl-menu > a:focus-visible {
   outline: 0;
 }
 
 #ctrl-menu .panel-btn:hover,
 #ctrl-menu button:hover,
+#ctrl-menu a:hover,
 #ctrl-menu > a:hover {
   background: #1e2c43;
   color: #fff;
@@ -11254,6 +11211,7 @@ main {
 
 #ctrl-menu .panel-btn.active,
 #ctrl-menu button.active,
+#ctrl-menu a.active,
 #ctrl-menu > a.active {
   color: #fff !important;
   background-color: #3c8bc6;
@@ -11293,12 +11251,15 @@ main {
   margin-bottom: 0.5rem;
 }
 
-#ctrl-menu > nav > button {
+#ctrl-menu > nav > button,
+#ctrl-menu > nav > a {
   justify-content: center;
 }
 
 #ctrl-menu > nav > button:first-child,
-#ctrl-menu > nav > button:last-child {
+#ctrl-menu > nav > button:last-child,
+#ctrl-menu > nav > a:first-child,
+#ctrl-menu > nav > a:last-child {
   width: 4rem;
   padding: 1rem 0;
 }
@@ -12692,6 +12653,7 @@ main.index .welcome-bottom .bg-secondary {
     content: '';
     position: fixed;
     z-index: 49;
+    opacity: 0.5;
   }
 
   .dropdown.responsive .dropdown-menu {

@@ -1,9 +1,9 @@
 import { useRef, useEffect, memo } from 'react'
 import classNames from 'classnames'
-import { fitClassName } from '../../Read'
-import { setPageIndex, useAppDispatch, useAppSelector } from '@/store'
 import Image from '../Image'
+import { fitClassName } from '../../Read'
 import { useOnScreen } from '@/utils/hooks'
+import { setPageIndex, useAppDispatch, useAppSelector } from '@/store'
 
 type LongStripImageProps = {
   index: number
@@ -15,7 +15,9 @@ const LongStripImage = (props: LongStripImageProps) => {
   const dispatch = useAppDispatch()
   const imageRef = useRef<HTMLDivElement | null>(null)
   const indexOnScreen = useOnScreen(imageRef)
-  const { pageIndex, fitType } = useAppSelector((state) => state.theme)
+  const { pageIndex, fitType, isSwiping } = useAppSelector(
+    (state) => state.theme
+  )
 
   useEffect(() => {
     if (!indexOnScreen) return
@@ -23,22 +25,21 @@ const LongStripImage = (props: LongStripImageProps) => {
   }, [indexOnScreen])
 
   useEffect(() => {
-    if (!indexOnScreen) {
-      scrollToImage()
+    if (indexOnScreen) return
+    if (imageRef && imageRef.current && pageIndex === index + 1) {
+      imageRef.current.scrollIntoView({
+        behavior: isSwiping ? 'smooth' : 'auto',
+        block: 'start',
+      })
     }
   }, [pageIndex])
-
-  const scrollToImage = () => {
-    if (imageRef && imageRef.current && pageIndex === index + 1) {
-      imageRef.current.scrollIntoView({ behavior: 'auto' })
-    }
-  }
 
   return (
     <div
       className={classNames('page', fitClassName[fitType])}
       style={{ marginBottom: '30px' }}
       ref={imageRef}
+      id={`page-${index + 1}`}
     >
       <Image
         src={src}

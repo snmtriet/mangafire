@@ -11137,7 +11137,7 @@ main {
 
 #ctrl-menu .panel-btn,
 #ctrl-menu button,
-#ctrl-menu a,
+#ctrl-menu .page-btn,
 #ctrl-menu > a {
   width: 100%;
   display: flex;
@@ -11154,21 +11154,21 @@ main {
 
 #ctrl-menu .panel-btn.jb-btn,
 #ctrl-menu button.jb-btn,
-#ctrl-menu a.jb-btn,
+#ctrl-menu .page-btn.jb-btn,
 #ctrl-menu > a.jb-btn {
   justify-content: space-between;
 }
 
 #ctrl-menu .panel-btn.jb-btn:not(:last-child),
 #ctrl-menu button.jb-btn:not(:last-child),
-#ctrl-menu a.jb-btn:not(:last-child),
+#ctrl-menu .page-btn.jb-btn:not(:last-child),
 #ctrl-menu > a.jb-btn:not(:last-child) {
   margin-bottom: 0.5rem;
 }
 
 #ctrl-menu .panel-btn b,
 #ctrl-menu button b,
-#ctrl-menu a b,
+#ctrl-menu .page-btn b,
 #ctrl-menu > a b {
   color: #fff;
   font-weight: 400;
@@ -11177,7 +11177,7 @@ main {
 
 #ctrl-menu .panel-btn svg,
 #ctrl-menu button svg,
-#ctrl-menu a svg,
+#ctrl-menu .page-btn svg,
 #ctrl-menu > a svg {
   width: 1.3rem;
   height: 1.3rem;
@@ -11186,14 +11186,14 @@ main {
 
 #ctrl-menu .panel-btn:focus-visible,
 #ctrl-menu button:focus-visible,
-#ctrl-menu a:focus-visible,
+#ctrl-menu .page-btn:focus-visible,
 #ctrl-menu > a:focus-visible {
   outline: 0;
 }
 
 #ctrl-menu .panel-btn:hover,
 #ctrl-menu button:hover,
-#ctrl-menu a:hover,
+#ctrl-menu .page-btn:hover,
 #ctrl-menu > a:hover {
   background: #1e2c43;
   color: #fff;
@@ -11203,7 +11203,7 @@ main {
 #ctrl-menu .panel-btn:disabled,
 #ctrl-menu button.disabled,
 #ctrl-menu button:disabled,
-#ctrl-menu > a.disabled,
+#ctrl-menu > .page-btn.disabled,
 #ctrl-menu > a:disabled {
   background: #141d2c;
   color: rgba(116, 124, 136, 0.5);
@@ -11211,7 +11211,7 @@ main {
 
 #ctrl-menu .panel-btn.active,
 #ctrl-menu button.active,
-#ctrl-menu a.active,
+#ctrl-menu .page-btn.active,
 #ctrl-menu > a.active {
   color: #fff !important;
   background-color: #3c8bc6;
@@ -11252,14 +11252,14 @@ main {
 }
 
 #ctrl-menu > nav > button,
-#ctrl-menu > nav > a {
+#ctrl-menu > nav > .page-btn {
   justify-content: center;
 }
 
 #ctrl-menu > nav > button:first-child,
 #ctrl-menu > nav > button:last-child,
-#ctrl-menu > nav > a:first-child,
-#ctrl-menu > nav > a:last-child {
+#ctrl-menu > nav > .page-btn:first-child,
+#ctrl-menu > nav > .page-btn:last-child {
   width: 4rem;
   padding: 1rem 0;
 }

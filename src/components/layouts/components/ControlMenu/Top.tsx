@@ -61,6 +61,7 @@ const Top = () => {
       {/* Page */}
       <nav>
         <Link
+          className="page-btn"
           to={`#page-${pageIndex - 1}`}
           id="page-go-left"
           onClick={handlePrevPage}
@@ -77,6 +78,7 @@ const Top = () => {
           <i className="fa-solid fa-sort fa-sm"></i>
         </button>
         <Link
+          className="page-btn"
           to={`#page-${pageIndex + 1}`}
           id="page-go-right"
           onClick={handleNextPage}

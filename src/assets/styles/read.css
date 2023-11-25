@@ -1,8 +1,3 @@
-html,
-body {
-  scroll-behavior: smooth;
-}
-
 body.read {
   --header-padding: 4.3rem;
 }

@@ -51,10 +51,10 @@ const ReadLayout = () => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      window.addEventListener('keydown', handleKeyPress)
+      window.addEventListener('keyup', handleKeyPress)
     }
     return () => {
-      window.removeEventListener('keydown', handleKeyPress)
+      window.removeEventListener('keyup', handleKeyPress)
     }
   }, [pageIndex, isShowMenu, isShowHeader])
 

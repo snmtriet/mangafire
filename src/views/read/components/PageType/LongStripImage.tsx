@@ -1,5 +1,6 @@
-import { useRef, useEffect, memo } from 'react'
 import classNames from 'classnames'
+import { useRef, useEffect, memo } from 'react'
+import { isMobile } from 'react-device-detect'
 import Image from '../Image'
 import { fitClassName } from '../../Read'
 import { useOnScreen } from '@/utils/hooks'
@@ -15,6 +16,7 @@ const LongStripImage = (props: LongStripImageProps) => {
   const dispatch = useAppDispatch()
   const imageRef = useRef<HTMLDivElement | null>(null)
   const indexOnScreen = useOnScreen(imageRef)
+
   const { pageIndex, fitType, isSwiping } = useAppSelector(
     (state) => state.theme
   )
@@ -22,18 +24,15 @@ const LongStripImage = (props: LongStripImageProps) => {
   useEffect(() => {
     if (!indexOnScreen) return
     dispatch(setPageIndex(index + 1))
-    location.hash = `#page-${index + 1}`
   }, [indexOnScreen])
 
   useEffect(() => {
-    if (indexOnScreen) return
-    if (imageRef && imageRef.current && pageIndex === index + 1) {
-      imageRef.current.scrollIntoView({
-        behavior: isSwiping ? 'smooth' : 'auto',
-        block: 'start',
-      })
-    }
-  }, [pageIndex])
+    const image = document.getElementById(`page-${pageIndex}`)
+    image?.scrollIntoView({
+      behavior: 'auto',
+      block: 'start',
+    })
+  }, [])
 
   return (
     <div
@@ -45,10 +44,7 @@ const LongStripImage = (props: LongStripImageProps) => {
       <Image
         src={src}
         number={index + 1}
-        wrapperClassName={classNames(
-          pageIndex + 6 > index + 1 && 'loaded',
-          'd-block'
-        )}
+        wrapperClassName={classNames('loaded d-block')}
         imageClassName={fitClassName[fitType]}
       />
     </div>

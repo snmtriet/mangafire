@@ -23,6 +23,7 @@ import {
   SubPanelPage,
 } from './components/SubPanel'
 import { PAGE_ENUM } from '@/constants/page.constant'
+import scrollToPage from '@/utils/scrollToPage'
 
 const ReadLayout = () => {
   const {
@@ -74,14 +75,14 @@ const ReadLayout = () => {
         if (pageIndex > 1) {
           dispatch(setPageIndex(pageIndex - 1))
           dispatch(setActiveSwiper(activeSwiper - 1))
-          location.hash = `#page-${pageIndex - 1}`
+          scrollToPage(pageIndex - 1)
         }
         return
       case 'ArrowRight':
         if (pageIndex < 56 && pageIndex >= 1) {
           dispatch(setPageIndex(pageIndex + 1))
           dispatch(setActiveSwiper(activeSwiper + 1))
-          location.hash = `#page-${pageIndex + 1}`
+          scrollToPage(pageIndex + 1)
         }
         return
       default:

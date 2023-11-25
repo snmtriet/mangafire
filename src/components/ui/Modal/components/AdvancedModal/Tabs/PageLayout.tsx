@@ -9,7 +9,6 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '@/store'
-import { isMobile } from 'react-device-detect'
 
 const PageLayout = () => {
   const dispatch = useAppDispatch()
@@ -68,24 +67,6 @@ const PageLayout = () => {
 
         {pageType === PAGE_ENUM.LONG_STRIP && (
           <div>
-            <div>
-              <div className="custom-control custom-switch mb-4">
-                <input
-                  type="checkbox"
-                  className="custom-control-input"
-                  id="enable-lr_swiping"
-                  name="enable_lr_swiping"
-                  checked={isSwiping}
-                  onChange={onToggleSwiping}
-                />
-                <label
-                  className="custom-control-label"
-                  htmlFor="enable-lr_swiping"
-                >
-                  Enable smooth scrolling
-                </label>
-              </div>
-            </div>
             <div className="form-group strip-margin">
               <label htmlFor="text">Strip Margin</label>
               <input

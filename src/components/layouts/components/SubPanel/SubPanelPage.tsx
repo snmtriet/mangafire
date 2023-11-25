@@ -10,6 +10,7 @@ import {
 import { useWindowDimensions } from '@/utils/hooks'
 import { isMobile } from 'react-device-detect'
 import { Link } from 'react-router-dom'
+import scrollToPage from '@/utils/scrollToPage'
 
 const SubPanelPage = () => {
   const { isShowSubPanel, pageIndex, pageType } = useAppSelector(
@@ -23,6 +24,7 @@ const SubPanelPage = () => {
   const handleChangePage = (page: number) => {
     dispatch(setPageIndex(page))
     dispatch(setActiveSwiper(page))
+    scrollToPage(page)
   }
 
   return (
@@ -49,7 +51,7 @@ const SubPanelPage = () => {
         {new Array(56).fill(undefined).map((chapter, index) => (
           <li key={index}>
             <Link
-              to={`#page-${index + 1}`}
+              to="#"
               title={chapter?.name}
               className={classNames(pageIndex === index + 1 && 'active')}
               onClick={() => handleChangePage(index + 1)}

@@ -10,6 +10,7 @@ import {
 import { SubPanelType } from '@/@types/theme'
 import { SUB_PANEL_ENUM } from '@/constants/panel.constant'
 import { ChapVolSwitch, LangSwitch } from './Buttons'
+import scrollToPage from '@/utils/scrollToPage'
 
 const Top = () => {
   const dispatch = useAppDispatch()
@@ -24,6 +25,7 @@ const Top = () => {
     if (pageIndex > 1) {
       dispatch(setPageIndex(pageIndex - 1))
       dispatch(setActiveSwiper(activeSwiper - 1))
+      scrollToPage(pageIndex - 1)
     }
   }
 
@@ -31,6 +33,7 @@ const Top = () => {
     if (pageIndex < 56 && pageIndex >= 1) {
       dispatch(setPageIndex(pageIndex + 1))
       dispatch(setActiveSwiper(activeSwiper + 1))
+      scrollToPage(pageIndex + 1)
     }
   }
 
@@ -56,14 +59,9 @@ const Top = () => {
 
       {/* Page */}
       <nav>
-        <Link
-          className="page-btn"
-          to={pageIndex > 1 ? `#page-${pageIndex - 1}` : '#'}
-          id="page-go-left"
-          onClick={handlePrevPage}
-        >
+        <button className="page-btn" id="page-go-left" onClick={handlePrevPage}>
           <i className="fa-regular fa-chevron-left"></i>
-        </Link>
+        </button>
         <button
           className="page-toggler"
           onClick={() => handleTogglePanel(SUB_PANEL_ENUM.PANEL_PAGE)}
@@ -73,14 +71,13 @@ const Top = () => {
           </b>
           <i className="fa-solid fa-sort fa-sm"></i>
         </button>
-        <Link
+        <button
           className="page-btn"
-          to={pageIndex < 56 && pageIndex >= 1 ? `#page-${pageIndex + 1}` : '#'}
           id="page-go-right"
           onClick={handleNextPage}
         >
           <i className="fa-regular fa-chevron-right"></i>
-        </Link>
+        </button>
       </nav>
       {/* Chapter */}
       <nav>

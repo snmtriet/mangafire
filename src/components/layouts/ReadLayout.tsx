@@ -74,12 +74,14 @@ const ReadLayout = () => {
         if (pageIndex > 1) {
           dispatch(setPageIndex(pageIndex - 1))
           dispatch(setActiveSwiper(activeSwiper - 1))
+          location.hash = `#page-${pageIndex - 1}`
         }
         return
       case 'ArrowRight':
         if (pageIndex < 56 && pageIndex >= 1) {
           dispatch(setPageIndex(pageIndex + 1))
           dispatch(setActiveSwiper(activeSwiper + 1))
+          location.hash = `#page-${pageIndex + 1}`
         }
         return
       default:
@@ -96,9 +98,12 @@ const ReadLayout = () => {
   }
 
   function handleCloseControl() {
-    if (!isMobile) return
-    dispatch(setShowMenu(false))
-    dispatch(setShowSubPanel(null))
+    if (!isMobile) {
+      dispatch(setShowSubPanel(null))
+    } else {
+      dispatch(setShowMenu(false))
+      dispatch(setShowSubPanel(null))
+    }
   }
 
   const styleMaxHeight =

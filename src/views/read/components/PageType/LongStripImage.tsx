@@ -22,6 +22,7 @@ const LongStripImage = (props: LongStripImageProps) => {
   useEffect(() => {
     if (!indexOnScreen) return
     dispatch(setPageIndex(index + 1))
+    location.hash = `#page-${index + 1}`
   }, [indexOnScreen])
 
   useEffect(() => {

@@ -11367,7 +11367,7 @@ main {
 }
 
 .sub-panel ul li a {
-  padding: 1rem 1.6rem;
+  padding: 1rem 0.2rem 1rem 1.6rem;
   background: #141d2c;
   color: #747c88;
   display: flex;
@@ -11376,6 +11376,12 @@ main {
   text-overflow: ellipsis;
   white-space: nowrap;
   border-bottom: 1px solid #182335;
+}
+
+.sub-panel ul li a span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .sub-panel ul li a:before {

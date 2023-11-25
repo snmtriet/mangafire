@@ -1,7 +1,3 @@
-import React, { useState, useCallback } from 'react'
-
-import { EnumFilter } from '@/@types/common'
-import { useMounted } from '@/utils/hooks'
 import { Genre, Language, Length, Sort, Status, Type, Year } from './components'
 
 type FilterProps = {

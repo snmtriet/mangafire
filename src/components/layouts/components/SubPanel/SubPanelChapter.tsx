@@ -1292,7 +1292,9 @@ const SubPanelChapter = () => {
               title={chapter.title}
               className={classNames(index === 0 && 'active')}
             >
-              {chapter.number}. {chapter.title}
+              <span>
+                {chapter.number}. {chapter.title}
+              </span>
             </a>
           </li>
         ))}

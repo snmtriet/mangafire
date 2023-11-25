@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import classNames from 'classnames'
 import { SwiperRef } from 'swiper/react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { FIT_ENUM } from '@/constants/fit.constant'
 import { PAGE_ENUM } from '@/constants/page.constant'
 import {
@@ -83,17 +83,22 @@ const Read = () => {
         </div>
       )}
 
-      <div className="number-nav ltr abs show">
-        <button className="prev">
+      <div
+        className={classNames(
+          'number-nav ltr',
+          pageType !== PAGE_ENUM.LONG_STRIP && 'abs show'
+        )}
+      >
+        <Link to="#" className="prev">
           <i className="ltr-icon fa-light fa-arrow-left mr-1"></i>
           <i className="rtl-icon fa-light fa-arrow-right ml-1"></i>
           Previous chapter
-        </button>
-        <button className="next">
+        </Link>
+        <Link to="#" className="next">
           Next chapter
           <i className="ltr-icon fa-light fa-arrow-right ml-1"></i>
           <i className="rtl-icon fa-light fa-arrow-left mr-1"></i>
-        </button>
+        </Link>
       </div>
     </div>
   )

@@ -35,11 +35,7 @@ const Top = () => {
   }
 
   const handleTogglePanel = (type: SubPanelType) => {
-    if (type === isShowSubPanel) {
-      dispatch(setShowSubPanel(null))
-    } else {
-      dispatch(setShowSubPanel(type))
-    }
+    dispatch(setShowSubPanel(type === isShowSubPanel ? null : type))
   }
 
   return (
@@ -62,7 +58,7 @@ const Top = () => {
       <nav>
         <Link
           className="page-btn"
-          to={`#page-${pageIndex - 1}`}
+          to={pageIndex > 1 ? `#page-${pageIndex - 1}` : '#'}
           id="page-go-left"
           onClick={handlePrevPage}
         >
@@ -79,7 +75,7 @@ const Top = () => {
         </button>
         <Link
           className="page-btn"
-          to={`#page-${pageIndex + 1}`}
+          to={pageIndex < 56 && pageIndex >= 1 ? `#page-${pageIndex + 1}` : '#'}
           id="page-go-right"
           onClick={handleNextPage}
         >

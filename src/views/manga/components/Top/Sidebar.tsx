@@ -1,4 +1,3 @@
-import { useWindowDimensions } from '@/utils/hooks'
 import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
@@ -6,18 +5,13 @@ import { CSSTransition } from 'react-transition-group'
 const Sidebar = () => {
   const nodeRef = useRef<HTMLDivElement>(null)
   const heightRef = useRef('0px')
-  const [openInfo, setOpenInfo] = useState(false)
-
-  const { width } = useWindowDimensions()
+  const [openInfo, setOpenInfo] = useState(true)
 
   useEffect(() => {
-    if (!openInfo && width >= 768) {
-      setOpenInfo(true)
-    }
     if (nodeRef.current && nodeRef.current.clientHeight) {
       heightRef.current = nodeRef.current.clientHeight + 'px'
     }
-  }, [width, openInfo, nodeRef])
+  }, [openInfo, nodeRef])
 
   const handleOpenInfo = () => setOpenInfo((prev) => !prev)
 

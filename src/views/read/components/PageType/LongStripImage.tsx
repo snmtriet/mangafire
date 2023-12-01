@@ -17,9 +17,7 @@ const LongStripImage = (props: LongStripImageProps) => {
   const imageRef = useRef<HTMLDivElement | null>(null)
   const indexOnScreen = useOnScreen(imageRef)
 
-  const { pageIndex, fitType, isSwiping } = useAppSelector(
-    (state) => state.theme
-  )
+  const { pageIndex, fitType } = useAppSelector((state) => state.theme)
 
   useEffect(() => {
     if (!indexOnScreen) return

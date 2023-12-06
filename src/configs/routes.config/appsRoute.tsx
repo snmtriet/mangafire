@@ -23,31 +23,31 @@ const appsRoute: Routes = [
   {
     key: 'app.genre',
     path: '/genre/:slug',
-    component: lazy(() => import('@/views/filter')),
+    component: lazy(() => import('@/views/filter/Filter')),
     authority: [],
   },
   {
     key: 'app.newest',
     path: '/newest',
-    component: lazy(() => import('@/views/filter')),
+    component: lazy(() => import('@/views/filter/Filter')),
     authority: [],
   },
   {
     key: 'app.newest',
     path: '/newest',
-    component: lazy(() => import('@/views/filter')),
+    component: lazy(() => import('@/views/filter/Filter')),
     authority: [],
   },
   {
     key: 'app.updated',
     path: '/updated',
-    component: lazy(() => import('@/views/filter')),
+    component: lazy(() => import('@/views/filter/Filter')),
     authority: [],
   },
   {
     key: 'app.added',
     path: '/added',
-    component: lazy(() => import('@/views/filter')),
+    component: lazy(() => import('@/views/filter/Filter')),
     authority: [],
   },
   {

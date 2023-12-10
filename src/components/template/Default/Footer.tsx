@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
+  const onScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <footer>
       <div className="gotop">
-        <button className="btn" id="go-top">
+        <button onClick={onScrollTop} className="btn" id="go-top">
           <i className="fa-solid fa-rocket-launch fa-xl"></i>
           <p className="mb-0">Go to Surface</p>
         </button>

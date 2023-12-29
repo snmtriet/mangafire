@@ -1,6 +1,5 @@
 import classNames from 'classnames'
 import { useRef, useEffect, memo } from 'react'
-import { isMobile } from 'react-device-detect'
 import Image from '../Image'
 import { fitClassName } from '../../Read'
 import { useOnScreen } from '@/utils/hooks'

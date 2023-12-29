@@ -1,5 +1,6 @@
 import classNames from 'classnames'
-import { SUB_PANEL_ENUM } from '@/constants/panel.constant'
+import { Link } from 'react-router-dom'
+import { isMobile } from 'react-device-detect'
 import {
   setActiveSwiper,
   setPageIndex,
@@ -7,15 +8,12 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '@/store'
-import { useWindowDimensions } from '@/utils/hooks'
-import { isMobile } from 'react-device-detect'
-import { Link } from 'react-router-dom'
 import scrollToPage from '@/utils/scrollToPage'
+import { useWindowDimensions } from '@/utils/hooks'
+import { SUB_PANEL_ENUM } from '@/constants/panel.constant'
 
 const SubPanelPage = () => {
-  const { isShowSubPanel, pageIndex, pageType } = useAppSelector(
-    (state) => state.theme
-  )
+  const { isShowSubPanel, pageIndex } = useAppSelector((state) => state.theme)
   const dispatch = useAppDispatch()
   const { height } = useWindowDimensions()
 

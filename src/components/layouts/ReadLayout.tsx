@@ -40,11 +40,9 @@ const ReadLayout = () => {
 
   useEffect(() => {
     if (!isShowHeader && !isShowMenu) {
-      let content = ''
+      let content = 'Press H or move your mouse to the top to show header'
       if (isMobile) {
         content = 'Double tap to show header'
-      } else {
-        content = 'Press H or move your mouse to the top to show header'
       }
       toast.custom((t) => <Toast t={t} title={content} />)
     }

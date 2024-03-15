@@ -9546,7 +9546,7 @@ input:-webkit-autofill:focus {
 
 body,
 html {
-  scrollbar-color: #235479 #f9f9f9;
+  scrollbar-color: #263855 #070c13;
 }
 
 #root {
@@ -9567,17 +9567,13 @@ body #root > span.bg {
   opacity: 0.5;
 }
 
-::-webkit-scrollbar-track {
-  background: #070c13;
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
 ::-webkit-scrollbar-thumb {
   background: #263855;
   width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070c13;
 }
 
 a,

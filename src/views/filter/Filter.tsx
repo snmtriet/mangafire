@@ -752,8 +752,8 @@ const FilterPage = () => {
         <Head />
         <Filter handleSubmit={handleSubmit} />
         <div className="original card-lg">
-          {data.map((item) => (
-            <Card key={item.image} item={item} />
+          {data.map((item, index) => (
+            <Card key={item.image} item={item} index={index + 1} />
           ))}
         </div>
         <Pagination total={1000} onChange={handleChangePage} />

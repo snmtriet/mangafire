@@ -297,7 +297,7 @@ const TopTrending = () => {
         >
           {data.map((item, index) => (
             <SwiperSlide key={index}>
-              <TrendingCard item={item} />
+              <TrendingCard item={item} index={index + 1} />
             </SwiperSlide>
           ))}
         </Swiper>

@@ -15,7 +15,7 @@ const Poster = (props: PosterProps) => {
       <div className="poster">
         <div>
           <img
-            src={item.image}
+            src={`/images/thumb-${index}.png`}
             alt={item.title}
             loading="lazy"
             referrerPolicy="no-referrer"

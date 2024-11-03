@@ -292,7 +292,7 @@ const Content = () => {
           {fakeData &&
             fakeData.length > 0 &&
             fakeData.map((item: Item, index) => (
-              <Card key={index} item={item} />
+              <Card key={index} item={item} index={index + 1} />
             ))}
         </div>
       </div>

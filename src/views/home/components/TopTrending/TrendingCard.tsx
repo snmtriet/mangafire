@@ -4,10 +4,11 @@ import { GenreTrending } from '@/@types/common'
 
 type TrendingCardProps = {
   item: GenreTrending
+  index: number
 }
 
 function TrendingCard(props: TrendingCardProps) {
-  const { item } = props
+  const { item, index } = props
   return (
     <div className="swiper-inner">
       <div className="bookmark">
@@ -43,7 +44,7 @@ function TrendingCard(props: TrendingCardProps) {
       </div>
       <Link to="/manga/detective-conan.1rx" className="poster">
         <div>
-          <img src={item.image} alt={item.title} />
+          <img src={`/images/thumb-${index + 1}.png`} alt={item.title} />
         </div>
       </Link>
     </div>

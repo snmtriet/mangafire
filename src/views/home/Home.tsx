@@ -15,7 +15,7 @@ const Home = () => {
     <>
       <TopTrending />
       <div className="container">
-        <Alert />
+        {/* <Alert /> */}
         <MostViewed />
         <RecentlyUpdated />
         <NewRelease />

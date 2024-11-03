@@ -7,10 +7,11 @@ import Loading from './Loading'
 
 type CardProps = {
   item: Genre
+  index: number
 }
 
 const Card = (props: CardProps) => {
-  const { item } = props
+  const { item, index } = props
   const [loading, setLoading] = useState(true)
   const [mounted, setMounted] = useState(false)
 
@@ -46,7 +47,7 @@ const Card = (props: CardProps) => {
           >
             <div>
               <img
-                src={item.image}
+                src={`/images/thumb-${index + 1}.png`}
                 alt={item.title}
                 loading="lazy"
                 referrerPolicy="no-referrer"

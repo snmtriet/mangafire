@@ -149,7 +149,7 @@ const NewRelease = () => {
       >
         {data.map((item, index) => (
           <SwiperSlide key={index}>
-            <Poster item={item} />
+            <Poster item={item} index={index + 1} />
           </SwiperSlide>
         ))}
         <div className="completed-pagination"></div>
